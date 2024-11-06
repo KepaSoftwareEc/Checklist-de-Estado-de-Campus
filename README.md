@@ -88,7 +88,7 @@ Facilita la alineación estratégica
 
 **6.4 Mapa Capacidades**
 
-![Mapa de Capacidades](Mapa_de_Capacidades/V1MC.png)
+![Mapa de Capacidades](Mapa%20de%20Capacidades/V1MC.png)
 
 <p align="center">
   <i>
@@ -102,7 +102,7 @@ Facilita la alineación estratégica
 
 ### 8) Casos de Uso
 
-![Mapa de Capacidades](Casos_de_Uso/CU.png)
+![Mapa de Capacidades](Casos%20de%20Uso/CU.png)
 
 <p align="center">
   <i>
