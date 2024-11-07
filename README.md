@@ -30,7 +30,7 @@ Cada tarea incluirá un checklist detallado y deberá ser completado por todos l
 
 ### 3) Funcionalidades principales
 - **Creación y asignación de tareas:** Los usuarios podrán crear y asignar tareas de verificación con checklists detallados.
-- **estión colaborativa de tareas:** Las tareas podrán ser compartidas entre varios usuarios, y todas las partes deben verificar su cumplimiento para que se considere completada.
+- **Gestión colaborativa de tareas:** Las tareas podrán ser compartidas entre varios usuarios, y todas las partes deben verificar su cumplimiento para que se considere completada.
 - **Apartados de espacios:** Cada área del campus (aulas, laboratorios, salas de cómputo) tendrá un listado detallado de elementos como iluminación, proyectores, escritorios, etc., con opciones para ingresar descripciones, estados y cantidades de artículos.
 - **Registro de incidencias:** Los usuarios podrán agregar descripciones, fotos y etiquetas a los ítems que requieran mantenimiento o que presenten problemas.
 - **Acceso seguro:** Cada estudiante o miembro del personal accederá a la aplicación mediante credenciales únicas, lo que garantiza un control de acceso personalizado a las diferentes secciones del sistema.
