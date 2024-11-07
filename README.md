@@ -17,9 +17,9 @@ Version 1.0<br/>
 
 Este proyecto tiene como objetivo implementar un sistema en la nube para llevar un registro actualizado y accesible del estado de las instalaciones del campus universitario, mejorando la seguridad y adecuación del entorno para estudiantes, docentes y personal. La aplicación permitirá a los responsables de mantenimiento registrar edificios, aulas y espacios específicos, creando checklists personalizados para monitorear insumos y condiciones necesarias, como mobiliario y equipos.
 
-El sistema facilitará el seguimiento en tiempo real, permitiendo que los usuarios revisen, actualicen y reporten el estado de las instalaciones desde cualquier dispositivo, almacenando todos los datos en la nube. Esto asegura que la información esté disponible de manera constante y centralizada, eliminando la dependencia de un único dispositivo o ubicación.
+El sistema facilitará a los usuarios la revisión, actualización y reporte del estado de las instalaciones desde cualquier dispositivo, almacenando todos los datos en la nube. Esto asegura que la información esté disponible de manera constante y centralizada, eliminando la dependencia de un único dispositivo o ubicación.
 
-Tras cada revisión, el sistema generará un informe que se enviará a la UTPL. En caso de detectar algún problema, se enviará una solicitud al inventario para que provea los insumos necesarios y permita resolver los inconvenientes identificados. Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
+Tras cada revisión, el sistema generará y almacenara informes que evidenciaran la inspección del campus de la universidad. En caso de registrar incidencias, se solicitara el debido mantenimiento o reposicion de las intalaciones o equipamiento. Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
 
 ### 2) Base Contextual
 
