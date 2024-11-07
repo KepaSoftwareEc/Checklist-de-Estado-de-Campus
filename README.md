@@ -36,13 +36,6 @@ Tras cada revisión, el sistema generará y almacenara informes que evidenciaran
 
 **Ventajas de la Computación en la Nube para Gestión de Instalaciones:** La computación en la nube permite el acceso remoto y en tiempo real a los datos de las instalaciones, lo que facilita la comunicación y el seguimiento continuo de las tareas de mantenimiento. También mejora la colaboración entre el personal autorizado, pues pueden ver y actualizar la información desde cualquier dispositivo en cualquier lugar del campus.
 
-### 3) Funcionalidades principales
-- **Creación y asignación de tareas:** Los usuarios podrán crear y asignar tareas de verificación con checklists detallados.
-- **Gestión colaborativa de tareas:** Las tareas podrán ser compartidas entre varios usuarios, y todas las partes deben verificar su cumplimiento para que se considere completada.
-- **Apartados de espacios:** Cada área del campus (aulas, laboratorios, salas de cómputo) tendrá un listado detallado de elementos como iluminación, proyectores, escritorios, etc., con opciones para ingresar descripciones, estados y cantidades de artículos.
-- **Registro de incidencias:** Los usuarios podrán agregar descripciones, fotos y etiquetas a los ítems que requieran mantenimiento o que presenten problemas.
-- **Acceso seguro:** Cada estudiante o miembro del personal accederá a la aplicación mediante credenciales únicas, lo que garantiza un control de acceso personalizado a las diferentes secciones del sistema.
-
 ### 4) Tecnologías Empleadas
 El desarrollo de la aplicación está basado en tecnologías modernas que permiten una experiencia de usuario fluida y eficiente tanto para dispositivos Android como iOS.
 
@@ -64,14 +57,6 @@ Una capacidad de negocio representa "una habilidad particular o capacidad que un
 - Orientación a resultados: Se enfocan en lo que la organización debe lograr
 - Medibles: Pueden evaluarse en términos de madurez y desempeño
 
-**5.3 Componentes de una Capacidad**
-
-- Cada capacidad de negocio se compone de cuatro elementos esenciales:
-- Personas: Roles y habilidades necesarios
-- Procesos: Actividades y flujos de trabajo
-- Información: Datos y conocimientos requeridos
-- Recursos: Herramientas, tecnología y activos necesarios
-
 ### 6) Mapa de Capacidades
 
 **6.1 Definición**
@@ -84,15 +69,6 @@ Un mapa de capacidades es una representación visual que muestra todas las capac
 - Agrupación lógica por categorías
 - Independencia de la estructura organizacional
 - Visión completa de "qué" hace la organización
-
-**6.3 Beneficios**
-
-Facilita la alineación estratégica
-
-- Identifica redundancias y brechas
-- Mejora la comunicación entre áreas
-- Apoya la toma de decisiones
-- Guía las inversiones en tecnología
 
 **6.4 Mapa Capacidades**
 
