@@ -1,9 +1,8 @@
-<h1 align="center"> Checklist de Estado de Campus </center></h1>
+<h1 align="center"> NodTech </center></h1>
 <p align="center">
-<i>
-Version 1.0<br/>
-</i>
 </p>
+
+<h1> Checklist de Estado de Campus </center></h1>
 
 **_Autores_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
