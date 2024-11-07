@@ -4,7 +4,7 @@
 
 <h2> Checklist de Estado de Campus </center></h2>
 
-**_Autores_**
+**_Equipo de Desarrollo_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
 + [Byron Castillo](https://github.com/ByronCast09), Frontend Developer
