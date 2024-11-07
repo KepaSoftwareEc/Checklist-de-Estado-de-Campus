@@ -36,7 +36,7 @@ Tras cada revisión, el sistema generará y almacenara informes que evidenciaran
 
 **Ventajas de la Computación en la Nube para Gestión de Instalaciones:** La computación en la nube permite el acceso remoto y en tiempo real a los datos de las instalaciones, lo que facilita la comunicación y el seguimiento continuo de las tareas de mantenimiento. También mejora la colaboración entre el personal autorizado, pues pueden ver y actualizar la información desde cualquier dispositivo en cualquier lugar del campus.
 
-### 4) Tecnologías Empleadas
+### 3) Tecnologías Empleadas
 El desarrollo de la aplicación está basado en tecnologías modernas que permiten una experiencia de usuario fluida y eficiente tanto para dispositivos Android como iOS.
 
 <p align="center">
@@ -44,33 +44,33 @@ El desarrollo de la aplicación está basado en tecnologías modernas que permit
   <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxQktpK3Jy3GkxXutGPzl8R3OBCNMxfFWP5A&s' width='300'>
 </p>
 
-### 5) Capacidades de Negocio
+### 4) Capacidades de Negocio
 
-**5.1 Definición**
+**4.1 Definición**
 
 Una capacidad de negocio representa "una habilidad particular o capacidad que una empresa puede poseer o intercambiar para lograr un propósito específico". Es importante destacar que una capacidad define qué hace una organización, no cómo lo hace.
 
-**5.2 Características Fundamentales**
+**4.2 Características Fundamentales**
 
 - Estabilidad: Las capacidades son estables en el tiempo, a diferencia de procesos u estructuras organizacionales
 - Independencia: Son independientes de cómo se implementan o quién las ejecuta
 - Orientación a resultados: Se enfocan en lo que la organización debe lograr
 - Medibles: Pueden evaluarse en términos de madurez y desempeño
 
-### 6) Mapa de Capacidades
+### 5) Mapa de Capacidades
 
-**6.1 Definición**
+**5.1 Definición**
 
 Un mapa de capacidades es una representación visual que muestra todas las capacidades que una organización necesita para cumplir su misión y objetivos estratégicos.
 
-**6.2 Características del Mapa**
+**5.2 Características del Mapa**
 
 - Organización jerárquica de capacidades
 - Agrupación lógica por categorías
 - Independencia de la estructura organizacional
 - Visión completa de "qué" hace la organización
 
-**6.4 Mapa Capacidades**
+**5.3 Mapa Capacidades**
 
 <p align="center">
   <img src="Mapa%20de%20Capacidades/MapaCapacidades2.png" alt="Mapa de Capacidades">
@@ -82,11 +82,11 @@ Un mapa de capacidades es una representación visual que muestra todas las capac
   </i>
 </p>
 
-### 7) Prototipo
+### 6) Prototipo
 
 [Prototipo en Figma](https://www.figma.com/proto/qfBDe3dvxPt1WmxA9wJMcJ/CheckList-Campus---Prototipo?node-id=10-19&node-type=canvas&t=pJ2V16c24miJ6MCF-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A18&starting-point-node-id=10%3A19)
 
-### 8) Casos de Uso
+### 7) Casos de Uso
 
 ![Mapa de Capacidades](Casos%20de%20Uso/CUv2.png)
 
