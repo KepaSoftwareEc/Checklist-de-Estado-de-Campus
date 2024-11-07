@@ -15,10 +15,11 @@ Version 1.0<br/>
 
 ### 1) Descripción del Reto
 
-> Mantener un registro actualizado del estado de las instalaciones del campus es esencial para garantizar un entorno seguro y adecuado para estudiantes y personal. Un aplicativo en la nube que facilite la creación y seguimiento de checklists permitirá identificar y resolver problemas de manera oportuna, mejorando la calidad del entorno universitario. La computación en la nube asegurará que los datos sean accesibles desde cualquier dispositivo y en cualquier momento.*
+Este proyecto tiene como objetivo implementar un sistema en la nube para llevar un registro actualizado y accesible del estado de las instalaciones del campus universitario, mejorando la seguridad y adecuación del entorno para estudiantes, docentes y personal. La aplicación permitirá a los responsables de mantenimiento registrar edificios, aulas y espacios específicos, creando checklists personalizados para monitorear insumos y condiciones necesarias, como mobiliario, equipos y limpieza.
 
-La propuesta tiene como objetivo desarrollar una aplicación móvil que permita gestionar de manera eficiente las verificaciones de los diferentes espacios del campus universitario mediante listas de control (checklists) para la inspección de aulas, laboratorios, y otros espacios.
-Cada tarea incluirá un checklist detallado y deberá ser completado por todos los usuarios involucrados. Esto proporcionará un control preciso y un seguimiento eficiente del mantenimiento y estado de los espacios del campus.
+El sistema facilitará el seguimiento en tiempo real, permitiendo que los usuarios revisen, actualicen y reporten el estado de las instalaciones desde cualquier dispositivo, almacenando todos los datos en la nube. Esto asegura que la información esté disponible de manera constante y centralizada, eliminando la dependencia de un único dispositivo o ubicación.
+
+Tras cada revisión, se generarán informes que podrán enviarse al inventario para solicitar los insumos necesarios y resolver problemas detectados.Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
 
 ### 2) Base Contextual
 
