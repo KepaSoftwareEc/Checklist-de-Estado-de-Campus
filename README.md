@@ -5,13 +5,6 @@ Version 1.0<br/>
 </i>
 </p>
 
-**_Autores_**<h1 align="center"> Checklist de Estado de Campus </center></h1>
-<p align="center">
-<i>
-Version 1.0<br/>
-</i>
-</p>
-
 **_Autores_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
