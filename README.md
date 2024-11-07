@@ -2,7 +2,7 @@
 <p align="center">
 </p>
 
-<h1> Checklist de Estado de Campus </center></h1>
+<h2> Checklist de Estado de Campus </center></h2>
 
 **_Autores_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
