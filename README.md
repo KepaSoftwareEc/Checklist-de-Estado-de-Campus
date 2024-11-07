@@ -22,7 +22,7 @@ Tras cada revisión, el sistema generará y almacenara informes que evidenciaran
 
 
 <p align="center">
-  <img src="Imagenes/checklist-de-un-evento.jpg" alt="Mapa de Capacidades">
+  <img src="Imagenes/checklist-de-un-evento.jpg" alt="Mapa de Capacidades" style="width: 100%; height: auto; object-fit: cover;">
 </p>
 
 ### 2) Base Contextual
