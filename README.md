@@ -6,7 +6,7 @@ Version 1.0<br/>
 </p>
 
 **_Autores_**
-+ [Freddy Leon](https://github.com/Freddyleonn16), Quality 
++ [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
 + [Byron Castillo](https://github.com/ByronCast09), Frontend Developer
 + [Kevin Barrazueta](https://github.com/0KevinB), Security Manager
