@@ -89,8 +89,7 @@ Facilita la alineación estratégica
 **6.4 Mapa Capacidades**
 
 <p align="center">
-  <i>
-  ![Mapa de Capacidades](Mapa%20de%20Capacidades/MapaCapacidades06.png)  </i>
+  <img src="Mapa%20de%20Capacidades/MapaCapacidades06.png" alt="Mapa de Capacidades">
 </p>
 
 <p align="center">
