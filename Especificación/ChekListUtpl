@@ -1,0 +1,36 @@
+
+Registro de Edificios y Aulas
+
+1. Administrador registra los usuarios de la UTPL.
+2. UTPL valida los usuarios del Administrador.
+3. Administrador ingresa los Edificios.
+4. Edificios incluyen las Aulas y Cuartos de Servicio.
+5. Aulas y Cuartos de Servicio necesitan Insumos.
+6. Insumos son agregados por el Administrador.
+
+Monitoreo
+
+7. Administrador selecciona el Edificio.
+8. Edificio presenta los diferentes Insumos.
+9. Insumos son revisados por el Administrador.
+10. Administrador genera un Informe.
+11. El Informe envia una solicitud a Invetario
+
+7. Administrador selecciona el Aula.
+8. Aula presenta los diferentes Insumos.
+9. Insumos son revisados por el Administrador.
+10. Administrador genera un Informe.
+11. El Informe envia una solicitud a Invetario
+
+7. Administrador selecciona el Cuartos Especiales.
+8. Cuartos Especiales presenta los diferentes Insumos.
+9. Insumos son revisados por el Administrador.
+10. Administrador genera un Informe.
+11. El Informe envia una solicitud a Invetario
+
+Notificacion
+
+12. Inventario Notificara el estado de esa solicitud al Administrador.
+13. Administrador consulta informes anteriores a la Base de Datos.
+14. Base de Datos brinda los Datos al Adminitrador.
+15. Administrador recive la notificaion del Invetario.
