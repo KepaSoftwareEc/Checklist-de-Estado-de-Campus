@@ -75,6 +75,10 @@ Un mapa de capacidades es una representación visual que muestra todas las capac
 
 [Prototipo en Figma](https://www.figma.com/proto/qfBDe3dvxPt1WmxA9wJMcJ/CheckList-Campus---Prototipo?node-id=10-19&node-type=canvas&t=pJ2V16c24miJ6MCF-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A18&starting-point-node-id=10%3A19)
 
+<p align="center">
+  <img src="Imagenes/QR-Prototipo.png" alt="Prototipo en Figma">
+</p>
+
 ### 6) Casos de Uso
 
 ![Mapa de Capacidades](Casos%20de%20Uso/CUv2.png)
