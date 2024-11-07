@@ -2,7 +2,17 @@
 <p align="center">
 </p>
 
-<h1> Checklist de Estado de Campus </center></h1>
+### Misión
+
+Brindar soluciones eficaces que satisfagan las necesidades a las empresas a nivel global 
+
+### Visión
+
+Desarrollar un soluciones eficaces para mejorar la confianza en nuestra empresa
+
+Ser lideres innovadores en el desarrollo de software
+
+Que nuestros soluciones innovadoras se expandan a  cada rincon del planeta
 
 **_Autores_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
@@ -11,6 +21,8 @@
 + [Kevin Barrazueta](https://github.com/0KevinB), Security Manager
 + [Kevin Bustamante](https://github.com/Kevin0232), Backend Developer
 + [Pablo Ramon](https://github.com/Pablo-26), Software Architect
+
+<h1> Checklist de Estado de Campus </center></h1>
 
 ### 1) Descripción del Reto
 
