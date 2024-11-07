@@ -20,6 +20,11 @@ El sistema facilitará a los usuarios la revisión, actualización y reporte del
 
 Tras cada revisión, el sistema generará y almacenara informes que evidenciaran la inspección del campus de la universidad. En caso de registrar incidencias, se solicitara el debido mantenimiento o reposicion de las intalaciones o equipamiento. Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
 
+
+<p align="center">
+  <img src="Imagenes/checklist-de-un-evento.jpg" alt="Mapa de Capacidades">
+</p>
+
 ### 2) Base Contextual
 
 **Contexto de Mantenimiento y Seguridad en Entornos Educativos:** Explica la importancia de un entorno seguro y bien mantenido para el desarrollo académico y la seguridad del personal y los estudiantes. Esto también puede incluir una revisión de cómo la falta de mantenimiento afecta la funcionalidad y el atractivo de las instalaciones.
