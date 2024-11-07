@@ -104,7 +104,7 @@ Facilita la alineación estratégica
 
 ### 8) Casos de Uso
 
-![Mapa de Capacidades](Casos%20de%20Uso/CU.png)
+![Mapa de Capacidades](Casos%20de%20Uso/CUv2.png)
 
 <p align="center">
   <i>
