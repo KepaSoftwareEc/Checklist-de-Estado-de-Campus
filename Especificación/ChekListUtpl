@@ -2,17 +2,17 @@
 Registro de Edificios y Aulas
 
 1. Administrador registra los usuarios de la UTPL.
-2. UTPL valida los usuarios del Administrador.
-3. Administrador ingresa los Edificios.
-4. Edificios incluyen las Aulas y Cuartos de Servicio.
-5. Aulas y Cuartos de Servicio necesitan Insumos.
-6. Insumos son agregados por el Administrador.
+2. UTPL valida las creadenciales del Administrador.
+3. Administrador ingresa los Edificios de la UTPL.
+4. Los Edificios incluyen las Aulas y Cuartos de Servicio.
+5. Las Aulas y Cuartos requieren el Material.
+6. El Material es ingresado por el Administrador.
 
 Monitoreo
 
 7. Administrador selecciona el Edificio.
-8. Edificio presenta los diferentes Insumos.
-9. Insumos son revisados por el Administrador.
+8. Edificio muestra los diferentes Insumos.
+9.   por el Administrador.
 10. Administrador genera un Informe.
 11. El Informe envia una solicitud a Invetario
 
