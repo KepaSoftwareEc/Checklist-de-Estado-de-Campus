@@ -12,7 +12,9 @@ Registro de Edificios y Aulas
 Monitoreo y Notificacion
 
 6. Administrador monitorea estado de los elementos del edificio y genera un informe en UTPL.
-7. UTPL devuelve la informacion
+7. UTPL devuelve la informacion del monitoreo al Administrador.
+
+
 7. Edificio muestra información del monitoreo al administrador.
 8. Administrador genera un Informe a UTPL.
 9. UTPL Solicita Reposicion a Inventario.
