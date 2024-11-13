@@ -13,4 +13,4 @@ Monitoreo y Notificacion
 7. Administrador genera un Informe a UTPL.
 8. UTPL Solicita Reposicion a Inventario.
 8. Inventario envia una notificacion del estado de solicitud al Administrador.
-8. Administrador verifica el estado de la Solicitud en la Utpl
+8. Administrador verifica los solicitudes enviadas a Utpl.
