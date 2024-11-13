@@ -81,7 +81,7 @@ Un mapa de capacidades es una representación visual que muestra todas las capac
 
 ### 6) Casos de Uso
 
-![Mapa de Capacidades](Casos%20de%20Uso/CUv2.png)
+![Mapa de Capacidades](Casos%20de%20Uso/CUV3.png)
 
 <p align="center">
   <i>
