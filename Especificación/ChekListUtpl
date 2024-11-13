@@ -4,19 +4,29 @@ Registro de Edificios y Aulas
 2. UTPL valida las creadenciales del Administrador.
 3. Administrador ingresa los Edificios de la UTPL.
 4. UTPL valida la informacion ingresada por el Administrador.
-3. Administrador ingresa las Aulas de la UTPL.
-4. UTPL valida la informacion ingresada por el Administrador.
-3. Administrador ingresa los Cuartos de Servicio de la UTPL.
-4. UTPL valida la informacion ingresada por el Administrador.
+5. Administrador ingresa las Aulas de la UTPL.
+6. UTPL valida la informacion ingresada por el Administrador.
+7. Administrador ingresa los Cuartos de Servicio de la UTPL.
+8. UTPL valida la informacion ingresada por el Administrador.
 
-Monitoreo y Notificacion
+Monitoreo
 
-6. Administrador monitorea estado de los elementos del edificio y genera un Informe en UTPL.
-7. UTPL devuelve la informacion del monitoreo al Administrador.
+9. Administrador monitorea estado de los elementos del Edificio y envia un Informe en UTPL.
+10. UTPL valida el monitoreo del Administrador.
+11. Administrador solicita reposicion 
+11. Administrador monitorea estado de los elementos del Aulas y envia un Informe en UTPL.
+12. UTPL valida el monitoreo del Administrador.
+13. Administrador monitorea estado de los elementos del Cuartos de Servicio y envia un Informe en UTPL.
+14. UTPL valida el monitoreo del Administrador.
+15. 
+
+15. 
+11. Administrador envia el informe con solicitud a Inventario.
+
+Notificación
+
+13. Inventario envia una notificacion del estado de solicitud al Administrador.
+14. Administrador verifica estado de las solicitudes enviadas a UTPL.
 
 
-7. Edificio muestra información del monitoreo al administrador.
-8. Administrador genera un Informe a UTPL.
-9. UTPL Solicita Reposicion a Inventario.
-10. Inventario envia una notificacion del estado de solicitud al Administrador.
-11. Administrador verifica estado de solicitud enviadas a UTPL.
+
