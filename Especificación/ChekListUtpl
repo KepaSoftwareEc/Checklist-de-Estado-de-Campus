@@ -2,7 +2,7 @@ Registro de Edificios y Aulas
 
 1. Administrador registra su usuarios de la UTPL.
 2. UTPL valida las creadenciales del Administrador.
-3. Administradorario ingresa los Edificios de la UTPL.
+3. Administrador ingresa los Edificios de la UTPL.
 4. UTPL registra en la base de datos la informacion del Edificio.
 5. Edificio se compone elementos agregados por el Administrador.
 
