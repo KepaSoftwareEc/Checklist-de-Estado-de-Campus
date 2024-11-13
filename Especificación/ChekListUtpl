@@ -3,14 +3,15 @@ Registro de Edificios y Aulas
 1. Administrador registra su usuarios de la UTPL.
 2. UTPL valida las creadenciales del Administrador.
 3. Administrador ingresa los Edificios de la UTPL.
-4. UTPL registra en la base de datos la informacion del Edificio.
-5. Edificio se compone elementos agregados por el Administrador.
+4. UTPL valida la informacion ingresada por el Administrador.
+
 
 Monitoreo y Notificacion
 
-6. Administrador monitorea estado de los elementos del edificio.
-8. Edificio muestra información del monitoreo al administrador.
-7. Administrador genera un Informe a UTPL.
-8. UTPL Solicita Reposicion a Inventario.
-9. Inventario envia una notificacion del estado de solicitud al Administrador.
-10. Administrador verifica estado de solicitud enviadas a UTPL.
+6. Administrador monitorea estado de los elementos del edificio y genera un informe en UTPL.
+7. UTPL devuelve la informacion
+7. Edificio muestra información del monitoreo al administrador.
+8. Administrador genera un Informe a UTPL.
+9. UTPL Solicita Reposicion a Inventario.
+10. Inventario envia una notificacion del estado de solicitud al Administrador.
+11. Administrador verifica estado de solicitud enviadas a UTPL.
