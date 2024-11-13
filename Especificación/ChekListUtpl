@@ -8,7 +8,7 @@ Registro de Edificios y Aulas
 
 Monitoreo y Notificacion
 
-6. Administrador monitorea las condiciones y funcionamiento de los elementos del edificio.
+6. Administrador monitorea estado de los elementos del edificio.
 8. Edificio muestra un informe de todo el monitoreo al administrador.
 7. Administrador genera un Informe a UTPL.
 8. UTPL Solicita Reposicion a Inventario.
