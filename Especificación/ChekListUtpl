@@ -4,7 +4,10 @@ Registro de Edificios y Aulas
 2. UTPL valida las creadenciales del Administrador.
 3. Administrador ingresa los Edificios de la UTPL.
 4. UTPL valida la informacion ingresada por el Administrador.
-
+3. Administrador ingresa las Aulas de la UTPL.
+4. UTPL valida la informacion ingresada por el Administrador.
+3. Administrador ingresa los Cuartos de Servicio de la UTPL.
+4. UTPL valida la informacion ingresada por el Administrador.
 
 Monitoreo y Notificacion
 
