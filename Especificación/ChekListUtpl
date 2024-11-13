@@ -1,16 +1,16 @@
-Registro de Edificios y Aulas\
+Registro de Edificios y Aulas
 
 1. Administrador registra su usuarios de la UTPL.
 2. UTPL valida las creadenciales del Administrador.
-3. UsuAdministradorario ingresa los Edificios de la UTPL.
+3. Administradorario ingresa los Edificios de la UTPL.
 4. UTPL registra en la base de datos la informacion del Edificio.
-5. Efidicio requiere elementos registrados por el Administrador.
+5. Edificio se compone elementos agregados por el Administrador.
 
-Monitoreo
+Monitoreo y Notificacion
 
 6. Administrador monitorea las condiciones y funcionamiento de los elementos del edificio.
-7. Administrador genera un Informe a UTPL
-8. UTPL Solicita Reposicion a Inventario
-8. Inventario envia una notificacion al Administrador
-8. Administrador 
-9. Pablo pela la vrg a Freddy
+8. Edificio muestra un informe de todo el monitoreo al administrador.
+7. Administrador genera un Informe a UTPL.
+8. UTPL Solicita Reposicion a Inventario.
+8. Inventario envia una notificacion del estado de solicitud al Administrador.
+8. Administrador verifica el estado de la Solicitud en la Utpl
