@@ -19,7 +19,7 @@ Monitoreo
 
  1. Administrador monitorea el estado de los elementos del Edificio y
     genera un Informe. 
-    - El Informe documenta el estado general del Edificio, incluyendo observaciones sobre elementos inmobiliarios, eléctricos y de servicios.
+    - El Informe documenta el estado general del Edificio, incluyendo observaciones hechas por el administrdor.
  2. Administrador envía el Informe generado a la UTPL.
  3. UTPL valida el Informe del Administrador.
  4. Administrador solicita la reposición de elementos en el Edificio,
