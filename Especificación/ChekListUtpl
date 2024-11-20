@@ -1,32 +1,44 @@
+
+**Registro de Edificios y Aulas**
+
 Registro de Edificios y Aulas
 
-1. Administrador registra su usuarios de la UTPL.
-2. UTPL valida las creadenciales del Administrador.
-3. Administrador ingresa los Edificios de la UTPL.
-4. UTPL valida la informacion ingresada por el Administrador.
-5. Administrador ingresa las Aulas de la UTPL.
-6. UTPL valida la informacion ingresada por el Administrador.
-7. Administrador ingresa los Cuartos de Servicio de la UTPL.
-8. UTPL valida la informacion ingresada por el Administrador.
+ 1. Administrador registra usuarios en la UTPL.
+ 2. UTPL valida las credenciales del Administrador.
+ 3. Administrador ingresa los Edificios en la UTPL.
+ 4. UTPL valida la información de los Edificios ingresada por el
+    Administrador.
+ 5. Administrador ingresa las Aulas en la UTPL.
+ 6. UTPL valida la información de las Aulas ingresada por el
+    Administrador.
+ 7. Administrador ingresa los Cuartos de Servicio en la UTPL.
+ 8. UTPL valida la información de los Cuartos de Servicio ingresada por
+    el Administrador.
 
 Monitoreo
 
-9. Administrador monitorea estado de los elementos del Edificio y envia un Informe en UTPL.
-10. UTPL valida el monitoreo del Administrador.
-11. Administrador solicita reposicion 
-11. Administrador monitorea estado de los elementos del Aulas y envia un Informe en UTPL.
-12. UTPL valida el monitoreo del Administrador.
-13. Administrador monitorea estado de los elementos del Cuartos de Servicio y envia un Informe en UTPL.
-14. UTPL valida el monitoreo del Administrador.
-15. 
-
-15. 
-11. Administrador envia el informe con solicitud a Inventario.
+ 1. Administrador monitorea el estado de los elementos del Edificio y
+    genera un Informe. 
+    - El Informe documenta el estado general del Edificio, incluyendo observaciones sobre elementos inmobiliarios, eléctricos y de servicios.
+ 2. Administrador envía el Informe generado a la UTPL.
+ 3. UTPL valida el Informe del Administrador.
+ 4. Administrador solicita la reposición de elementos en el Edificio,
+    adjuntando el Informe.
+ 5. Administrador monitorea el estado de los elementos del Aula y genera
+    un Informe.
+    - El Informe detalla el estado inmobiliario, eléctrico y de los equipos en el Aula inspeccionada.
+ 6. Administrador envía el Informe generado a la UTPL.
+ 7. UTPL valida el Informe del Administrador.
+ 8. Administrador monitorea el estado de los elementos del Cuarto de
+    Servicio y genera un Informe.
+    - El Informe incluye el estado de infraestructura, servicios básicos y equipo asociado al Cuarto de Servicio.
+ 9. Administrador envía el Informe generado a la UTPL.
+ 10. UTPL valida el Informe del Administrador.
 
 Notificación
 
-13. Inventario envia una notificacion del estado de solicitud al Administrador.
-14. Administrador verifica estado de las solicitudes enviadas a UTPL.
-
-
-
+ 1. Administrador envía un Informe con una solicitud al Inventario. 
+    -  El Informe incluye los elementos que requieren reposición, especificando su estado y las recomendaciones del Administrador.
+ 2. Inventario analiza el Informe y notifica el estado de la solicitud
+    al Administrador.
+ 3. Administrador verifica el estado de las solicitudes en la UTPL.
