@@ -30,6 +30,9 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 <h2>Equipo de Desarrollo</h2>
 
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
+<p align="center">
+  <img src="Modelos y Diagramas/Equipo de Trabajo/Freddy.png" alt="Quality Assurance">
+</p>
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
 + [Byron Castillo](https://github.com/ByronCast09), Frontend Developer
 + [Kevin Barrazueta](https://github.com/0KevinB), Security Manager
