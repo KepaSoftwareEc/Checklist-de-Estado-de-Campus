@@ -8,23 +8,22 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 
 <h1>Misión y Visión</h1>
 <table>
-        <tr>
-            <th><strong>Misión</strong></th>
-            <th><strong>Visión</strong></th>
-        </tr>
-        <tr>
-            <td>
-                Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento, optimicen sus procesos y fortalezcan su competitividad en un mercado dinámico y en constante evolución.
-            </td>
-            <td>
-                <ul>
-                    <li>Desarrollar soluciones eficaces para mejorar la confianza en nuestra empresa.</li>
-                    <li>Ser líderes innovadores en el desarrollo de software.</li>
-                    <li>Que nuestras soluciones innovadoras se expandan a cada rincón del planeta.</li>
-                </ul>
-            </td>
-        </tr>
-    </table>
+    <tr>
+        <td><strong>Misión</strong></td>
+        <td>Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos denuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento, optimicen sus procesos y fortalezcan su competitividad en un mercado dinámico y en constante evolución.</td>
+    </tr>
+    <tr>
+        <td><strong>Visión</strong></td>
+        <td>
+            <ul>
+                <li>Desarrollar soluciones eficaces para mejorar la confianza en nuestra empresa.</li>
+                <li>Ser líderes innovadores en el desarrollo de software.</li>
+                <li>Que nuestras soluciones innovadoras se expandan a cada rincón del planeta.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
 
 
 
@@ -37,7 +36,8 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 + [Kevin Bustamante](https://github.com/Kevin0232), Backend Developer
 + [Pablo Ramon](https://github.com/Pablo-26), Software Architect
 
-### Descripción del Reto
+
+<h2>Descripción del Reto</h2>
 
 Este proyecto tiene como objetivo implementar un sistema en la nube para llevar un registro actualizado y accesible del estado de las instalaciones del campus universitario, mejorando la seguridad y adecuación del entorno para estudiantes, docentes y personal. La aplicación permitirá a los responsables de mantenimiento registrar edificios, aulas y espacios específicos, creando checklists personalizados para monitorear insumos y condiciones necesarias, como mobiliario y equipos.
 
@@ -45,8 +45,14 @@ El sistema facilitará a los usuarios la revisión, actualización y reporte del
 
 Tras cada revisión, el sistema generará y almacenara informes que evidenciaran la inspección del campus de la universidad. En caso de registrar incidencias, se solicitara el debido mantenimiento o reposicion de las intalaciones o equipamiento. Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
 
+<h2>Problema</h2>
 
-### Prototipo QR
+Actualmente, la UTPL gestiona de manera manual los checklists relacionados con el estado del campus, lo que implica que toda la documentación se maneja en formato físico. Este enfoque puede dar lugar a problemas como errores humanos en el registro de información, demoras en los procesos de supervisión y retrasos en las acciones necesarias para realizar reparaciones o reposiciones en las instalaciones.
+
+Para abordar estas dificultades, se propone implementar una solución digital que automatice y agilice este proceso, permitiendo una supervisión más eficiente de los diferentes edificios de la universidad y optimizando las tareas de mantenimiento. Esta solución no solo reducirá errores, sino que también mejorará significativamente la eficacia y la capacidad de respuesta en la gestión del estado del campus.
+
+
+<h2>Prototipo QR</h2>
 
 [Prototipo en Figma](https://www.figma.com/proto/qfBDe3dvxPt1WmxA9wJMcJ/CheckList-Campus---Prototipo?node-id=10-19&node-type=canvas&t=pJ2V16c24miJ6MCF-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A18&starting-point-node-id=10%3A19)
 
