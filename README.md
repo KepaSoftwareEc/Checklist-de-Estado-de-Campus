@@ -31,7 +31,7 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
 
-<img src="file:///C:/Users/Fredd/Desktop/Computacion%207mo%20Ciclo/Aquitectura%20de%20Software/Checklist-de-Estado-de-Campus/Equipo%20de%20Trabajo/Freddy.png" alt="Descripción de la imagen" width="500">
+<img src="file:C:/Users/Fredd/Desktop/Computacion%207mo%20Ciclo/Aquitectura%20de%20Software/Checklist-de-Estado-de-Campus/Equipo%20de%20Trabajo/Freddy.png" width="500">
 
 
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
