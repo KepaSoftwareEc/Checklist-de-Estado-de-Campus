@@ -6,6 +6,60 @@
 
 En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las necesidades de empresas de todo el mundo. Nuestro enfoque está orientado a la excelencia, combinando innovación y experiencia para garantizar resultados que impulsen el crecimiento y el éxito de nuestros clientes. Con un equipo altamente capacitado y un compromiso firme con la calidad, trabajamos cada día para superar expectativas y construir relaciones sólidas y duraderas.
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión y Visión</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-size: 1.2em;
+        }
+        td {
+            font-size: 1em;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Misión y Visión</h1>
+    <table>
+        <tr>
+            <th>Concepto</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td><strong>Misión</strong></td>
+            <td>Brindar soluciones eficaces que satisfagan las necesidades a las empresas a nivel global.</td>
+        </tr>
+        <tr>
+            <td><strong>Visión</strong></td>
+            <td>
+                <ul>
+                    <li>Desarrollar soluciones eficaces para mejorar la confianza en nuestra empresa.</li>
+                    <li>Ser líderes innovadores en el desarrollo de software.</li>
+                    <li>Que nuestras soluciones innovadoras se expandan a cada rincón del planeta.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+
+
+
 <h2>Equipo de Desarrollo</h2>
 
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
