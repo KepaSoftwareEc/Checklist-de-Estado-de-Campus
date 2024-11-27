@@ -6,33 +6,6 @@
 
 En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las necesidades de empresas de todo el mundo. Nuestro enfoque está orientado a la excelencia, combinando innovación y experiencia para garantizar resultados que impulsen el crecimiento y el éxito de nuestros clientes. Con un equipo altamente capacitado y un compromiso firme con la calidad, trabajamos cada día para superar expectativas y construir relaciones sólidas y duraderas.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misión y Visión</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-size: 1.2em;
-        }
-        td {
-            font-size: 1em;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <h1>Misión y Visión</h1>
