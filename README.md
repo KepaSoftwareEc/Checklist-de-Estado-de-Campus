@@ -2,7 +2,7 @@
 <p align="center">
 </p>
 
-<h2> Checklist de Estado de Campus </center></h2>
+<h2>¿Quiénes Somos?</center></h2>
 
 **_Equipo de Desarrollo_**
 + [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
