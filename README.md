@@ -6,7 +6,7 @@
 
 En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las necesidades de empresas de todo el mundo. Nuestro enfoque está orientado a la excelencia, combinando innovación y experiencia para garantizar resultados que impulsen el crecimiento y el éxito de nuestros clientes. Con un equipo altamente capacitado y un compromiso firme con la calidad, trabajamos cada día para superar expectativas y construir relaciones sólidas y duraderas.
 
-<h1>Misión y Visión</h1>
+<h2>Misión y Visión</h2>
 <table>
     <tr>
         <td><strong>Misión</strong></td>
