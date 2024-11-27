@@ -36,11 +36,36 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 </p>
 
 + [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
+
+<p align="center">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Carolina.png" alt="UX/UI Developer">
+</p>
+
+
 + [Byron Castillo](https://github.com/ByronCast09), Frontend Developer
+
+<p align="center">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Byron.png" alt="Frontend Developer">
+</p>
+
+
 + [Kevin Barrazueta](https://github.com/0KevinB), Security Manager
+
+<p align="center">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin.png" alt="Security Manager">
+</p>
+
 + [Kevin Bustamante](https://github.com/Kevin0232), Backend Developer
+
+<p align="center">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/KevinBustamante.png" alt="Backend Developer">
+</p>
+
 + [Pablo Ramon](https://github.com/Pablo-26), Software Architect
 
+<p align="center">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Pablo.png" alt="Software Architect">
+</p>
 
 <h2>Descripción del Reto</h2>
 
