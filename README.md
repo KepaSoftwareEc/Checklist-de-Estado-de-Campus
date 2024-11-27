@@ -38,10 +38,6 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
     <h1>Misión y Visión</h1>
     <table>
         <tr>
-            <th>Concepto</th>
-            <th>Descripción</th>
-        </tr>
-        <tr>
             <td><strong>Misión</strong></td>
             <td>Brindar soluciones eficaces que satisfagan las necesidades a las empresas a nivel global.</td>
         </tr>
