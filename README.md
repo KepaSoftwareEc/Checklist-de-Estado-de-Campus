@@ -58,7 +58,7 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 + [Kevin Bustamante](https://github.com/Kevin0232), Backend Developer
 
 <p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/KevinBustamante.png" alt="Backend Developer">
+  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/KevinBustamante.jpg" alt="Backend Developer">
 </p>
 
 + [Pablo Ramon](https://github.com/Pablo-26), Software Architect
