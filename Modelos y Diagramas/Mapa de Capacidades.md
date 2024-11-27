@@ -14,5 +14,5 @@ Un mapa de capacidades es una representación visual que muestra todas las capac
 **Mapa Capacidades**
 
 <p align="center">
-  <img src="Contenido/Mapa de Capacidades.png" alt="Mapa de Capacidades">
+  <img src="Contenido/Mapa de Capacidades/Mapa de Capacidades.png" alt="Mapa de Capacidades">
 </p>
