@@ -36,21 +36,21 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
 <table align="center">
   <tr>
     <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Freddy.png" alt="Quality Assurance" width="150">
+      <img src="https://github.com/user-attachments/assets/9d586cde-1e2d-454e-bc61-8bee7fe357fc" alt="Quality Assurance" width="150">
       <br>
       <b>Freddy Leon</b>
       <br>
       <a href="https://github.com/Freddyleonn16">Quality Assurance</a>
     </td>
     <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Carolina.png" alt="UX/UI Developer" width="150">
+      <img src="https://github.com/user-attachments/assets/e2456fd2-2743-44bb-8596-0a8da711c106" alt="UX/UI Developer" width="150">
       <br>
       <b>Carolina Alvarado</b>
       <br>
       <a href="https://github.com/carolaljime21">UX/UI Developer</a>
     </td>
-    <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Byron.png" alt="Frontend Developer" width="150">
+    <td align="center"> 
+      <img src="https://github.com/user-attachments/assets/b2111001-bbd0-4664-9f23-3b06015b62c5" alt="Frontend Developer" width="140">
       <br>
       <b>Byron Castillo</b>
       <br>
@@ -59,21 +59,21 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
   </tr>
   <tr>
     <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin.png" alt="Security Manager" width="150">
+      <img src="https://github.com/user-attachments/assets/2a38e051-2030-4417-8939-a85569930709" alt="Security Manager" width="150">
       <br>
       <b>Kevin Barrazueta</b>
       <br>
       <a href="https://github.com/0KevinB">Security Manager</a>
     </td>
     <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin Bustamante.jpg" alt="Backend Developer" width="150">
+      <img src="https://github.com/user-attachments/assets/dd76053c-0bed-4397-a59d-82163ad1bc50" alt="Backend Developer" width="150">
       <br>
       <b>Kevin Bustamante</b>
       <br>
       <a href="https://github.com/Kevin0232">Backend Developer</a>
     </td>
     <td align="center">
-      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Pablo.png" alt="Software Architect" width="150">
+      <img src="https://github.com/user-attachments/assets/e5433808-2088-44ab-a0f6-8cea90b9c8b1" alt="Software Architect" width="150">
       <br>
       <b>Pablo Ramon</b>
       <br>
@@ -102,6 +102,6 @@ Para abordar estas dificultades, se propone implementar una solución digital qu
 [Prototipo en Figma](https://www.figma.com/proto/qfBDe3dvxPt1WmxA9wJMcJ/CheckList-Campus---Prototipo?node-id=10-19&node-type=canvas&t=pJ2V16c24miJ6MCF-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A18&starting-point-node-id=10%3A19)
 
 <p align="center">
-  <img src="Modelos y Diagramas/Contenido/QR-Prototipo.png" alt="Prototipo en Figma">
+  <img src="https://github.com/user-attachments/assets/1d3411c7-9e7e-4c3f-84dc-438365dc0a36" alt="Prototipo en Figma">
 </p>
 
