@@ -10,24 +10,22 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; text-align: left;">
     <thead>
         <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ddd;">
+            <th style="padding: 10px;">Misión</th>
+            <th style="padding: 10px;">Visión</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="padding: 10px; width:200; border-bottom: 1px solid #ddd;">
-                Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento.
+            <td>
+                Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento, optimicen sus procesos y fortalezcan su competitividad en un mercado dinámico y en constante evolución.
             </td>
-            <td style="padding: 10px; width:150; border-bottom: 1px solid #ddd;">
-                <ul style="margin: 0; padding-left: 20px;">
-                    <li>Desarrollar soluciones eficaces para mejorar la confianza en nuestra empresa.</li>
-                    <li>Ser líderes innovadores en el desarrollo de software.</li>
-                    <li>Que nuestras soluciones innovadoras se expandan a cada rincón del planeta.</li>
+            <td>
+Ser líderes innovadores en el desarrollo de software, brindando soluciones eficaces que generen confianza en nuestra empresa y que se expandan globalmente, alcanzando cada rincón del planeta con nuestras propuestas tecnológicas.
                 </ul>
             </td>
         </tr>
     </tbody>
 </table>
-
 
 
 
