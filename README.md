@@ -10,8 +10,8 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; text-align: left;">
     <thead>
         <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ddd;">
-            <th style="padding: 10px;">Misión</th>
-            <th style="padding: 10px;">Visión</th>
+            <th style="padding: 10px; width: 40%;">Misión</th>
+            <th style="padding: 10px; width: 60%;">Visión</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +29,7 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
         </tr>
     </tbody>
 </table>
+
 
 
 
