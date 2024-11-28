@@ -40,7 +40,7 @@ Un diagrama de clases sigue la siguiente estructura:
 
 ## [Enlace al diccionario de clases](https://utpl-my.sharepoint.com/:x:/g/personal/faleon13_utpl_edu_ec/EUr8pLWrPYJBiHK3ocfpIqYBwhPz39oGi3iJZh36fHD7cg?e=XVKfcA)
 
-## Foto del diagrama
+## Diagrama de Clases
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/99a8f5eb-d326-4b68-8b20-ffce0e011a14" alt="Diagrama de clases"/>
