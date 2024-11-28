@@ -16,10 +16,10 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
     </thead>
     <tbody>
         <tr>
-            <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px; width:60%; border-bottom: 1px solid #ddd;">
                 Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento.
             </td>
-            <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px; width:40%; border-bottom: 1px solid #ddd;">
                 <ul style="margin: 0; padding-left: 20px;">
                     <li>Desarrollar soluciones eficaces para mejorar la confianza en nuestra empresa.</li>
                     <li>Ser líderes innovadores en el desarrollo de software.</li>
