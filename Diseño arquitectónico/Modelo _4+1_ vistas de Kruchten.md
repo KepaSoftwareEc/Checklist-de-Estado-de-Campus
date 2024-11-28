@@ -1,7 +1,3 @@
-<p align="right">
-  <img src="https://i.postimg.cc/13qQdqZs/utpllogo.png" alt="Logo UTPL" width="150"/>
-</p>
-
 
 # Modelo 4+1 de Vistas Arquitectónicas
 
