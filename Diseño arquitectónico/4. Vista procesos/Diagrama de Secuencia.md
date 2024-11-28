@@ -11,46 +11,54 @@ Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de 
 
 ## Diagramas de secuencia
 
-### Diagrama 1: Inicio de sesión y gestión de componentes
+### Diagrama 1: Inicio de sesión y Registro de edificios
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7f299cc6-e89f-4a8d-bdc0-5a64130b9308" alt="Diagrama de secuencia 1 "/>
 </p>
 
-
-
 **Explicación**:  
-Este diagrama describe cómo el **Personal Administrativo** inicia sesión en el sistema de la UTPL. Una vez autenticado, puede agregar componentes al inventario tras validar su existencia. Los pasos clave incluyen:  
-- Verificar credenciales.  
-- Obtener los datos del usuario.  
-- Agregar componentes tras verificar su disponibilidad.
+
+En el primer diagrama de secuencias se describe el flujo de interacción para los encargados de realizar el checklist del estado del campus. El proceso comienza cuando los usuarios inician sesión utilizando sus credenciales institucionales de la UTPL. Una vez ingresados los datos, el sistema valida las credenciales en la base de datos para garantizar la autenticidad del acceso.
+
+Adicionalmente, el diagrama incluye el proceso de registro de nuevos edificios, aulas y cuartos de servicio en el sistema de la UTPL, destacando las interacciones necesarias para completar estas tareas de manera eficiente. El flujo es el siguiente:
+
+- Ingresar Creedenciasles.  
+- Validar el usuario dentro de la UTPL.  
+- Registrar los edicios, aulas y cuartos de servicio.
+- Agregar los insumos.
 
 ---
 
-### Diagrama 2: Verificación y clasificación de componentes
+### Diagrama 2: Monitoreo de los Edificios
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4dacda02-a339-481b-92b0-2a8e4cf1c138" alt="Diagrama de secuencia 2"/>
 </p>
 
 
-**Explicación**:  
-Este diagrama muestra el proceso de verificación y clasificación de componentes. El flujo incluye:  
-- Verificar si un componente existe en el inventario.  
-- Verificar el estado del componente.  
-- Clasificar los componentes en diferentes categorías basadas en su tipo.
+**Explicación**: 
+
+En el segundo diagrama se ilustra el proceso mediante el cual el usuario selecciona la parte específica del edificio que desea monitorear, permitiéndole generar un informe detallado sobre su estado. El flujo es el siguiente:
+
+- Seleccioinar el edificio, aula y cuarto de servicio
+- Escojer el apartado que se desea vereificar dentro de la parte seleccionada 
+- Realizar el proceso de verificacion
+- Ver las observaciones guardadas en el informe
+- Generar Informe
 
 ---
 
-### Diagrama 3: Generación de informes y alertas
+### Diagrama 3: Envio de Informe y Procesamiento de Solicitud
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/13c57a6e-b26a-4325-a0a9-74a3808067ab" alt="Diagrama de secuencia 3"/>
 </p>
 
 **Explicación**:  
-Aquí se describe el proceso de monitoreo de movimientos e irregularidades en el inventario, incluyendo la generación de alertas y registros. Las acciones clave son:  
-- Monitorear movimientos.  
-- Generar informes de irregularidades.  
-- Registrar movimientos específicos y enviar alertas al sistema.
+
+En el último diagrama se detalla el proceso mediante el cual el informe generado por el usuario sobre el estado del edificio es enviado al departamento de inventario. El propósito de este envío es que el equipo de inventario analice la información y proceda a realizar las acciones correspondientes, ya sea el mantenimiento o la reposición de los equipos necesarios. Finalmente, se notifica al usuario sobre la corrección realizada, cerrando el ciclo de seguimiento. El flujo es el siguiente:  
+- Enviar informe.  
+- Proceso de solicitud.  
+- Notificaion al usuario.
 
