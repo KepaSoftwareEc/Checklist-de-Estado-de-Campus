@@ -97,7 +97,7 @@ Actualmente, la UTPL gestiona de manera manual los checklists relacionados con e
 Para abordar estas dificultades, se propone implementar una solución digital que automatice y agilice este proceso, permitiendo una supervisión más eficiente de los diferentes edificios de la universidad y optimizando las tareas de mantenimiento. Esta solución no solo reducirá errores, sino que también mejorará significativamente la eficacia y la capacidad de respuesta en la gestión del estado del campus.
 
 
-<h2>Prototipo QR</h2>
+<h2>Prototipo</h2>
 
 [Prototipo en Figma](https://www.figma.com/proto/qfBDe3dvxPt1WmxA9wJMcJ/CheckList-Campus---Prototipo?node-id=10-19&node-type=canvas&t=pJ2V16c24miJ6MCF-1&scaling=scale-down&content-scaling=fixed&page-id=10%3A18&starting-point-node-id=10%3A19)
 
