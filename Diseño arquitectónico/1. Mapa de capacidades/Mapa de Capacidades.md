@@ -17,9 +17,9 @@ Un mapa de capacidades generalmente se divide en módulos o áreas de alto nivel
 
 Este mapa de capacidades se ha diseñado para una aplicación móvil enfocada en la gestión y monitoreo del estado de las instalaciones en un campus universitario. La aplicación está organizada en tres módulos principales:
 
-    Registro de aulas y edificios
-    Monitoreo
-    Notificación
+- Registro de aulas y edificios
+- Monitoreo
+- Notificación
 
 Descripción de los módulos
 
@@ -28,17 +28,17 @@ Descripción de los módulos
 El módulo de Registro permite la incorporación de datos sobre las aulas, edificios y otros espacios del campus, así como la organización de los insumos necesarios para su mantenimiento. Este módulo establece la base para garantizar un sistema organizado y accesible.
 
 Capacidades principales:
-    - Registrar a los usuarios:
-        Ingreso de administradores encargados de gestionar el sistema.
-    - Ingresar los edificios:
-        Registro detallado de cada edificio del campus.
-        Ingreso de insumos necesarios para el mantenimiento de los edificios.
-    - Ingresar las aulas:
-        Registro y clasificación de las aulas del campus.
-        Ingreso de insumos específicos para aulas.
-    - Ingresar los cuartos de servicio:
-        Incorporación de los cuartos de servicio al sistema.
-        Registro de insumos necesarios para estos espacios.
+- Registrar a los usuarios:
+  - Ingreso de administradores encargados de gestionar el sistema.
+- Ingresar los edificios:
+  - Registro detallado de cada edificio del campus.
+  - Ingreso de insumos necesarios para el mantenimiento de los edificios.
+- Ingresar las aulas:
+  - Registro y clasificación de las aulas del campus.
+  - Ingreso de insumos específicos para aulas.
+- Ingresar los cuartos de servicio:
+  - Incorporación de los cuartos de servicio al sistema.
+  - Registro de insumos necesarios para estos espacios.
 
 Este módulo asegura que todas las áreas del campus estén correctamente registradas, facilitando su monitoreo y mantenimiento.
 
@@ -47,29 +47,29 @@ Este módulo asegura que todas las áreas del campus estén correctamente regist
 El módulo de Monitoreo permite la supervisión continua del estado de las instalaciones del campus, incluyendo aulas, edificios y cuartos de servicio. Se realizan verificaciones periódicas para garantizar la funcionalidad y seguridad de los espacios.
 
 Capacidades principales:
-    - Monitoreo de edificios:
-        Verificación del estado eléctrico.
-        Verificación del estado del inmobiliario.
-    - Monitoreo de aulas:
-        Verificación del estado eléctrico.
-        Verificación del estado del inmobiliario.
-        Verificación del estado de los equipos.
-    - Monitoreo de cuartos de servicio:
-        Verificación del estado eléctrico.
-        Verificación del estado del inmobiliario.
-        Verificación del estado de los equipos.
-    - Informe del monitoreo:
-        Enviar solicitudes de inventario según los resultados del monitoreo.
-        Acceso a informes anteriores para revisión histórica.
+- Monitoreo de edificios:
+  - Verificación del estado eléctrico.
+  - Verificación del estado del inmobiliario.
+- Monitoreo de aulas:
+  - Verificación del estado eléctrico.
+  - Verificación del estado del inmobiliario.
+  - Verificación del estado de los equipos.
+- Monitoreo de cuartos de servicio:
+  - Verificación del estado eléctrico.
+  - Verificación del estado del inmobiliario.
+  - Verificación del estado de los equipos.
+- Informe del monitoreo:
+  - Enviar solicitudes de inventario según los resultados del monitoreo.
+  - Acceso a informes anteriores para revisión histórica.
 
-Este módulo garantiza que las instalaciones se mantengan en óptimas condiciones mediante un monitoreo constante y generación de informes detallados.\
+Este módulo garantiza que las instalaciones se mantengan en óptimas condiciones mediante un monitoreo constante y generación de informes detallados.
 
 ## 3. Notificación
 
 El módulo de Notificación está diseñado para alertar sobre las necesidades detectadas durante el monitoreo y facilitar acciones correctivas inmediatas.
 
 Capacidades principales:
-    - Notificar reposición:
-        Generación de alertas para la reposición de insumos o mantenimiento de los espacios según sea necesario.
+- Notificar reposición:
+  - Generación de alertas para la reposición de insumos o mantenimiento de los espacios según sea necesario.
 
 Este módulo asegura una respuesta oportuna y eficiente a los problemas detectados, contribuyendo al correcto funcionamiento del campus.
