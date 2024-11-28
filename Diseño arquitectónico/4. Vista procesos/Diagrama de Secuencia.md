@@ -13,8 +13,9 @@ Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de 
 
 ### Diagrama 1: Inicio de sesión y gestión de componentes
 <p align="center">
-  <img src="https://i.postimg.cc/Gt4mLP2t/Inventario-de-Bodega-Diagrama-de-secuencia-1.png" alt="Diagrama de secuencia 1"/>
+  <img src="https://github.com/user-attachments/assets/4dacda02-a339-481b-92b0-2a8e4cf1c138" alt="Diagrama de secuencia 1"/>
 </p>
+
 
 **Explicación**:  
 Este diagrama describe cómo el **Personal Administrativo** inicia sesión en el sistema de la UTPL. Una vez autenticado, puede agregar componentes al inventario tras validar su existencia. Los pasos clave incluyen:  
@@ -26,7 +27,7 @@ Este diagrama describe cómo el **Personal Administrativo** inicia sesión en el
 
 ### Diagrama 2: Verificación y clasificación de componentes
 <p align="center">
-  <img src="https://i.postimg.cc/j2BdLWwX/Inventario-de-Bodega-Diagrama-de-secuencia-2.png" alt="Diagrama de secuencia 2"/>
+  <img src="https://github.com/user-attachments/assets/13c57a6e-b26a-4325-a0a9-74a3808067ab" alt="Diagrama de secuencia 2"/>
 </p>
 
 **Explicación**:  
@@ -39,7 +40,7 @@ Este diagrama muestra el proceso de verificación y clasificación de componente
 
 ### Diagrama 3: Generación de informes y alertas
 <p align="center">
-  <img src="https://i.postimg.cc/gc70M7SZ/Inventario-de-Bodega-Diagrama-de-secuencia-3.png" alt="Diagrama de secuencia 3 "/>
+  <img src="https://github.com/user-attachments/assets/7f299cc6-e89f-4a8d-bdc0-5a64130b9308" alt="Diagrama de secuencia 3 "/>
 </p>
 
 **Explicación**:  
@@ -48,17 +49,3 @@ Aquí se describe el proceso de monitoreo de movimientos e irregularidades en el
 - Generar informes de irregularidades.  
 - Registrar movimientos específicos y enviar alertas al sistema.
 
----
-
-### Diagrama 4: Gestión de solicitudes y actualización de componentes
-<p align="center">
-  <img src="https://i.postimg.cc/B6Yvf7JR/Inventario-de-Bodega-Diagrama-de-secuencia-4.png" alt="Diagrama de secuencia 4"/>
-</p>
-
-**Explicación**:  
-Este diagrama explica cómo el **Servicio Checklist** interactúa con el inventario para procesar solicitudes. Las principales acciones incluyen:  
-- Validar la disponibilidad de los componentes solicitados.  
-- Actualizar las cantidades en el inventario.  
-- Confirmar el estado final de la solicitud tras el procesamiento.
-
----
