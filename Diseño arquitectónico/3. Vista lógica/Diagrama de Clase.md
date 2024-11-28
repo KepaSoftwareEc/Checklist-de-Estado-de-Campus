@@ -38,7 +38,7 @@ Un diagrama de clases sigue la siguiente estructura:
 
 ---
 
-## [Enlace al diccionario de clases]([https://utpl-my.sharepoint.com/:x:/g/personal/hlchuquimarca_utpl_edu_ec/Ef4Q6vqcT6ZIkBWhR8b88AsBFVgr6-DH5vroV6cvmuYZhQ?e=caQLEj](https://utpl-my.sharepoint.com/:x:/g/personal/faleon13_utpl_edu_ec/EUr8pLWrPYJBiHK3ocfpIqYBwhPz39oGi3iJZh36fHD7cg?e=XVKfcA)
+## [Enlace al diccionario de clases](https://utpl-my.sharepoint.com/:x:/g/personal/faleon13_utpl_edu_ec/EUr8pLWrPYJBiHK3ocfpIqYBwhPz39oGi3iJZh36fHD7cg?e=XVKfcA)
 
 ## Foto del diagrama
 
