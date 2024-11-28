@@ -12,9 +12,11 @@ Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de 
 ## Diagramas de secuencia
 
 ### Diagrama 1: Inicio de sesión y gestión de componentes
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4dacda02-a339-481b-92b0-2a8e4cf1c138" alt="Diagrama de secuencia 1"/>
+  <img src="https://github.com/user-attachments/assets/7f299cc6-e89f-4a8d-bdc0-5a64130b9308" alt="Diagrama de secuencia 1 "/>
 </p>
+
 
 
 **Explicación**:  
@@ -26,9 +28,11 @@ Este diagrama describe cómo el **Personal Administrativo** inicia sesión en el
 ---
 
 ### Diagrama 2: Verificación y clasificación de componentes
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/13c57a6e-b26a-4325-a0a9-74a3808067ab" alt="Diagrama de secuencia 2"/>
+  <img src="https://github.com/user-attachments/assets/4dacda02-a339-481b-92b0-2a8e4cf1c138" alt="Diagrama de secuencia 2"/>
 </p>
+
 
 **Explicación**:  
 Este diagrama muestra el proceso de verificación y clasificación de componentes. El flujo incluye:  
@@ -39,8 +43,9 @@ Este diagrama muestra el proceso de verificación y clasificación de componente
 ---
 
 ### Diagrama 3: Generación de informes y alertas
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7f299cc6-e89f-4a8d-bdc0-5a64130b9308" alt="Diagrama de secuencia 3 "/>
+  <img src="https://github.com/user-attachments/assets/13c57a6e-b26a-4325-a0a9-74a3808067ab" alt="Diagrama de secuencia 3"/>
 </p>
 
 **Explicación**:  
