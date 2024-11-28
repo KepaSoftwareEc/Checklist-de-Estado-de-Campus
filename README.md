@@ -35,45 +35,56 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
 
 
 
-<h2>Equipo de Desarrollo</h2>
+<h2 align="center">Equipo de Desarrollo</h2>
 
-+ [Freddy Leon](https://github.com/Freddyleonn16), Quality Assurance
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Freddy.png" alt="Quality Assurance">
-</p>
-
-+ [Carolina Alvarado](https://github.com/carolaljime21), UX/UI Developer
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Carolina.png" alt="UX/UI Developer">
-</p>
-
-
-+ [Byron Castillo](https://github.com/ByronCast09), Frontend Developer
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Byron.png" alt="Frontend Developer">
-</p>
-
-
-+ [Kevin Barrazueta](https://github.com/0KevinB), Security Manager
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin.png" alt="Security Manager">
-</p>
-
-+ [Kevin Bustamante](https://github.com/Kevin0232), Backend Developer
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin Bustamante.jpg" alt="Backend Developer" width="300">
-</p>
-
-+ [Pablo Ramon](https://github.com/Pablo-26), Software Architect
-
-<p align="center">
-  <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Pablo.png" alt="Software Architect">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Freddy.png" alt="Quality Assurance" width="150">
+      <br>
+      <b>Freddy Leon</b>
+      <br>
+      <a href="https://github.com/Freddyleonn16">Quality Assurance</a>
+    </td>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Carolina.png" alt="UX/UI Developer" width="150">
+      <br>
+      <b>Carolina Alvarado</b>
+      <br>
+      <a href="https://github.com/carolaljime21">UX/UI Developer</a>
+    </td>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Byron.png" alt="Frontend Developer" width="150">
+      <br>
+      <b>Byron Castillo</b>
+      <br>
+      <a href="https://github.com/ByronCast09">Frontend Developer</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin.png" alt="Security Manager" width="150">
+      <br>
+      <b>Kevin Barrazueta</b>
+      <br>
+      <a href="https://github.com/0KevinB">Security Manager</a>
+    </td>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Kevin Bustamante.jpg" alt="Backend Developer" width="150">
+      <br>
+      <b>Kevin Bustamante</b>
+      <br>
+      <a href="https://github.com/Kevin0232">Backend Developer</a>
+    </td>
+    <td align="center">
+      <img src="Modelos y Diagramas/Contenido/Equipo de Trabajo/Pablo.png" alt="Software Architect" width="150">
+      <br>
+      <b>Pablo Ramon</b>
+      <br>
+      <a href="https://github.com/Pablo-26">Software Architect</a>
+    </td>
+  </tr>
+</table>
 
 <h2>Descripción del Reto</h2>
 
