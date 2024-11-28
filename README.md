@@ -17,7 +17,7 @@ En NODTECH nos dedicamos a ofrecer soluciones eficaces que responden a las neces
     <tbody>
         <tr>
             <td>
-                Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento, optimicen sus procesos y fortalezcan su competitividad en un mercado dinámico y en constante evolución.
+                Brindar soluciones eficaces que satisfagan las necesidades de las empresas a nivel global, utilizando tecnología innovadora y un enfoque personalizado. Nos comprometemos a entender a profundidad los desafíos de nuestros clientes para ofrecerles herramientas y servicios que impulsen su crecimiento.
             </td>
             <td>
 Ser líderes innovadores en el desarrollo de software, brindando soluciones eficaces que generen confianza en nuestra empresa y que se expandan globalmente, alcanzando cada rincón del planeta con nuestras propuestas tecnológicas.
