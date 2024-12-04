@@ -87,7 +87,6 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
 
 Actualmente, la UTPL gestiona de manera manual los checklists relacionados con el estado del campus, lo que implica que toda la documentación se maneja en formato físico. Este enfoque puede dar lugar a problemas como errores humanos en el registro de información, demoras en los procesos de supervisión y retrasos en las acciones necesarias para realizar reparaciones o reposiciones en las instalaciones.
 
-Para abordar estas dificultades, se propone implementar una solución digital que automatice y agilice este proceso, permitiendo una supervisión más eficiente de los diferentes edificios de la universidad y optimizando las tareas de mantenimiento. Esta solución no solo reducirá errores, sino que también mejorará significativamente la eficacia y la capacidad de respuesta en la gestión del estado del campus.
 
 <h2>Solución Propuesta</h2>
 
