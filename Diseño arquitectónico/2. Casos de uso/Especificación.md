@@ -47,7 +47,7 @@ La estructura de un diagrama de casos de uso incluye los siguientes componentes 
 ## 1. Diagrama de caso de uso (Registro)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5ba4934f-8f6b-45c1-904a-fa760dff455f" alt="Diagrama de caso de uso (Registro)"/>
+  <img src="https://github.com/user-attachments/assets/274ecbe6-5945-4ae3-ae06-0ef393dc31da" alt="Diagrama de caso de uso (Registro)"/>
 </p>
 
 ## Descripción del caso del primer caso de uso: Registro 
@@ -62,7 +62,7 @@ La estructura de un diagrama de casos de uso incluye los siguientes componentes 
 ## 2. Diagrama de caso de uso (Monitoreo)
 
 <p lign="center">
-  <img src="https://github.com/user-attachments/assets/989e60bd-268c-4f39-b048-4b6e48eb9f6d" alt="Diagrama de caso de uso (Gestion)"/>
+  <img src="https://github.com/user-attachments/assets/16f0ca8e-2018-44dd-b388-a39718e11d1a" alt="Diagrama de caso de uso (Gestion)"/>
 </p>
 
  ## Descripción del segundo caso de uso: Monitoreo 
@@ -79,7 +79,7 @@ La estructura de un diagrama de casos de uso incluye los siguientes componentes 
 ## 3. Diagrama de caso de uso (Notificación)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d017d01f-dae0-4f23-a514-93699e0e547c" alt="Diagrama de caso de uso (Monitoreo)"/>
+  <img src="https://github.com/user-attachments/assets/b71f2b11-a6a4-4d3e-b462-281ad444de9c" alt="Diagrama de caso de uso (Monitoreo)"/>
 </p>
 
  ## Descripción del tercer caso de uso: Notificación
