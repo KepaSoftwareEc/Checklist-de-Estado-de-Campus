@@ -50,7 +50,7 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
       <a href="https://github.com/carolaljime21">UX/UI Developer</a>
     </td>
     <td align="center"> 
-      <img src="https://github.com/user-attachments/assets/b2111001-bbd0-4664-9f23-3b06015b62c5" alt="Frontend Developer" width="120">
+      <img src="https://github.com/user-attachments/assets/b2111001-bbd0-4664-9f23-3b06015b62c5" alt="Frontend Developer" width="150">
       <br>
       <b>Byron Castillo</b>
       <br>
@@ -81,6 +81,7 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
     </td>
   </tr>
 </table>
+
 
 <h2>Descripción del Reto</h2>
 
