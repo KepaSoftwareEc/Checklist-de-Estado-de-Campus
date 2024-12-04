@@ -83,20 +83,21 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
 </table>
 
 
-<h2>Descripción del Reto</h2>
-
-Este proyecto tiene como objetivo implementar un sistema en la nube para llevar un registro actualizado y accesible del estado de las instalaciones del campus universitario, mejorando la seguridad y adecuación del entorno para estudiantes, docentes y personal. La aplicación permitirá a los responsables de mantenimiento registrar edificios, aulas y espacios específicos, creando checklists personalizados para monitorear insumos y condiciones necesarias, como mobiliario y equipos.
-
-El sistema facilitará a los usuarios la revisión, actualización y reporte del estado de las instalaciones desde cualquier dispositivo, almacenando todos los datos en la nube. Esto asegura que la información esté disponible de manera constante y centralizada, eliminando la dependencia de un único dispositivo o ubicación.
-
-Tras cada revisión, el sistema generará y almacenara informes que evidenciaran la inspección del campus de la universidad. En caso de registrar incidencias, se solicitara el debido mantenimiento o reposicion de las intalaciones o equipamiento. Este proyecto en la nube optimiza la gestión de las instalaciones, mejorando la capacidad de respuesta del personal de mantenimiento y asegurando un entorno universitario en condiciones óptimas para todos.
-
 <h2>Problema</h2>
 
 Actualmente, la UTPL gestiona de manera manual los checklists relacionados con el estado del campus, lo que implica que toda la documentación se maneja en formato físico. Este enfoque puede dar lugar a problemas como errores humanos en el registro de información, demoras en los procesos de supervisión y retrasos en las acciones necesarias para realizar reparaciones o reposiciones en las instalaciones.
 
 Para abordar estas dificultades, se propone implementar una solución digital que automatice y agilice este proceso, permitiendo una supervisión más eficiente de los diferentes edificios de la universidad y optimizando las tareas de mantenimiento. Esta solución no solo reducirá errores, sino que también mejorará significativamente la eficacia y la capacidad de respuesta en la gestión del estado del campus.
 
+<h2>Solución Propuesta</h2>
+
+- Registrar el estado de las instalaciones del campus universitario: Permite registrar y mantener un inventario actualizado de edificios, aulas y otros espacios.
+- Crear checklists personalizados para monitorear los insumos y condiciones de las instalaciones, como mobiliario y equipos.
+- Acceso remoto y centralizado: La información se almacena en la nube, lo que garantiza su disponibilidad desde cualquier dispositivo y elimina la dependencia de un único dispositivo o ubicación.
+- Generación de informes automáticos: El sistema generará informes detallados de las inspecciones realizadas, que estarán disponibles para su revisión y seguimiento.
+- Gestión de incidencias: Si se registran problemas en las instalaciones, el sistema permitirá solicitar mantenimiento o reposición de equipos o instalaciones.
+
+Esta solución optimiza la gestión de las instalaciones del campus, mejora la capacidad de respuesta del personal de mantenimiento y asegura que el entorno universitario se mantenga en condiciones óptimas para estudiantes, docentes y personal.
 
 <h2>Prototipo</h2>
 
