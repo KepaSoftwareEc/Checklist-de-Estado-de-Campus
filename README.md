@@ -85,6 +85,10 @@ Ser líderes innovadores en el desarrollo de software, brindando soluciones efic
 
 # Reto: Checklist de Estado de Campus - Universidad Técnica Particular de Loja (UTPL)
 
+<h2>Descripción del Reto</h2>
+
+Mantener un registro actualizado del estado de las instalaciones del campus es esencial para garantizar un entorno seguro y adecuado para estudiantes y personal. Un aplicativo en la nube que facilite la creación y seguimiento de checklists permitirá identificar y resolver problemas de manera oportuna, mejorando la calidad del entorno universitario. La computación en la nube asegurará que los datos sean accesibles desde cualquier dispositivo y en cualquier momento.
+
 <h2>Problema</h2>
 
 Actualmente, la UTPL gestiona de manera manual los checklists relacionados con el estado del campus, lo que implica que toda la documentación se maneja en formato físico. Este enfoque puede dar lugar a problemas como errores humanos en el registro de información, demoras en los procesos de supervisión y retrasos en las acciones necesarias para realizar reparaciones o reposiciones en las instalaciones.
