@@ -81,6 +81,10 @@ Los diagramas de robustez son una herramienta de modelado utilizada en el diseñ
 ### Diagrama 1: Registro
 
 <p align="center">
+  <img src="https://github.com/user-attachments/assets/9c0b7e68-80d8-484f-ac13-ae1daf49e0a8" alt="Diagrama de secuencia 1 "/>
+</p>
+
+<p align="center">
   <img src="https://github.com/user-attachments/assets/8e215bd3-33f9-40a1-b961-bd100da622c2" alt="Diagrama de secuencia 1 "/>
 </p>
 
