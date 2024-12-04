@@ -85,13 +85,13 @@ Los diagramas de robustez son una herramienta de modelado utilizada en el diseñ
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8e215bd3-33f9-40a1-b961-bd100da622c2" alt="Diagrama de secuencia 1 "/>
+  <img src="https://github.com/user-attachments/assets/8db15e1f-4c3a-44d1-9a8d-c57864cd7274" alt="Diagrama de secuencia 1 "/>
 </p>
 
 ### Diagrama 2: Monitoreo de los Edificios
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a56b51a4-da79-4471-910a-dec464511938" alt="Diagrama de secuencia 1 "/>
+  <img src="https://github.com/user-attachments/assets/8fd298e8-c6f0-4f2b-8355-8f72dbcfe8f8" alt="Diagrama de secuencia 1 "/>
 </p>
 
 ### Diagrama 3: Notificaciones
