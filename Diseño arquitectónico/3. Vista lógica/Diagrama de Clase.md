@@ -43,5 +43,5 @@ Un diagrama de clases sigue la siguiente estructura:
 ## Diagrama de Clases
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/99a8f5eb-d326-4b68-8b20-ffce0e011a14" alt="Diagrama de clases"/>
+  <img src="https://github.com/user-attachments/assets/1d01dc47-a32b-432d-8288-62ac49ff5e24" alt="Diagrama de clases"/>
 </p>
