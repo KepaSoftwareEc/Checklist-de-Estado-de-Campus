@@ -33,7 +33,7 @@ Adicionalmente, el diagrama incluye el proceso de registro de nuevos edificios, 
 ### Diagrama 2: Monitoreo de los Edificios
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4dacda02-a339-481b-92b0-2a8e4cf1c138" alt="Diagrama de secuencia 2"/>
+  <img src="https://github.com/user-attachments/assets/f1f9ce9c-dcd3-437a-a825-a731bd9a718b" alt="Diagrama de secuencia 2"/>
 </p>
 
 
