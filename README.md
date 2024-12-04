@@ -92,7 +92,7 @@ Actualmente, la UTPL gestiona de manera manual los checklists relacionados con e
 
 <h2>Solución Propuesta</h2>
 
-- Registrar el estado de las instalaciones del campus universitario: Permite registrar y mantener un inventario actualizado de edificios, aulas y otros espacios.
+- Registrar el estado de las instalaciones del campus universitario: Permite registrar y mantener un checklist actualizado de edificios, aulas y otros espacios.
 - Crear checklists personalizados para monitorear los insumos y condiciones de las instalaciones, como mobiliario y equipos.
 - Acceso remoto y centralizado: La información se almacena en la nube, lo que garantiza su disponibilidad desde cualquier dispositivo y elimina la dependencia de un único dispositivo o ubicación.
 - Generación de informes automáticos: El sistema generará informes detallados de las inspecciones realizadas, que estarán disponibles para su revisión y seguimiento.
