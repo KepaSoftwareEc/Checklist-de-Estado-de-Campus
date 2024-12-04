@@ -1,5 +1,6 @@
 <h1>Diagrama de Secuencia</h1>
-Qué son los diagramas de secuencia?
+
+## ¿Qué son los diagramas de secuencia?
 Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de Software que forma parte del Lenguaje Unificado de Modelado (UML). Se utilizan para describir cómo los objetos de un sistema interactúan entre sí a través del tiempo, mostrando el flujo de mensajes o llamadas entre ellos. Estos diagramas son especialmente útiles para representar procesos y casos de uso en sistemas orientados a objetos.
 
 ## Estructura que siguen los diagramas de secuencia
@@ -12,7 +13,6 @@ Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de 
 ## Diagramas de secuencia
 
 ### Diagrama 1: Inicio de sesión y Registro de edificios
-![Arquitectura de Software - Secuencial Registro](https://github.com/user-attachments/assets ae3ec6fa-9b11-409c-950e-de107fb4dd05)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ae3ec6fa-9b11-409c-950e-de107fb4dd05" alt="Diagrama de secuencia 1 "/>
