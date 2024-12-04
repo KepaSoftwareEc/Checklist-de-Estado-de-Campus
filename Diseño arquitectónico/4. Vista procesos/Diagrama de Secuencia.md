@@ -12,9 +12,10 @@ Los diagramas de secuencia son una herramienta de modelado en la Ingeniería de 
 ## Diagramas de secuencia
 
 ### Diagrama 1: Inicio de sesión y Registro de edificios
+![Arquitectura de Software - Secuencial Registro](https://github.com/user-attachments/assets ae3ec6fa-9b11-409c-950e-de107fb4dd05)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7f299cc6-e89f-4a8d-bdc0-5a64130b9308" alt="Diagrama de secuencia 1 "/>
+  <img src="https://github.com/user-attachments/assets/ae3ec6fa-9b11-409c-950e-de107fb4dd05" alt="Diagrama de secuencia 1 "/>
 </p>
 
 **Explicación**:  
