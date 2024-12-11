@@ -4,29 +4,57 @@
   <img src="https://github.com/user-attachments/assets/a3ff6d12-3b77-4fe3-8c8d-2e4f84051e59" alt="Prototipo en Figma">
 </p>
 
-
-| **Fase**               | **Herramientas**                             | **Descripción**                                                                 |
-|------------------------|---------------------------------------------|---------------------------------------------------------------------------------|
-| **Plan**               | - **ClickUp**                              | Herramienta utilizada para planificar el desarrollo y gestionar tareas del proyecto. Permite organizar funciones, priorizar tareas y dar seguimiento a sprints en equipos ágiles. |
-| **Code**               | - **React**                                | Biblioteca de JavaScript para construir interfaces de usuario interactivas y de alto rendimiento. |
-|                        | - **JavaScript**                           | Lenguaje de programación principal utilizado en el frontend y backend del proyecto. |
-|                        | - **Node.js**                              | Entorno de ejecución para construir aplicaciones del lado del servidor escalables y rápidas. |
-|                        | - **Tailwind CSS**                         | Framework CSS que facilita la creación de interfaces estilizadas con clases predefinidas. |
-|                        | - **Expo**                                 | Plataforma basada en React Native para desarrollar aplicaciones móviles de forma ágil y eficiente. |
-| **Build**              | - **Gradle**                               | Sistema de automatización utilizado para compilar, probar y empaquetar aplicaciones móviles nativas. |
-| **Test**               | - **Jest**                                 | Herramienta para pruebas unitarias en JavaScript, verificando la funcionalidad de componentes y módulos. |
-|                        | - **Appium**                               | Framework de pruebas automatizadas para aplicaciones móviles (nativas, híbridas y web). Permite realizar pruebas en dispositivos Android e iOS. |
-|                        | - **JMeter**                               | Herramienta de pruebas de carga y rendimiento que evalúa cómo la aplicación responde bajo múltiples usuarios. |
-|                        | - **Google Lighthouse**                    | Herramienta de análisis que evalúa el rendimiento, accesibilidad y mejores prácticas de la aplicación. |
-| **Release**            | - **GitLab CI/CD**                         | Plataforma de integración y despliegue continuo que asegura que el código sea revisado, empaquetado y listo para producción. |
-| **Deploy**             | - **Firebase**                             | Plataforma backend que ofrece autenticación, almacenamiento en la nube y bases de datos en tiempo real. |
-|                        | - **Google Cloud Functions**               | Servicio sin servidor que ejecuta lógica del backend en respuesta a eventos. |
-|                        | - **Google Play**                          | Plataforma de distribución para publicar y distribuir la aplicación a usuarios finales en dispositivos Android. |
-| **Operate**            | - **Docker**                               | Plataforma de contenedores que garantiza la ejecución consistente de la aplicación en cualquier entorno. |
-| **Monitor**            | - **LogRocket**                            | Herramienta que rastrea la actividad de los usuarios y detecta problemas en tiempo real para mejorar la experiencia. |
-|                        | - **Discord**                              | Herramienta de comunicación que facilita el envío de notificaciones rápidas y la colaboración en equipo. |
-
-
+<table>
+  <thead>
+    <tr>
+      <th>Fase</th>
+      <th>Herramientas</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="color:blue;"><strong>Plan</strong></td>
+      <td>ClickUp</td>
+      <td>Herramienta utilizada para planificar el desarrollo y gestionar las tareas del proyecto. Permite organizar funciones, priorizar tareas y dar seguimiento de sprints en equipos ágiles.</td>
+    </tr>
+    <tr>
+      <td style="color:green;"><strong>Code</strong></td>
+      <td>React, JavaScript, Node.js, Tailwind CSS, Expo</td>
+      <td>React y Node.js forman la base de la aplicación móvil y el backend, respectivamente. Expo permite construir aplicaciones móviles de manera rápida con React Native, mientras que Tailwind CSS facilita el diseño de interfaces. JavaScript es el lenguaje principal utilizado en todo el proyecto.</td>
+    </tr>
+    <tr>
+      <td style="color:orange;"><strong>Build</strong></td>
+      <td>Gradle</td>
+      <td>Herramienta para la automatización de la construcción, especialmente útil para proyectos con componentes nativos o creación de versiones de Android.</td>
+    </tr>
+    <tr>
+      <td style="color:red;"><strong>Test</strong></td>
+      <td>Jest, JMeter, Google Lighthouse, Appium</td>
+      <td>Jest se usa para realizar pruebas unitarias en JavaScript. JMeter permite pruebas de carga para evaluar el comportamiento de la aplicación bajo múltiples usuarios. Google Lighthouse ayuda a analizar el rendimiento y la accesibilidad de la aplicación. Appium soporta pruebas funcionales para aplicaciones móviles en múltiples plataformas.</td>
+    </tr>
+    <tr>
+      <td style="color:purple;"><strong>Release</strong></td>
+      <td>GitLab CI/CD</td>
+      <td>Fase donde la aplicación se prepara para su lanzamiento. Incluye revisión, empaquetado y despliegue. Para <strong>CheckList - Campus</strong>, esto asegura que la app esté lista para ser subida a Google Play Store y otras plataformas.</td>
+    </tr>
+    <tr>
+      <td style="color:brown;"><strong>Deploy</strong></td>
+      <td>Firebase, Google Play, Google Cloud Functions</td>
+      <td>Implementación en producción. Firebase y Google Cloud Functions manejan el backend y la lógica de funciones. La distribución se realiza en Google Play.</td>
+    </tr>
+    <tr>
+      <td style="color:teal;"><strong>Operate</strong></td>
+      <td>Docker</td>
+      <td>Garantiza el funcionamiento continuo de la aplicación. Se monitorean errores, caídas y rendimiento para asegurar la estabilidad del sistema. Para <strong>CheckList - Campus</strong>, esto incluye analizar la interacción de los usuarios con el sistema.</td>
+    </tr>
+    <tr>
+      <td style="color:gray;"><strong>Monitor</strong></td>
+      <td>LogRocket, Discord</td>
+      <td>LogRocket permite rastrear la actividad de los usuarios y detectar problemas en la interfaz. Discord se utiliza para enviar notificaciones rápidas.</td>
+    </tr>
+  </tbody>
+</table>
 
 # 1. Plan
 
