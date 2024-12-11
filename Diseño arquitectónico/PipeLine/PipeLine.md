@@ -5,6 +5,18 @@
 </p>
 
 
+| Fase                 | Herramientas                                  | Descripción                                                                 |
+|----------------------|-----------------------------------------------|-----------------------------------------------------------------------------|
+| <span style="color:blue;">**Plan**</span>     | ClickUp                                    | Herramientas utilizadas para planificar el desarrollo y gestionar las tareas del proyecto. Ayudan a organizar funciones, priorizar tareas y hacer seguimiento de sprints en equipos ágiles. |
+| <span style="color:green;">**Code**</span>    | React, JavaScript, Node.js, Tailwind CSS, Expo | React y Node.js forman la base de la aplicación móvil y el backend, respectivamente. Expo permite construir aplicaciones móviles de manera rápida con React Native, mientras que Tailwind CSS facilita el diseño de interfaces. JavaScript es el lenguaje principal utilizado en todo el proyecto. |
+| <span style="color:orange;">**Build**</span>  | Gradle                                     | Herramienta para la automatización de la construcción, especialmente útil para proyectos con componentes nativos o creación de versiones de Android. |
+| <span style="color:red;">**Test**</span>      | Jest, JMeter, Google Lighthouse            | Jest se usa para realizar pruebas unitarias en JavaScript. JMeter permite pruebas de carga para evaluar el comportamiento de la aplicación bajo múltiples usuarios. Google Lighthouse ayuda a analizar el rendimiento y la accesibilidad de la aplicación. |
+| <span style="color:purple;">**Release**</span>| GitLab CI/CD                               | Fase donde la aplicación se prepara para su lanzamiento. Incluye revisión, empaquetado y despliegue. Para **CheckList - Campus**, esto asegura que la app esté lista para ser subida a Google Play Store y otras plataformas. |
+| <span style="color:brown;">**Deploy**</span>  | Firebase, Google Play, Google Cloud Functions | Implementación en producción. Firebase y Google Cloud Functions manejan el backend y la lógica de funciones. La distribución se realiza en Google Play. |
+| <span style="color:teal;">**Operate**</span>  | Docker, Kubernetes                         | Garantiza el funcionamiento continuo de la aplicación. Se monitorean errores, caídas y rendimiento para asegurar la estabilidad del sistema. Para **CheckList - Campus**, esto incluye analizar la interacción de los usuarios con el sistema. |
+| <span style="color:gray;">**Monitor**</span>  | LogRocket, Discord                         | LogRocket permite rastrear la actividad de los usuarios y detectar problemas en la interfaz. Discord se utiliza para enviar notificaciones rápidas. |
+
+
 # 1. Plan
 
 Herramientas:
@@ -71,19 +83,3 @@ Herramientas:
   - Instabug permite recibir informes de fallos y problemas de rendimiento directamente desde los usuarios de la aplicación móvil.
 
 En esta fase, se realiza un monitoreo continuo para garantizar que el sistema esté funcionando a su máximo rendimiento. Esto incluye la supervisión del estado de las aplicaciones móviles y de los servicios en el backend, detectando posibles problemas antes de que afecten a los usuarios.
-
-
-| Fase                 | Herramientas                       | Descripción                                                                 |
-|----------------------|------------------------------------|-----------------------------------------------------------------------------|
-| <span style="color:blue;">**Plan**</span> |ClickUp | Estas herramientas se utilizan para planificar el desarrollo y gestionar las tareas del proyecto. Te ayudan a organizar las funciones, priorizar tareas y hacer un seguimiento de las sprints en equipos ágiles. |
-| <span style="color:green;">**Code**</span>     | React, JS, node, Tailwind CSS, Expo | - React y Node.js forman la base de la aplicación móvil y el backend, respectivamente. Expo ayuda a construir aplicaciones móviles de manera rápida con React Native, mientras que Tailwind CSS facilita el diseño de la interfaz.
-- JavaScript es el lenguaje principal utilizado en todo el proyecto. |
-| <span style="color:orange;">**Build**</span> | Gardle |  Herramienta para la automatización de la construcción, especialmente útil si estás trabajando con componentes nativos o creando versiones de Android. |
-| <span style="color:red;">**Test**</span>          | Jest, JMeter, Google Lighthouse |  - Jest se usa para realizar pruebas unitarias en el código de JavaScript.
-  - Testing Library ayuda a probar componentes de React, asegurando que la interfaz de usuario se comporte como se espera.
-  - JMeter permite realizar pruebas de carga para evaluar cómo se comporta la aplicación con múltiples usuarios y solicitudes simultáneas. |
-| <span style="color:purple;">**Release**</span>  | Gitlab CI/CD | Aquí es donde la aplicación se prepara para su lanzamiento en la tienda, pasando por las etapas de revisión, empaquetado y despliegue. En el caso de CheckList - Campus, esta fase involucra asegurarse de que la app esté lista para ser subida a Google Play Store y otras plataformas.
- |
-| <span style="color:brown;">**Deploy**</span>     | Firebase, Google Play, Google cloud functions |  |
-| <span style="color:teal;">**Operate**</span>           | Docker, Kubernetes | Se asegura el funcionamiento continuo de la aplicación. Se monitorean los errores, las caídas y el rendimiento para garantizar que la aplicación esté funcionando correctamente. Para CheckList - Campus, esto incluye monitorear cómo los usuarios interactúan con la aplicación y cómo el sistema responde a esas interacciones. |
-| <span style="color:gray;">**Monitor**</span>            |  Discord, LogRocket  | LogRocket ayuda a realizar un seguimiento de la actividad de los usuarios y detectar problemas de la interfaz de usuario. Mientras que Discord, lo usamos para notificaciones rápidas. |
