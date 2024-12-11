@@ -71,3 +71,16 @@ Herramientas:
   - Instabug permite recibir informes de fallos y problemas de rendimiento directamente desde los usuarios de la aplicación móvil.
 
 En esta fase, se realiza un monitoreo continuo para garantizar que el sistema esté funcionando a su máximo rendimiento. Esto incluye la supervisión del estado de las aplicaciones móviles y de los servicios en el backend, detectando posibles problemas antes de que afecten a los usuarios.
+
+
+| Fase                 | Herramientas                       | Descripción                                                                 |
+|----------------------|------------------------------------|-----------------------------------------------------------------------------|
+| <span style="color:blue;">**Planificación**</span> | Jira, Trello, Azure Boards        | Herramientas para gestionar proyectos, priorizar tareas y planificar entregables. |
+| <span style="color:green;">**Desarrollo**</span>     | Git, GitHub, GitLab              | Control de versiones y colaboración en código.                             |
+| <span style="color:orange;">**Integración continua**</span> | Jenkins, CircleCI, Travis CI      | Automatización de pruebas y creación de builds al integrar cambios al repositorio. |
+| <span style="color:red;">**Pruebas**</span>          | Selenium, JUnit, TestNG          | Herramientas para pruebas automatizadas y de regresión.                     |
+| <span style="color:purple;">**Revisión de calidad**</span>  | SonarQube, CodeClimate           | Análisis estático de código para detectar errores y mejorar la calidad.    |
+| <span style="color:brown;">**Entrega continua**</span>     | Spinnaker, ArgoCD, GitLab CI/CD   | Herramientas para implementar cambios en entornos predecibles y controlados. |
+| <span style="color:teal;">**Despliegue**</span>           | Kubernetes, Docker, Ansible      | Herramientas para orquestación, contenedores y despliegue automatizado.     |
+| <span style="color:gray;">**Monitoreo**</span>            | Prometheus, Grafana, New Relic   | Supervisión del rendimiento, alertas y diagnóstico de problemas.           |
+| <span style="color:black;">**Operaciones**</span>         | PagerDuty, Splunk, ELK Stack     | Herramientas para la gestión de incidentes y análisis de logs.             |
