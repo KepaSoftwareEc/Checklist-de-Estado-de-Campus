@@ -75,12 +75,11 @@ En esta fase, se realiza un monitoreo continuo para garantizar que el sistema es
 
 | Fase                 | Herramientas                       | Descripción                                                                 |
 |----------------------|------------------------------------|-----------------------------------------------------------------------------|
-| <span style="color:blue;">**Planificación**</span> | Jira, Trello, Azure Boards        | Herramientas para gestionar proyectos, priorizar tareas y planificar entregables. |
-| <span style="color:green;">**Desarrollo**</span>     | Git, GitHub, GitLab              | Control de versiones y colaboración en código.                             |
-| <span style="color:orange;">**Integración continua**</span> | Jenkins, CircleCI, Travis CI      | Automatización de pruebas y creación de builds al integrar cambios al repositorio. |
-| <span style="color:red;">**Pruebas**</span>          | Selenium, JUnit, TestNG          | Herramientas para pruebas automatizadas y de regresión.                     |
-| <span style="color:purple;">**Revisión de calidad**</span>  | SonarQube, CodeClimate           | Análisis estático de código para detectar errores y mejorar la calidad.    |
-| <span style="color:brown;">**Entrega continua**</span>     | Spinnaker, ArgoCD, GitLab CI/CD   | Herramientas para implementar cambios en entornos predecibles y controlados. |
-| <span style="color:teal;">**Despliegue**</span>           | Kubernetes, Docker, Ansible      | Herramientas para orquestación, contenedores y despliegue automatizado.     |
-| <span style="color:gray;">**Monitoreo**</span>            | Prometheus, Grafana, New Relic   | Supervisión del rendimiento, alertas y diagnóstico de problemas.           |
-| <span style="color:black;">**Operaciones**</span>         | PagerDuty, Splunk, ELK Stack     | Herramientas para la gestión de incidentes y análisis de logs.             |
+| <span style="color:blue;">**Plan**</span> | - ClickUp, Trello | Estas herramientas se utilizan para planificar el desarrollo y gestionar las tareas del proyecto. Te ayudan a organizar las funciones, priorizar tareas y hacer un seguimiento de las sprints en equipos ágiles. |
+| <span style="color:green;">**Code**</span>     |               |                              |
+| <span style="color:orange;">**Build**</span> |       |  |
+| <span style="color:red;">**Test**</span>          |         |                    |
+| <span style="color:purple;">**Release**</span>  |            |     |
+| <span style="color:brown;">**Deploy**</span>     |    |  |
+| <span style="color:teal;">**Operate**</span>           |       |      |
+| <span style="color:gray;">**Monitor**</span>            |    |           |
