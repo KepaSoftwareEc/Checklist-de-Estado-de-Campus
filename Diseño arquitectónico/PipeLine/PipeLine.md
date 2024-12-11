@@ -5,16 +5,27 @@
 </p>
 
 
-| Fase                 | Herramientas                                  | Descripción                                                                 |
-|----------------------|-----------------------------------------------|-----------------------------------------------------------------------------|
-| <span style="color:blue;">**Plan**</span>     | ClickUp                                    | Herramientas utilizadas para planificar el desarrollo y gestionar las tareas del proyecto. Ayudan a organizar funciones, priorizar tareas y hacer seguimiento de sprints en equipos ágiles. |
-| <span style="color:green;">**Code**</span>    | React, JavaScript, Node.js, Tailwind CSS, Expo | React y Node.js forman la base de la aplicación móvil y el backend, respectivamente. Expo permite construir aplicaciones móviles de manera rápida con React Native, mientras que Tailwind CSS facilita el diseño de interfaces. JavaScript es el lenguaje principal utilizado en todo el proyecto. |
-| <span style="color:orange;">**Build**</span>  | Gradle                                     | Herramienta para la automatización de la construcción, especialmente útil para proyectos con componentes nativos o creación de versiones de Android. |
-| <span style="color:red;">**Test**</span>      | Jest, JMeter, Google Lighthouse            | Jest se usa para realizar pruebas unitarias en JavaScript. JMeter permite pruebas de carga para evaluar el comportamiento de la aplicación bajo múltiples usuarios. Google Lighthouse ayuda a analizar el rendimiento y la accesibilidad de la aplicación. |
-| <span style="color:purple;">**Release**</span>| GitLab CI/CD                               | Fase donde la aplicación se prepara para su lanzamiento. Incluye revisión, empaquetado y despliegue. Para **CheckList - Campus**, esto asegura que la app esté lista para ser subida a Google Play Store y otras plataformas. |
-| <span style="color:brown;">**Deploy**</span>  | Firebase, Google Play, Google Cloud Functions | Implementación en producción. Firebase y Google Cloud Functions manejan el backend y la lógica de funciones. La distribución se realiza en Google Play. |
-| <span style="color:teal;">**Operate**</span>  | Docker, Kubernetes                         | Garantiza el funcionamiento continuo de la aplicación. Se monitorean errores, caídas y rendimiento para asegurar la estabilidad del sistema. Para **CheckList - Campus**, esto incluye analizar la interacción de los usuarios con el sistema. |
-| <span style="color:gray;">**Monitor**</span>  | LogRocket, Discord                         | LogRocket permite rastrear la actividad de los usuarios y detectar problemas en la interfaz. Discord se utiliza para enviar notificaciones rápidas. |
+| **Fase**               | **Herramientas**                             | **Descripción**                                                                 |
+|------------------------|---------------------------------------------|---------------------------------------------------------------------------------|
+| **Plan**               | - **ClickUp**                              | Herramienta utilizada para planificar el desarrollo y gestionar tareas del proyecto. Permite organizar funciones, priorizar tareas y dar seguimiento a sprints en equipos ágiles. |
+| **Code**               | - **React**                                | Biblioteca de JavaScript para construir interfaces de usuario interactivas y de alto rendimiento. |
+|                        | - **JavaScript**                           | Lenguaje de programación principal utilizado en el frontend y backend del proyecto. |
+|                        | - **Node.js**                              | Entorno de ejecución para construir aplicaciones del lado del servidor escalables y rápidas. |
+|                        | - **Tailwind CSS**                         | Framework CSS que facilita la creación de interfaces estilizadas con clases predefinidas. |
+|                        | - **Expo**                                 | Plataforma basada en React Native para desarrollar aplicaciones móviles de forma ágil y eficiente. |
+| **Build**              | - **Gradle**                               | Sistema de automatización utilizado para compilar, probar y empaquetar aplicaciones móviles nativas. |
+| **Test**               | - **Jest**                                 | Herramienta para pruebas unitarias en JavaScript, verificando la funcionalidad de componentes y módulos. |
+|                        | - **Appium**                               | Framework de pruebas automatizadas para aplicaciones móviles (nativas, híbridas y web). Permite realizar pruebas en dispositivos Android e iOS. |
+|                        | - **JMeter**                               | Herramienta de pruebas de carga y rendimiento que evalúa cómo la aplicación responde bajo múltiples usuarios. |
+|                        | - **Google Lighthouse**                    | Herramienta de análisis que evalúa el rendimiento, accesibilidad y mejores prácticas de la aplicación. |
+| **Release**            | - **GitLab CI/CD**                         | Plataforma de integración y despliegue continuo que asegura que el código sea revisado, empaquetado y listo para producción. |
+| **Deploy**             | - **Firebase**                             | Plataforma backend que ofrece autenticación, almacenamiento en la nube y bases de datos en tiempo real. |
+|                        | - **Google Cloud Functions**               | Servicio sin servidor que ejecuta lógica del backend en respuesta a eventos. |
+|                        | - **Google Play**                          | Plataforma de distribución para publicar y distribuir la aplicación a usuarios finales en dispositivos Android. |
+| **Operate**            | - **Docker**                               | Plataforma de contenedores que garantiza la ejecución consistente de la aplicación en cualquier entorno. |
+| **Monitor**            | - **LogRocket**                            | Herramienta que rastrea la actividad de los usuarios y detecta problemas en tiempo real para mejorar la experiencia. |
+|                        | - **Discord**                              | Herramienta de comunicación que facilita el envío de notificaciones rápidas y la colaboración en equipo. |
+
 
 
 # 1. Plan
