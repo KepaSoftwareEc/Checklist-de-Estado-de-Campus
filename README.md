@@ -112,9 +112,4 @@ Esta solución optimiza la gestión de las instalaciones del campus, mejora la c
   <img src="https://github.com/user-attachments/assets/1d3411c7-9e7e-4c3f-84dc-438365dc0a36" alt="Prototipo en Figma">
 </p>
 
-<h2>PipeLine</h2>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a3ff6d12-3b77-4fe3-8c8d-2e4f84051e59" alt="Prototipo en Figma">
-</p>
 
