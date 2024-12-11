@@ -8,18 +8,19 @@
   <thead>
     <tr>
       <th>Fase</th>
-      <th>Herramientas y Descripción</th>
+      <th>Herramientas</th>
+      <th>Descripción</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="color:blue;"><strong>Plan</strong></td>
-      <td>
-        <strong>ClickUp:</strong> Herramienta utilizada para planificar el desarrollo y gestionar las tareas del proyecto. Permite organizar funciones, priorizar tareas y dar seguimiento de sprints en equipos ágiles.
-      </td>
+      <td>ClickUp</td>
+      <td>Herramienta utilizada para planificar el desarrollo y gestionar las tareas del proyecto. Permite organizar funciones, priorizar tareas y dar seguimiento de sprints en equipos ágiles.</td>
     </tr>
     <tr>
       <td style="color:green;"><strong>Code</strong></td>
+      <td>React, JavaScript, Node.js, Tailwind CSS, Expo</td>
       <td>
         <strong>React:</strong> Base para la construcción de la interfaz de usuario de la aplicación.<br>
         <strong>JavaScript:</strong> Lenguaje principal utilizado en el desarrollo.<br>
@@ -30,12 +31,12 @@
     </tr>
     <tr>
       <td style="color:orange;"><strong>Build</strong></td>
-      <td>
-        <strong>Gradle:</strong> Herramienta de automatización de la construcción, especialmente útil para gestionar componentes nativos y la creación de versiones para Android.
-      </td>
+      <td>Gradle</td>
+      <td>Herramienta de automatización de la construcción, especialmente útil para gestionar componentes nativos y la creación de versiones para Android.</td>
     </tr>
     <tr>
       <td style="color:red;"><strong>Test</strong></td>
+      <td>Jest, JMeter, Google Lighthouse, Appium</td>
       <td>
         <strong>Jest:</strong> Pruebas unitarias en JavaScript.<br>
         <strong>JMeter:</strong> Permite pruebas de carga para evaluar el comportamiento bajo múltiples usuarios.<br>
@@ -45,12 +46,12 @@
     </tr>
     <tr>
       <td style="color:purple;"><strong>Release</strong></td>
-      <td>
-        <strong>GitLab CI/CD:</strong> Se encarga del empaquetado, revisión y despliegue de la aplicación para garantizar su disponibilidad en plataformas como Google Play Store.
-      </td>
+      <td>GitLab CI/CD</td>
+      <td>Se encarga del empaquetado, revisión y despliegue de la aplicación para garantizar su disponibilidad en plataformas como Google Play Store.</td>
     </tr>
     <tr>
       <td style="color:brown;"><strong>Deploy</strong></td>
+      <td>Firebase, Google Play, Google Cloud Functions</td>
       <td>
         <strong>Firebase:</strong> Maneja el backend de la aplicación.<br>
         <strong>Google Play:</strong> Plataforma de distribución para los usuarios finales.<br>
@@ -59,12 +60,12 @@
     </tr>
     <tr>
       <td style="color:teal;"><strong>Operate</strong></td>
-      <td>
-        <strong>Docker:</strong> Garantiza el funcionamiento continuo de la aplicación mediante monitoreo de errores, caídas y rendimiento.
-      </td>
+      <td>Docker</td>
+      <td>Garantiza el funcionamiento continuo de la aplicación mediante monitoreo de errores, caídas y rendimiento.</td>
     </tr>
     <tr>
       <td style="color:gray;"><strong>Monitor</strong></td>
+      <td>LogRocket, Discord</td>
       <td>
         <strong>LogRocket:</strong> Rastrea la actividad de los usuarios y detecta problemas en la interfaz.<br>
         <strong>Discord:</strong> Permite enviar notificaciones rápidas y colaborar en tiempo real.
@@ -72,6 +73,7 @@
     </tr>
   </tbody>
 </table>
+
 
 
 # 1. Plan
