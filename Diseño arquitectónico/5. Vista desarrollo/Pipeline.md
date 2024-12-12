@@ -1,4 +1,4 @@
-![WhatsApp Image 2024-12-11 at 8 18 10 AM](https://github.com/user-attachments/assets/98c2d040-02c3-4040-81a2-4ebb487081d5)# CI/CD y DevOps
+
 
 ## ¿Qué es CI/CD?
 
