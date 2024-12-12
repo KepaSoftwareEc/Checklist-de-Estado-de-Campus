@@ -32,7 +32,8 @@ El enfoque CI/CD fomenta ciclos de desarrollo cortos, iterativos y más seguros.
 
 ## Foto del Pipeline
 
-![WhatsApp Image 2024-12-11 at 8 18 10 AM](https://github.com/user-attachments/assets/80c4ce56-5997-4ac1-af1c-9c646fe4816c)
+
+![Arquitectura de Software - PipeLine (1)](https://github.com/user-attachments/assets/a8822d34-6686-46c5-ad94-30c4c4d54a2e)
 
 
 ## Tabla de descripción 
