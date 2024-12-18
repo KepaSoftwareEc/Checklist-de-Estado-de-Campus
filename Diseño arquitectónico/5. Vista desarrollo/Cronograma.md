@@ -73,18 +73,18 @@
 
 | **Actividad**                                  | **Fecha Inicio** | **Fecha Finalización** | **Finalización** |
 |-----------------------------------------------|------------------|-------------------------|------------------|
-| Diseñar los modelos de datos y endpoints      | 27/11/2024       | 04/12/2024             | 04/12/2024       |
-| Implementar el endpoint de autenticación      | 11/12/2024       | 18/12/2024             | 18/12/2024       |
-| Crear lógica de negocio para los flujos principales | 20/12/2024  | 02/01/2025             | 02/01/2025       |
-| Integrar servicios externos                   | 02/01/2025       | 09/01/2025             | 09/01/2025       |
-| Probar y validar la seguridad                 | 09/01/2025       | 16/01/2025             | 16/01/2025       |
+| Diseñar los modelos de datos y endpoints      | 27/11/2024       | 04/12/2024             |        |
+| Implementar el endpoint de autenticación      | 11/12/2024       | 18/12/2024             |      |
+| Crear lógica de negocio para los flujos principales | 20/12/2024  | 02/01/2025             |      |
+| Integrar servicios externos                   | 02/01/2025       | 09/01/2025             |      |
+| Probar y validar la seguridad                 | 09/01/2025       | 16/01/2025             |       |
 
 ## Frontend
 
 | **Actividad**                                  | **Fecha Inicio** | **Fecha Finalización** | **Finalización** |
 |-----------------------------------------------|------------------|-------------------------|------------------|
-| Crear componentes clave como formularios y dashboards | 04/12/2024 | 10/12/2024             | 10/12/2024       |
-| Implementar autenticación y manejo de sesiones | 11/12/2024      | 18/12/2024             | 18/12/2024       |
-| Integrar APIs y validar datos del backend     | 02/01/2025       | 09/01/2025             | 09/01/2025       |
-| Asegurar la responsividad y accesibilidad     | 16/01/2025       | 20/01/2025             | 20/01/2025       |
-| Realizar pruebas funcionales y visuales       | 20/01/2025       | 23/01/2025             | 23/01/2025       |
+| Crear componentes clave como formularios y dashboards | 04/12/2024 | 10/12/2024           |        |
+| Implementar autenticación y manejo de sesiones | 11/12/2024      | 18/12/2024             |        |
+| Integrar APIs y validar datos del backend     | 02/01/2025       | 09/01/2025             |        |
+| Asegurar la responsividad y accesibilidad     | 16/01/2025       | 20/01/2025             |        |
+| Realizar pruebas funcionales y visuales       | 20/01/2025       | 23/01/2025             |        |
