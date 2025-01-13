@@ -8,7 +8,7 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 export default function InspectionForm() {
   const route = useRoute();
   const navigation = useNavigation();
-  const { area, checkedItems } = route.params;
+  // const { area, checkedItems } = route.params; // Comentado para eliminar la referencia a area
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [hasPermission, setHasPermission] = useState(null);
@@ -34,8 +34,8 @@ export default function InspectionForm() {
     // Crear objeto con la información del mantenimiento
     const maintenanceInfo = {
       date: new Date().toISOString().split('T')[0],
-      building: area.building,
-      room: area.number,
+      building: 'Edificio 1', // Reemplaza con el valor adecuado
+      room: 'Aula 101', // Reemplaza con el valor adecuado
       type: 'Mantenimiento',
       description: description,
       techDescription: techDescription,
@@ -95,7 +95,7 @@ export default function InspectionForm() {
           <Text style={styles.label}>Edificio:</Text>
           <TextInput 
             style={styles.input} 
-            value={area.building} 
+            value="Edificio 1" // Reemplaza con el valor adecuado
             editable={false}
           />
         </View>
@@ -103,7 +103,7 @@ export default function InspectionForm() {
           <Text style={styles.label}>Aula:</Text>
           <TextInput 
             style={styles.input} 
-            value={area.number} 
+            value="Aula 101" // Reemplaza con el valor adecuado
             editable={false}
           />
         </View>
@@ -112,7 +112,7 @@ export default function InspectionForm() {
       <Text style={styles.label}>Encargado:</Text>
       <TextInput 
         style={styles.input} 
-        value={area.manager || ""}
+        value="Encargado" // Reemplaza con el valor adecuado
         editable={false}
       />
       

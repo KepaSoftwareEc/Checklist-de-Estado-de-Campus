@@ -25,6 +25,7 @@ export default function DentroEdif() {
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSections, setExpandedSections] = useState({
+    monitorias: false,
     aulas: false,
     servicios: false,
   });
@@ -37,7 +38,6 @@ export default function DentroEdif() {
     capacity: '',
     description: '',
     image: '',
-    /*esto es para futuro para el checklist*/
     equipment: {
       proyector: false,
       computadora: false,
@@ -142,19 +142,55 @@ export default function DentroEdif() {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Edificio {edificio.numeroEdificio}</Text>
-        <View style={styles.searchContainer}>
-          <Ionicons name="search" size={20} color="#666" style={styles.searchIcon} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Buscar aula"
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
-        </View>
+        <TouchableOpacity style={styles.editButton}>
+          <Text style={styles.editButtonText}>Editar Edificio</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.searchContainer}>
+        <Ionicons name="search" size={20} color="#024873" style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Buscar aula"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
       </View>
 
       {/* Areas List */}
       <ScrollView style={styles.content}>
+        {/* Monitorias Edificio Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Monitorias Edificio</Text>
+          <TouchableOpacity
+            style={styles.sectionHeader}
+            onPress={() => toggleSection('monitorias')}
+          >
+            <Text style={styles.sectionHeaderText}>Selección</Text>
+            <Ionicons
+              name={expandedSections.monitorias ? 'chevron-up' : 'chevron-down'}
+              size={24}
+              color="#F2B705"
+            />
+          </TouchableOpacity>
+          {expandedSections.monitorias && (
+            <View style={styles.sectionContent}>
+              {['Instalaciones eléctricas/redes', 'Instalaciones de agua', 'Mobiliario', 'Equipos', 'Infraestructura física', 'Condiciones de seguridad'].map((item, index) => (
+                <TouchableOpacity 
+                  key={index}
+                  style={styles.areaItem}
+                  onPress={() => handleAreaPress({ type: 'monitoria', name: item })}
+                >
+                  <View style={styles.areaItemContent}>
+                    <View style={styles.areaTextContent}>
+                      <Text style={styles.areaName}>{item}</Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        </View>
+
         {/* Classrooms Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Aulas</Text>
@@ -162,11 +198,11 @@ export default function DentroEdif() {
             style={styles.sectionHeader}
             onPress={() => toggleSection('aulas')}
           >
-            <Text style={styles.sectionHeaderText}>Lista de aulas</Text>
+            <Text style={styles.sectionHeaderText}>Selección</Text>
             <Ionicons
               name={expandedSections.aulas ? 'chevron-up' : 'chevron-down'}
               size={24}
-              color="#666"
+              color="#F2B705"
             />
           </TouchableOpacity>
           {expandedSections.aulas && (
@@ -195,48 +231,58 @@ export default function DentroEdif() {
 
         {/* Service Rooms Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Cuartos de servicio</Text>
+          <Text style={styles.sectionTitle}>Cuartos de Servicio</Text>
           <TouchableOpacity
             style={styles.sectionHeader}
             onPress={() => toggleSection('servicios')}
           >
-            <Text style={styles.sectionHeaderText}>Cuartos de servicio</Text>
+            <Text style={styles.sectionHeaderText}>Selección</Text>
             <Ionicons
               name={expandedSections.servicios ? 'chevron-up' : 'chevron-down'}
               size={24}
-              color="#666"
+              color="#F2B705"
             />
           </TouchableOpacity>
           {expandedSections.servicios && (
             <View style={styles.sectionContent}>
-              {filteredAreas
-                .filter(area => area.type === 'servicio')
-                .map(area => (
-                  <TouchableOpacity 
-                    key={area.id}
-                    style={styles.areaItem}
-                    onPress={() => handleAreaPress(area)}
-                  >
-                    <View style={styles.areaItemContent}>
-                      <View style={styles.areaTextContent}>
-                        <Text style={styles.areaName}>Cuarto {area.number}</Text>
-                        <Text style={styles.areaDetail}>{area.description}</Text>
-                      </View>
+              {['Baños', 'Cuartos de limpieza'].map((item, index) => (
+                <TouchableOpacity 
+                  key={index}
+                  style={styles.areaItem}
+                  onPress={() => handleAreaPress({ type: 'servicio', name: item })}
+                >
+                  <View style={styles.areaItemContent}>
+                    <View style={styles.areaTextContent}>
+                      <Text style={styles.areaName}>{item}</Text>
                     </View>
-                  </TouchableOpacity>
-                ))}
+                  </View>
+                </TouchableOpacity>
+              ))}
             </View>
           )}
         </View>
       </ScrollView>
 
-      {/* Add Button */}
+      {/* Generate Report Button */}
       <TouchableOpacity
-        style={styles.addButton}
-        onPress={() => setModalVisible(true)}
+        style={styles.generateReportButton}
+        onPress={() => navigation.navigate('Informe')}
       >
-        <Ionicons name="add" size={24} color="#fff" />
+        <Text style={styles.generateReportText}>Generar Informe</Text>
       </TouchableOpacity>
+
+      {/* Bottom Menu */}
+      <View style={styles.bottomMenu}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.menuItem}>Inicio</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Informes')}>
+          <Text style={styles.menuItem}>Informes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Notificaciones')}>
+          <Text style={styles.menuItem}>Notificaciones</Text>
+        </TouchableOpacity>
+      </View>
 
       {/* cuadro emergente para agregar area */}
       <Modal
@@ -342,18 +388,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 16,
+    color: '#024873',
+  },
+  editButton: {
+    marginLeft: 16,
+  },
+  editButtonText: {
+    fontSize: 14,
+    color: '#024873',
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#e0f7fa',
     borderRadius: 8,
     padding: 8,
+    marginTop: 8,
   },
   searchIcon: {
     marginRight: 8,
@@ -361,6 +418,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
+    color: '#024873',
   },
   content: {
     flex: 1,
@@ -373,6 +431,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 8,
     paddingHorizontal: 16,
+    color: '#024873',
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -420,24 +479,30 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
   },
-  addButton: {
-    position: 'absolute',
-    right: 16,
-    bottom: 16,
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+  generateReportButton: {
     backgroundColor: '#0066cc',
-    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
     alignItems: 'center',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    margin: 16,
+  },
+  generateReportText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  bottomMenu: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
+    backgroundColor: '#fff',
+  },
+  menuItem: {
+    fontSize: 16,
+    color: '#024873',
   },
   modalContainer: {
     flex: 1,
