@@ -2,7 +2,7 @@
   "expo": {
     "name": "checklist",
     "slug": "checklist",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,13 +15,26 @@
       "supportsTablet": true
     },
     "android": {
+      "keystore": {
+        "keystoreFile": "./UTPLcampus.jks",
+        "keystorePassword": "UTPLCampus",
+        "keyAlias": "utpl checklist campus",
+        "keyPassword": "UTPLCampus"
+      },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.byroncast.checklist",
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "76b4e419-3fff-4666-8717-a0e442733832"
+      }
     }
   }
 }

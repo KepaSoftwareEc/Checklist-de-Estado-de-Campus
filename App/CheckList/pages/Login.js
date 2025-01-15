@@ -12,13 +12,27 @@ export default function Login() {
 
     // Manejo del inicio de sesión
     const handleLogin = async () => {
+        const apiUrl = 'http://34.36.202.38/api/auth/login';
+        const payload = { email, password }; // El objeto JSON que espera tu API
+    
         try {
-            // Intentar crear una sesión con email y contraseña
-            // Asumiendo que hay una función para manejar el inicio de sesión
-            // await account.createSession(email, password); // Corregido
-            navigation.navigate('HomeScreen');
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+    
+          if (!response.ok) {
+            throw new Error('Error ${response.status}: ${response.statusText}');
+          }
+    
+          const data = await response.json(); // Procesar respuesta de la API
+          console.log('Inicio de sesión exitoso:', data);
+          navigation.navigate('HomeScreen', { user: data.user });
         } catch (error) {
-            console.error('Error al iniciar sesión:', error.message);
+            console.error('Error al iniciar sesión:', error);
         }
     };
 
