@@ -87,6 +87,7 @@ El enfoque CI/CD fomenta ciclos de desarrollo cortos, iterativos y más seguros.
       <td style="color:brown;"><strong>Deploy</strong></td>
       <td>Firebase, Google Play, Google Cloud Functions</td>
       <td>
+        <strong>MonogoDB:</strong> Maneja la parte de l Autentificación de la aplicación<br>
         <strong>Firebase:</strong> Maneja el backend de la aplicación.<br>
         <strong>Google Play:</strong> Plataforma de distribución para los usuarios finales.<br>
         <strong>Google Cloud Functions:</strong> Proporciona lógica de funciones para la aplicación.
