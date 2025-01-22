@@ -1,3 +1,3 @@
 <h1>Diagramas de Despliege</h1>
 
-![Diagrama de Despligue 2](https://github.com/user-attachments/assets/7461558b-2f01-4b60-bf16-ecd3282ecd2d)
+![Arquitectura de Software - DespliegueFinal](https://github.com/user-attachments/assets/188ef1f2-ff06-4937-a714-232ee8778a81)
