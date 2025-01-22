@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: auth-ms
+  name: auth-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-ms
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: auth-ms
+    spec:
+      containers:
+      - image: northamerica-south1-docker.pkg.dev/robotic-sector-447122-n9/checklist/auth-microservice:v1.1.1
+        name: auth-microservice
+        env:
+        - name: PORT
+          value: "3004"
+        - name: NATS_SERVERS
+          value: "nats://nats"
+        - name: DATABASE_URL
+          value: "mongodb+srv://root-user:oLyCYFMqp0e4gHXx@usuarios.rk4dt.mongodb.net/Usuarios"
+
+        resources:
+          requests:
+            memory: "256Mi" # Memoria garantizada
+            cpu: "250m"    # CPU garantizada
+          limits:
+            memory: "512Mi" # Máxima memoria permitida
+            cpu: "500m" 
+status: {}
+
+

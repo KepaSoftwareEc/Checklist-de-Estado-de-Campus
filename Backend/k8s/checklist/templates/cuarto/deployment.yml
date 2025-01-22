@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cuarto
+  name: cuarto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cuarto
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cuarto
+    spec:
+      containers:
+      - image: northamerica-south1-docker.pkg.dev/robotic-sector-447122-n9/checklist/cuarto-servicio-microservice:v1.0.0
+        name: cuarto-servicio-microservice
+        env:
+        - name: PORT
+          value: "3006"
+        - name: NATS_SERVERS
+          value: "nats://nats"
+        resources:
+          requests:
+            memory: "256Mi" # Memoria garantizada
+            cpu: "250m"    # CPU garantizada
+          limits:
+            memory: "512Mi" # Máxima memoria permitida
+            cpu: "500m" 
+status: {}

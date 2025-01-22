@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: aulas
+  name: aulas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aulas
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: aulas
+    spec:
+      containers:
+      - image: northamerica-south1-docker.pkg.dev/robotic-sector-447122-n9/checklist/aulas-microservice:v1.0.0
+        name: aulas-microservice
+        env:
+        - name: PORT
+          value: "3005"
+        - name: NATS_SERVERS
+          value: "nats://nats"
+        resources:
+          requests:
+            memory: "256Mi" # Memoria garantizada
+            cpu: "250m"    # CPU garantizada
+          limits:
+            memory: "512Mi" # Máxima memoria permitida
+            cpu: "500m" 
+status: {}
