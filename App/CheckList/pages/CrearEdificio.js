@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { SelectList } from 'react-native-dropdown-select-list';
 import * as ImagePicker from 'expo-image-picker';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { app } from './firebaseConfig';
+import { useNavigation } from '@react-navigation/native';
+import { initializeApp } from "firebase/app";
+
 
 export default function CrearEdificio() {
+  const [buildingName, setBuildingName] = useState('');
   const [buildingNumber, setBuildingNumber] = useState('');
-  const [isElectricOpen, setIsElectricOpen] = useState(false);
-  const [isWaterOpen, setIsWaterOpen] = useState(false);
-  const [isFurnitureOpen, setIsFurnitureOpen] = useState(false);
-  const [isEquipmentOpen, setIsEquipmentOpen] = useState(false);
-  const [isInfrastructureOpen, setIsInfrastructureOpen] = useState(false);
-  const [isSecurityOpen, setIsSecurityOpen] = useState(false);
+  const [image, setImage] = useState(null);
   const [electricItems, setElectricItems] = useState([]);
   const [waterItems, setWaterItems] = useState([]);
   const [furnitureItems, setFurnitureItems] = useState([]);
   const [equipmentItems, setEquipmentItems] = useState([]);
   const [infrastructureItems, setInfrastructureItems] = useState([]);
   const [securityItems, setSecurityItems] = useState([]);
-  const [image, setImage] = useState(null);
+
+  const [isElectricOpen, setIsElectricOpen] = useState(false);
+  const [isEquipmentOpen, setIsEquipmentOpen] = useState(false);
+  const [isInfrastructureOpen, setIsInfrastructureOpen] = useState(false);
+  const [isSecurityOpen, setIsSecurityOpen] = useState(false);
+  const [isWaterOpen, setIsWaterOpen] = useState(false);
+  const [isFurnitureOpen, setIsFurnitureOpen] = useState(false);
+
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -34,7 +42,7 @@ export default function CrearEdificio() {
   };
 
   const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
@@ -42,12 +50,81 @@ export default function CrearEdificio() {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      // Convertir la URI a Blob
+      const response = await fetch(result.assets[0].uri);
+      const blob = await response.blob();
+
+      // Inicializar storage y crear referencia
+      const storage = getStorage(app);
+      const fileName = `images/${Date.now()}.jpg`;
+      const storageRef = ref(storage, fileName);
+
+      // Subir imagen
+      const snapshot = await uploadBytes(storageRef, blob);
+
+      // Obtener URL
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      // Guardar URL en estado
+      setImage(downloadURL);
+      await sendImageToAPI(downloadURL);
+
+      console.log('URL de la imagen:', downloadURL);
+      return downloadURL; // Por si necesitas usar la URL en otro lugar
+    }
+
+};
+
+
+//esto tambien es nuevo
+const sendImageToAPI = async (imageUrl) => {
+  try {
+    const response = await fetch('https://checklistutpl.duckdns.org/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ imageUrl }),
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error al enviar la imagen a la API:', error);
+  }
+};
+const sendBuildingToAPI = async () => {
+    const newBuilding = {
+      id: `building-${Date.now()}`, // Unique identifier for each building
+      buildingName,
+      buildingNumber,
+      image,
+      electricItems: electricItems.map(item => ({ ...item, id: `electric-${Date.now()}` })),
+      waterItems: waterItems.map(item => ({ ...item, id: `water-${Date.now()}` })),
+      furnitureItems: furnitureItems.map(item => ({ ...item, id: `furniture-${Date.now()}` })),
+      equipmentItems: equipmentItems.map(item => ({ ...item, id: `equipment-${Date.now()}` })),
+      infrastructureItems: infrastructureItems.map(item => ({ ...item, id: `infrastructure-${Date.now()}` })),
+      securityItems: securityItems.map(item => ({ ...item, id: `security-${Date.now()}` })),
+    };
+
+    try {
+      const response = await fetch('https://checklistutpl.duckdns.org/api/edificio/crear', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBuilding),
+      });
+      const data = await response.json();
+      console.log(data);
+      // Navegar a la página principal después de crear el edificio
+      navigation.navigate('HomeScreen');
+    } catch (error) {
+      console.error('Error al enviar el edificio a la API:', error);
     }
   };
 
   const addItem = (type) => {
-    const newItem = { id: Date.now(), description: '' };
+    const newItem = { id: Date.now(), description: '', quantity: '' };
     switch (type) {
       case 'electric':
         setElectricItems([...electricItems, newItem]);
@@ -67,37 +144,11 @@ export default function CrearEdificio() {
       case 'security':
         setSecurityItems([...securityItems, newItem]);
         break;
-      default:
-        break;
     }
   };
 
-  const handleSave = async () => {
-    try {
-      const newBuilding = {
-        id: Date.now().toString(),
-        numeroEdificio: buildingNumber,
-        imagen: image,
-        serviciosElectricos: electricItems,
-        instalacionesAgua: waterItems,
-        mobiliario: furnitureItems,
-        equipos: equipmentItems,
-        infraestructuraFisica: infrastructureItems,
-        condicionesSeguridad: securityItems,
-      };
-
-      const savedBuildings = await AsyncStorage.getItem('edificios');
-      const buildings = savedBuildings ? JSON.parse(savedBuildings) : [];
-      buildings.push(newBuilding);
-
-      await AsyncStorage.setItem('edificios', JSON.stringify(buildings));
-      console.log('Edificio guardado:', newBuilding);
-      navigation.navigate('ListaEdificio');
-    } catch (error) {
-      console.error('Error al guardar edificio:', error);
-    }
-  };
-
+  
+  
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -120,56 +171,64 @@ export default function CrearEdificio() {
           )}
         </TouchableOpacity>
 
-        <Text style={styles.label}>Número de Edificio:</Text>
-        <TextInput
-          style={styles.input}
-          value={buildingNumber}
-          onChangeText={setBuildingNumber}
-          placeholder="Ingrese número de edificio"
-          keyboardType="numeric"
-        />
+        {/* Nombre del edificio y Número del edificio en la misma fila */}
+  <View style={styles.inputRow}>
+    <View style={styles.halfWidth}>
+      <Text style={styles.label}>Nombre del edificio:</Text>
+      <TextInput
+        style={styles.input}
+        value={buildingName}
+        onChangeText={setBuildingName}
+        placeholder="Ingrese nombre del edificio"
+      />
+    </View>
+    <View style={styles.halfWidth}>
+      <Text style={styles.label}>Número del edificio:</Text>
+      <TextInput
+        style={styles.input}
+        value={buildingNumber}
+        onChangeText={setBuildingNumber}
+        placeholder="Ingrese número del edificio"
+      />
+    </View>
+  </View>
       </View>
 
+      {/* Instalaciones eléctricas */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsElectricOpen(!isElectricOpen)}
         >
           <View style={styles.titleContainer}>
-            <Text style={styles.sectionTitle}>Instalaciones eléctricas / redes</Text>
+            <Text style={styles.sectionTitle}>Instalaciones eléctricas</Text>
           </View>
         </TouchableOpacity>
         {isElectricOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('electric')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {electricItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción del servicio eléctrico / redes"
-                  value={electricItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...electricItems];
-                    newItems[0].description = text;
-                    setElectricItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {electricItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('electric')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {electricItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Descripción del servicio eléctrico / redes"
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
+                  placeholder="Descripción de la instalación eléctrica"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...electricItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setElectricItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...electricItems];
+                    newItems[index].quantity = text;
                     setElectricItems(newItems);
                   }}
                 />
@@ -179,8 +238,9 @@ export default function CrearEdificio() {
         )}
       </View>
 
+      {/* Instalaciones de agua */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsWaterOpen(!isWaterOpen)}
         >
@@ -190,35 +250,29 @@ export default function CrearEdificio() {
         </TouchableOpacity>
         {isWaterOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('water')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {waterItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de instalaciones de agua"
-                  value={waterItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...waterItems];
-                    newItems[0].description = text;
-                    setWaterItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {waterItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('water')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {waterItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de instalaciones de agua"
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
+                  placeholder="Descripción de la instalación de agua"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...waterItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setWaterItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...waterItems];
+                    newItems[index].quantity = text;
                     setWaterItems(newItems);
                   }}
                 />
@@ -228,8 +282,9 @@ export default function CrearEdificio() {
         )}
       </View>
 
+      {/* Mobiliario */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsFurnitureOpen(!isFurnitureOpen)}
         >
@@ -239,35 +294,29 @@ export default function CrearEdificio() {
         </TouchableOpacity>
         {isFurnitureOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('furniture')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {furnitureItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción del mobiliario"
-                  value={furnitureItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...furnitureItems];
-                    newItems[0].description = text;
-                    setFurnitureItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {furnitureItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('furniture')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {furnitureItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
                   placeholder="Descripción del mobiliario"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...furnitureItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setFurnitureItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...furnitureItems];
+                    newItems[index].quantity = text;
                     setFurnitureItems(newItems);
                   }}
                 />
@@ -277,8 +326,9 @@ export default function CrearEdificio() {
         )}
       </View>
 
+      {/* Equipos */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsEquipmentOpen(!isEquipmentOpen)}
         >
@@ -288,35 +338,29 @@ export default function CrearEdificio() {
         </TouchableOpacity>
         {isEquipmentOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('equipment')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {equipmentItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de los equipos"
-                  value={equipmentItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...equipmentItems];
-                    newItems[0].description = text;
-                    setEquipmentItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {equipmentItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('equipment')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {equipmentItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de los equipos"
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
+                  placeholder="Descripción del equipo"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...equipmentItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setEquipmentItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...equipmentItems];
+                    newItems[index].quantity = text;
                     setEquipmentItems(newItems);
                   }}
                 />
@@ -326,46 +370,41 @@ export default function CrearEdificio() {
         )}
       </View>
 
+      {/* Infraestructura */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsInfrastructureOpen(!isInfrastructureOpen)}
         >
           <View style={styles.titleContainer}>
-            <Text style={styles.sectionTitle}>Infraestructura Física</Text>
+            <Text style={styles.sectionTitle}>Infraestructura</Text>
           </View>
         </TouchableOpacity>
         {isInfrastructureOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('infrastructure')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {infrastructureItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de la infraestructura física"
-                  value={infrastructureItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...infrastructureItems];
-                    newItems[0].description = text;
-                    setInfrastructureItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {infrastructureItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('infrastructure')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {infrastructureItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de la infraestructura física"
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
+                  placeholder="Descripción de infraestructura"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...infrastructureItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setInfrastructureItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...infrastructureItems];
+                    newItems[index].quantity = text;
                     setInfrastructureItems(newItems);
                   }}
                 />
@@ -375,46 +414,41 @@ export default function CrearEdificio() {
         )}
       </View>
 
+      {/* Seguridad */}
       <View style={styles.section}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => setIsSecurityOpen(!isSecurityOpen)}
         >
           <View style={styles.titleContainer}>
-            <Text style={styles.sectionTitle}>Condiciones de Seguridad</Text>
+            <Text style={styles.sectionTitle}>Seguridad</Text>
           </View>
         </TouchableOpacity>
         {isSecurityOpen && (
           <View style={styles.sectionContent}>
-            <View style={styles.inputRow}>
-              <TouchableOpacity 
-                style={styles.addButtonLeft}
-                onPress={() => addItem('security')}
-              >
-                <Ionicons name="add-circle" size={40} color="#0066a1" />
-              </TouchableOpacity>
-              {securityItems.length > 0 && (
-                <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de las condiciones de seguridad"
-                  value={securityItems[0].description}
-                  onChangeText={(text) => {
-                    const newItems = [...securityItems];
-                    newItems[0].description = text;
-                    setSecurityItems(newItems);
-                  }}
-                />
-              )}
-            </View>
-            {securityItems.slice(1).map((item, index) => (
+            <TouchableOpacity style={styles.addButton} onPress={() => addItem('security')}>
+              <Ionicons name="add-circle" size={40} color="#0066a1" />
+            </TouchableOpacity>
+            {securityItems.map((item, index) => (
               <View key={item.id} style={styles.inputRowAligned}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Descripción de las condiciones de seguridad"
+                  style={[styles.input, { flex: 2, marginRight: 8 }]}
+                  placeholder="Descripción de seguridad"
                   value={item.description}
                   onChangeText={(text) => {
                     const newItems = [...securityItems];
-                    newItems[index + 1].description = text;
+                    newItems[index].description = text;
+                    setSecurityItems(newItems);
+                  }}
+                />
+                <TextInput
+                  style={[styles.input, { flex: 1 }]}
+                  placeholder="Cantidad"
+                  keyboardType="numeric"
+                  value={item.quantity}
+                  onChangeText={(text) => {
+                    const newItems = [...securityItems];
+                    newItems[index].quantity = text;
                     setSecurityItems(newItems);
                   }}
                 />
@@ -424,11 +458,8 @@ export default function CrearEdificio() {
         )}
       </View>
 
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={handleSave}
-      >
-        <Text style={styles.buttonText}>Guardar Edificio</Text>
+      <TouchableOpacity style={styles.saveButton} onPress={sendBuildingToAPI}>
+        <Text style={styles.saveButtonText}>Guardar</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -447,48 +478,64 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#0066a1',
+    color: '#004270', // Color azul específico para el título
     marginTop: 10,
   },
   section: {
     backgroundColor: '#fff',
     marginTop: 10,
+    borderRadius: 10, // Bordes redondeados
+    shadowColor: '#000', // Sombra para efecto de elevación
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    padding: 10,
   },
   titleContainer: {
-    backgroundColor: '#BAC8D9',
-    padding: 10,
-    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  circle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#004270', // Color azul específico para los círculos
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 18, // Tamaño de fuente más grande
     fontWeight: '600',
-    color: '#333',
+    color: '#004270', // Color azul específico para el título de la sección
   },
   sectionContent: {
     marginTop: 10,
     padding: 15,
   },
   label: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: 16, // Tamaño de fuente más grande
+    color: '#333333', // Texto más oscuro
     marginTop: 10,
     marginBottom: 5,
     paddingHorizontal: 15,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 4,
-    padding: 10,
+    borderColor: '#cccccc', // Borde más suave
+    borderRadius: 8, // Bordes más redondeados
+    padding: 12, // Más padding para mejor legibilidad
     fontSize: 16,
     marginBottom: 10,
     marginHorizontal: 15,
     flex: 1,
+    backgroundColor: '#f9f9f9', // Fondo más claro para los inputs
   },
   inputRow: {
     flexDirection: 'row',
@@ -499,24 +546,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-    marginLeft: 50, // Align with the first input
   },
-  select: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 4,
-    padding: 10,
-    marginHorizontal: 15,
+  halfWidth: {
+    flex: 1,
+    marginRight: 10, // Espacio entre los campos
   },
   button: {
-    backgroundColor: '#0066a1',
+    backgroundColor: '#004270', // Color azul específico para los botones
     padding: 15,
-    borderRadius: 4,
+    borderRadius: 8, // Bordes más redondeados
     margin: 15,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: '#ffffff',
     fontSize: 16,
     fontWeight: '600',
   },
@@ -525,9 +568,9 @@ const styles = StyleSheet.create({
     height: 180,
     marginVertical: 10,
     marginHorizontal: 15,
-    borderRadius: 8,
+    borderRadius: 10, // Bordes más redondeados
     overflow: 'hidden',
-    backgroundColor: '#BAC8D9',
+    backgroundColor: '#caf0f8', // Fondo más claro para el contenedor de la imagen
   },
   image: {
     width: '100%',
@@ -539,23 +582,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#ddd',
+    borderColor: '#90e0ef', // Borde más claro
     borderStyle: 'dashed',
-    borderRadius: 8,
+    borderRadius: 10, // Bordes más redondeados
   },
   imagePlaceholderText: {
-    color: '#666',
+    color: '#666666',
     marginTop: 10,
   },
-  addButtonContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 15,
-  },
   addButtonLeft: {
-    alignItems: 'center',
+    alignItems: 'start',
     marginTop: 8,
-    marginRight: 10,
+    marginBottom: 10,
+  },
+  saveButton: {
+    backgroundColor: '#004270', // Color azul específico para el botón de guardar
+    padding: 15,
+    borderRadius: 8, // Bordes más redondeados
+    margin: 15,
+    alignItems: 'center',
+  },
+  saveButtonText: {
+    color: '#ffffff',
+    fontSize: 18, // Tamaño de fuente más grande
+    fontWeight: '600',
   },
 });
-

@@ -1,13 +1,14 @@
 {
   "expo": {
+    "permissions": ["CAMERA"],
     "name": "checklist",
     "slug": "checklist",
     "version": "1.0.3",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.jpg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/icon.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      
       "keystore": {
         "keystoreFile": "./UTPLcampus.jks",
         "keystorePassword": "UTPLCampus",
@@ -22,10 +24,10 @@
         "keyPassword": "UTPLCampus"
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
+        "foregroundImage": "./assets/icon.jpg",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.byroncast.checklist",
+      "package": "com.kepasoftware.utplcampus",
       "versionCode": 3
     },
     "web": {
@@ -35,6 +37,19 @@
       "eas": {
         "projectId": "76b4e419-3fff-4666-8717-a0e442733832"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34
+          }
+        }
+      ],
+      "expo-barcode-scanner"
+    ]
+    
   }
 }

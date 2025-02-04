@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function AulaDetail() {
+export default function CuartoDetail() {
   const route = useRoute();
   const navigation = useNavigation();
   const { id } = route.params; // ID del aula
@@ -14,7 +14,7 @@ export default function AulaDetail() {
   // Función para obtener los datos del API
   const fetchAulaData = async () => {
     try {
-      const response = await fetch(`https://checklistutpl.duckdns.org/api/aulas/${id}`);
+      const response = await fetch(`https://checklistutpl.duckdns.org/api/cuarto-servicio/${id}`);
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -41,68 +41,67 @@ export default function AulaDetail() {
   // Renderizar cada categoría con su respectivo botón e icono
   const renderCategory = (title, iconName, onPress) => (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      <Icon name={iconName} size={30} color="#024873" style={styles.cardIcon} />
+      <Icon name={iconName} size={40} color="#0066CC" style={styles.cardIcon} />
       <Text style={styles.cardText}>{title}</Text>
-      <Icon name="chevron-forward" size={24} color="#0066a1" />
     </TouchableOpacity>
   );
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>Aula {data.buildingNumber}</Text>
+      <Text style={styles.headerText}>Cuartos {data.buildingNumber}</Text>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {renderCategory('Instalaciones eléctricas / redes', 'flash-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Instalaciones eléctricas / redes', 'power-plug', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.electricItems,
             title: 'Instalaciones eléctricas / redes',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'electric',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
-        {renderCategory('Instalaciones de agua', 'water-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Instalaciones de agua', 'water-pump', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.waterItems,
             title: 'Instalaciones de agua',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'water',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
-        {renderCategory('Mobiliario', 'bed-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Mobiliario', 'chair-rolling', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.furnitureItems,
             title: 'Mobiliario',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'furniture',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
-        {renderCategory('Equipos', 'desktop-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Equipos', 'tools', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.equipmentItems,
             title: 'Equipos',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'equipment',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
-        {renderCategory('Infraestructura física', 'business-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Infraestructura física', 'home', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.infrastructureItems,
             title: 'Infraestructura física',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'infrastructure',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
-        {renderCategory('Condiciones de seguridad', 'shield-checkmark-outline', () =>
-          navigation.navigate('ChecklistScreen', { 
+        {renderCategory('Condiciones de seguridad', 'shield-check', () =>
+          navigation.navigate('ChecklistScreen', {
             items: data.securityItems,
             title: 'Condiciones de seguridad',
-            buildingData: data,  // Pasa todo el objeto de edificio o aula
+            buildingData: data,
             areaType: 'security',
-            buildingType: 'aulas'
+            buildingType: 'cuartosServicio',
           })
         )}
       </ScrollView>
@@ -134,6 +133,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color: '#0066CC',
   },
   scrollView: {
     paddingBottom: 16,
@@ -151,10 +151,9 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   cardText: {
-    flex: 1,
     fontSize: 16,
     fontWeight: '500',
-    color: '#024873',
+    color: '#333',
   },
   backButton: {
     backgroundColor: '#0066CC',

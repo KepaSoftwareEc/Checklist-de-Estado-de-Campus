@@ -21,24 +21,65 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Component() {
   const navigation = useNavigation();
   const [buildings, setBuildings] = useState([]);
-
+  const [aulas, setAulas] = useState([]);
+  const [cuartosServicio, setCuartosServicio] = useState([]);
+  const [totalAulas, setTotalAulas] = useState(0);
+  const [totalCuartosEspeciales, setTotalCuartosEspeciales] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
+  
   useEffect(() => {
-    loadBuildings();
+    fetchBuildings();
+    fetchAulas();
+    fetchCuartosServicio();
   }, []);
 
-  const loadBuildings = async () => {
+
+  const fetchBuildings = async () => {
     try {
-      const savedBuildings = await AsyncStorage.getItem('edificios');
-      if (savedBuildings) {
-        setBuildings(JSON.parse(savedBuildings));
-      }
+      const response = await fetch('https://checklistutpl.duckdns.org/api/edificio/obtenerEdificios');
+      const data = await response.json();
+      console.log('Edificios obtenidos:', data); // Añadir log para depuración
+      setBuildings(data);
     } catch (error) {
-      console.error('Error al cargar edificios:', error);
+      console.error('Error al obtener los edificios:', error);
+      Alert.alert('Error', 'Error al obtener los detalles del edificio. Por favor, inténtelo de nuevo más tarde.');
+    }
+  };
+  const fetchAulas = async () => {
+    try {
+      const response = await fetch('https://checklistutpl.duckdns.org/api/aulas/obtenerAulas');
+      const data = await response.json();
+      setAulas(data);
+      console.log('Aulas:', data);
+    } catch (error) {
+      console.error('Error al obtener las aulas:', error);
     }
   };
 
+  const fetchCuartosServicio = async () => {
+    try {
+      const response = await fetch('https://checklistutpl.duckdns.org/api/cuarto-servicio/obtenerCuartos');
+      const data = await response.json();
+      setCuartosServicio(data);
+      console.log('Cuartos de servicio:', data);
+    } catch (error) {
+      console.error('Error al obtener los cuartos de servicio:', error);
+    }
+  };
+  const getAulasCount = (buildingName) => {
+    const count = aulas.filter(aula => aula.buildingName === buildingName).length;
+    console.log(`Aulas en ${buildingName}: ${count}`);
+    return count;
+  };
+
+  const getCuartosServicioCount = (buildingName) => {
+    const count = cuartosServicio.filter(cuarto => cuarto.buildingName === buildingName).length;
+    console.log(`Cuartos de servicio en ${buildingName}: ${count}`);
+    return count;
+  };
   const handleBuildingPress = (building) => {
-    navigation.navigate('DentroEdif', { edificio: building });
+    console.log('Building pressed:', building);
+    navigation.navigate('DentroEdif', { buildingId: building.buildingName, buildingId1: building.id });
   };
 
   const handleBuildingLongPress = (building) => {
@@ -69,7 +110,13 @@ export default function Component() {
       console.error('Error al borrar edificio:', error);
     }
   };
-
+// Filtrar edificios en función del término de búsqueda
+const filteredBuildings = buildings.filter((building) => {
+  const buildingName = building.buildingName.toLowerCase();
+  const buildingNumber = building.buildingNumber.toString();
+  const searchTermLower = searchTerm.toLowerCase();
+  return buildingName.includes(searchTermLower) || buildingNumber.includes(searchTermLower);
+});
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -87,6 +134,8 @@ export default function Component() {
           style={styles.searchInput}
           placeholder="Buscar edificio..."
           placeholderTextColor="#666"
+          value={searchTerm} // Valor del campo de búsqueda
+          onChangeText={(text) => setSearchTerm(text)} // Actualizar el término de búsqueda
         />
       </View>
 
@@ -100,14 +149,14 @@ export default function Component() {
             onLongPress={() => handleBuildingLongPress(building)}
           >
             <Image
-              source={building.imagen ? { uri: building.imagen } : require('../assets/UTPL.png')}
+              source={building.image ? { uri: building.image } : require('../assets/UTPL.png')}
               style={styles.buildingImage}
             />
             <View style={styles.buildingInfo}>
-              <Text style={styles.buildingName}>Edificio {building.numeroEdificio}</Text>
+              <Text style={styles.buildingName}>Edificio {building.buildingNumber} - {building.buildingName}</Text>
               <View style={styles.buildingDetails}>
-                <Text style={styles.detailText}>Número aulas: {building.numeroAulas || 'N/A'}</Text>
-                <Text style={styles.detailText}>Cuartos especiales: {building.cuartosEspeciales || 'N/A'}</Text>
+                <Text style={styles.detailText}>Número aulas: {getAulasCount(building.buildingName) || 'N/A'}</Text>
+                <Text style={styles.detailText}>Cuartos especiales: {getCuartosServicioCount(building.buildingName) || 'N/A'}</Text>
               </View>
             </View>
             <Ionicons name="chevron-forward" size={24} color="#0066a1" />
@@ -115,29 +164,27 @@ export default function Component() {
         ))}
       </ScrollView>
 
-      {/* Floating Action Button */}
-      <TouchableOpacity 
-        style={styles.fab}
-        onPress={() => navigation.navigate('CrearEdificio')}
-      >
-        <MaterialIcons name="add" size={24} color="#fff" />
-      </TouchableOpacity>
 
       {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <FontAwesome name="home" size={24} color="#0066a1" />
-          <Text style={styles.navText}>Inicio</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <FontAwesome name="file-text-o" size={24} color="#666" />
-          <Text style={styles.navText}>Informes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <FontAwesome name="bell-o" size={24} color="#666" />
-          <Text style={styles.navText}>Notificaciones</Text>
-        </TouchableOpacity>
-      </View>
+                  <View style={styles.bottomNav}>
+                  {/* Botón para navegar a la pantalla "Home" */}
+                  <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HomeScreen')}>
+                    <FontAwesome name="home" size={24} color="#0066a1" />
+                    <Text style={styles.navText}>Inicio</Text>
+                  </TouchableOpacity>
+            
+                  {/* Botón para navegar a la pantalla "Informes" */}
+                  <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Informe')}>
+                    <FontAwesome name="file-text-o" size={24} color="#666" />
+                    <Text style={styles.navText}>Informes</Text>
+                  </TouchableOpacity>
+            
+                  {/* Botón para navegar a la pantalla "Notificaciones" */}
+                  <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Notificaciones')}>
+                    <FontAwesome name="bell-o" size={24} color="#666" />
+                    <Text style={styles.navText}>Notificaciones</Text>
+                  </TouchableOpacity>
+                </View>
     </SafeAreaView>
   );
 }

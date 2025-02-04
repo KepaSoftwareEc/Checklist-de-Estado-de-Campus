@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,39 +13,32 @@ import {
   Animated
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import { useReportContext } from './ReportContext';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function DentroEdif() {
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const toggleNotifications = () => {
+    setNotificationsEnabled(prevState => !prevState);
+  };
   const route = useRoute();
+  const { generateReport } = useReportContext();
+  const { buildingId, buildingId1 } = route.params;
+  const [building, setBuilding] = useState(null);
+  
+  
+  const [aulas, setAulas] = useState([]);
+  const [cuartos, setCuartos] = useState([]);
+  
   const navigation = useNavigation();
-  const { edificio } = route.params;
   
   const [areas, setAreas] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [expandedSections, setExpandedSections] = useState({
-    monitorias: false,
-    aulas: false,
-    servicios: false,
-  });
-  const [checkedItems, setCheckedItems] = useState({});
-  const [newArea, setNewArea] = useState({
-    id: '',
-    type: 'aula',
-    name: '',
-    number: '',
-    capacity: '',
-    description: '',
-    image: '',
-    equipment: {
-      proyector: false,
-      computadora: false,
-      pantalla: false,
-      bocinas: false,
-      aire: false
-    }
-  });
+  const [expandedSections, setExpandedSections] = useState({aulas:false});
+  const [newArea, setNewArea] = useState({ name: '', capacity: '', description: '',floor: '' });
 
   const panY = new Animated.Value(0);
   const translateY = panY.interpolate({
@@ -82,7 +75,62 @@ export default function DentroEdif() {
       }
     },
   });
+  // Función para obtener los detalles del edificio
+  useEffect(() => {
+    fetchBuildingDetails();
+    loadAulas();
+    loadCuartos();
+  }, []);
 
+  const loadAulas = async () => {
+    try {
+      const response = await fetch('https://checklistutpl.duckdns.org/api/aulas/obtenerAulas');
+      const data = await response.json();
+      console.log('Aulas obtenidas:', data); // Log para depuración
+      const filteredAulas = data.filter(aula => aula.buildingName === buildingId);
+      console.log('Aulas filtradas:', filteredAulas); // Log para depuración
+      setAulas(filteredAulas);
+    } catch (error) {
+      console.error('Error al cargar aulas:', error);
+    }
+  };
+
+  const loadCuartos = async () => {
+    try {
+      const response = await fetch('https://checklistutpl.duckdns.org/api/cuarto-servicio/obtenerCuartos');
+      const data = await response.json();
+      console.log('Cuartos obtenidas:', data); // Log para depuración
+      const filteredCuartos = data.filter(cuartos => cuartos.buildingName === buildingId);
+      console.log('Cuartos filtradas:', filteredCuartos); // Log para depuración
+      setCuartos(filteredCuartos);
+    } catch (error) {
+      console.error('Error al cargar cuartos:', error);
+    }
+  };
+
+  const fetchBuildingDetails = async () => {
+    try {
+      console.log('Obteniendo detalles del edificio:', buildingId1); // Añadir log para depuración
+      const response = await fetch(`https://checklistutpl.duckdns.org/api/edificio/${buildingId1}`);
+      const data = await response.json();
+      console.log('Detalles del edificio:', data); // Añadir log para depuración
+      setBuilding(data);
+    } catch (error) {
+      console.error('Error al obtener los detalles del edificio:', error);
+    }
+  };
+
+  if (!building) {
+    return (
+      <View style={styles.container}>
+        <Text>Cargando detalles del edificio...</Text>
+      </View>
+    );
+  }
+  const aulaOptions = aulas.map(aula => ({
+    key: aula.id,
+    value: `Aula ${aula.classroomNumber}`
+  }));
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -96,40 +144,46 @@ export default function DentroEdif() {
     }
   };
 
-  const handleSave = () => {
-    const areaToSave = {
-      ...newArea,
-      id: Date.now().toString(),
+  const handleGenerateReport = () => {
+    const buildingData = {
+      id: buildingId,
+      buildingName: building.nombre,
+      buildingNumber: building.numeroEdificio
     };
-    setAreas([...areas, areaToSave]);
-    setModalVisible(false);
-    setNewArea({
-      id: '',
-      type: 'aula',
-      name: '',
-      number: '',
-      capacity: '',
-      description: '',
-      image: '',
-      equipment: {
-        proyector: false,
-        computadora: false,
-        pantalla: false,
-        bocinas: false,
-        aire: false
-      }
-    });
+
+    const reportData = generateReport(buildingData);
+    reportData.encargado = 'Nombre del Encargado';
+    navigation.navigate('Informe', { reportData: reportData});
+  };
+
+  const handleMonitorBuilding = () => {
+    navigation.navigate('MonitorBuilding', { buildingId, items: building });
+  };
+
+  const handleMonitorAulas = () => {
+    navigation.navigate('MonitorAulas', { buildingId });
+  };
+
+  const handleMonitorCuartos = () => {
+    navigation.navigate('MonitorCuartos', { buildingId });
   };
 
   const toggleSection = (section) => {
-    setExpandedSections({
-      ...expandedSections,
-      [section]: !expandedSections[section],
-    });
+    setExpandedSections((prevSections) => ({
+      ...prevSections,
+      [section]: !prevSections[section],
+    }));
   };
 
   const handleAreaPress = (area) => {
-    navigation.navigate('Aula', { area });
+    navigation.navigate(area.type, { id: area.id });
+  };
+  
+
+  const handleSave = () => {
+    // Lógica para guardar los cambios
+    console.log('Guardar cambios:', newArea);
+    setModalVisible(false);
   };
 
   const filteredAreas = areas.filter(area => 
@@ -141,9 +195,9 @@ export default function DentroEdif() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Edificio {edificio.numeroEdificio}</Text>
+        <Text style={styles.headerTitle}>Edificio {building.numeroEdificio}</Text>
         <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.editButtonText}>Editar Edificio</Text>
+          {/*<Text style={styles.editButtonText}>Editar Edificio</Text>*/}
         </TouchableOpacity>
       </View>
       <View style={styles.searchContainer}>
@@ -159,130 +213,164 @@ export default function DentroEdif() {
       {/* Areas List */}
       <ScrollView style={styles.content}>
         {/* Monitorias Edificio Section */}
+  <View style={styles.section}>
+    <Text style={styles.sectionTitle}>Monitorear Edificio</Text>
+    <TouchableOpacity
+      style={styles.sectionHeader}
+      onPress={() => toggleSection('monitorias')}
+    >
+      <Text style={styles.sectionHeaderText}>Selección</Text>
+      <Ionicons
+        name={expandedSections.monitorias ? 'chevron-up' : 'chevron-down'}
+        size={24}
+        color="#F2B705"
+      />
+    </TouchableOpacity>
+
+    {expandedSections.monitorias && (
+      <View style={styles.sectionContent}>
+        {['Instalaciones eléctricas / redes', 'Instalaciones de agua', 'Mobiliario', 'Equipos', 'Infraestructura física', 'Condiciones de seguridad'].map((item, index) => {
+          const itemMap = {
+            'Instalaciones eléctricas / redes': building.electricItems,
+            'Instalaciones de agua': building.waterItems,
+            'Mobiliario': building.furnitureItems,
+            'Equipos': building.equipmentItems,
+            'Infraestructura física': building.infrastructureItems,
+            'Condiciones de seguridad': building.securityItems
+          };
+
+          return (
+            <TouchableOpacity 
+              key={index}
+              style={styles.areaItem}
+              onPress={() => navigation.navigate('ChecklistScreen', { 
+                items: itemMap[item] || [],
+                title: item,
+                buildingData: building,
+                areaType: item === 'Instalaciones eléctricas / redes' ? 'electric' :
+                          item === 'Instalaciones de agua' ? 'water' :
+                          item === 'Mobiliario' ? 'furniture' :
+                          item === 'Equipos' ? 'equipment' :
+                          item === 'Infraestructura física' ? 'infrastructure' :
+                          item === 'Condiciones de seguridad' ? 'security' : '',
+                buildingType: 'edificios'
+              })}
+            >
+              <View style={styles.areaItemContent}>
+                <Text style={styles.areaItemText}>{item}</Text>
+                <Ionicons name="chevron-forward" size={24} color="#0066a1" />
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    )}
+  </View>
+
+        {/* Aulas Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Monitorias Edificio</Text>
-          <TouchableOpacity
-            style={styles.sectionHeader}
-            onPress={() => toggleSection('monitorias')}
-          >
-            <Text style={styles.sectionHeaderText}>Selección</Text>
-            <Ionicons
-              name={expandedSections.monitorias ? 'chevron-up' : 'chevron-down'}
-              size={24}
-              color="#F2B705"
-            />
-          </TouchableOpacity>
-          {expandedSections.monitorias && (
-            <View style={styles.sectionContent}>
-              {['Instalaciones eléctricas/redes', 'Instalaciones de agua', 'Mobiliario', 'Equipos', 'Infraestructura física', 'Condiciones de seguridad'].map((item, index) => (
+        <Text style={styles.sectionTitle}>Monitorear Aulas</Text>
+        <TouchableOpacity
+          style={styles.sectionHeader}
+          onPress={() => toggleSection('aulas')}
+        >
+          <Text style={styles.sectionHeaderText}>Selección</Text>
+          <Ionicons
+            name={expandedSections.aulas ? 'chevron-up' : 'chevron-down'}
+            size={24}
+            color="#F2B705"
+          />
+        </TouchableOpacity>
+        {expandedSections.aulas && (
+          <View style={styles.sectionContent}>
+            {aulas.length === 0 ? (
+              <Text style={styles.noAulasText}>No hay aulas asociadas a este edificio.</Text>
+            ) : (
+              aulas.map((aula, index) => (
                 <TouchableOpacity 
                   key={index}
                   style={styles.areaItem}
-                  onPress={() => handleAreaPress({ type: 'monitoria', name: item })}
+                  onPress={() => handleAreaPress({ type: 'Aula', id: aula.id })}
                 >
                   <View style={styles.areaItemContent}>
-                    <View style={styles.areaTextContent}>
-                      <Text style={styles.areaName}>{item}</Text>
-                    </View>
+                    <Text style={styles.areaItemText}>Aula: {aula.buildingNumber} - Piso: {aula.floor || 'No especificado'}</Text>
+                    <Ionicons name="chevron-forward" size={24} color="#0066a1" />
                   </View>
                 </TouchableOpacity>
-              ))}
-            </View>
-          )}
-        </View>
+              ))
+            )}
+          </View>
+        )}
+      </View>
 
-        {/* Classrooms Section */}
+        {/* Cuartos de Servicio Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Aulas</Text>
-          <TouchableOpacity
-            style={styles.sectionHeader}
-            onPress={() => toggleSection('aulas')}
-          >
-            <Text style={styles.sectionHeaderText}>Selección</Text>
-            <Ionicons
-              name={expandedSections.aulas ? 'chevron-up' : 'chevron-down'}
-              size={24}
-              color="#F2B705"
-            />
-          </TouchableOpacity>
-          {expandedSections.aulas && (
-            <View style={styles.sectionContent}>
-              {filteredAreas
-                .filter(area => area.type === 'aula')
-                .map(area => (
-                  <TouchableOpacity 
-                    key={area.id}
-                    style={styles.areaItem}
-                    onPress={() => handleAreaPress(area)}
-                  >
-                    <View style={styles.areaItemContent}>
-                      <View style={styles.areaTextContent}>
-                        <Text style={styles.areaName}>Aula {area.number}</Text>
-                        <Text style={styles.areaDetail}>
-                          Capacidad: {area.capacity} personas
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-            </View>
-          )}
-        </View>
-
-        {/* Service Rooms Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Cuartos de Servicio</Text>
-          <TouchableOpacity
-            style={styles.sectionHeader}
-            onPress={() => toggleSection('servicios')}
-          >
-            <Text style={styles.sectionHeaderText}>Selección</Text>
-            <Ionicons
-              name={expandedSections.servicios ? 'chevron-up' : 'chevron-down'}
-              size={24}
-              color="#F2B705"
-            />
-          </TouchableOpacity>
-          {expandedSections.servicios && (
-            <View style={styles.sectionContent}>
-              {['Baños', 'Cuartos de limpieza'].map((item, index) => (
-                <TouchableOpacity 
-                  key={index}
-                  style={styles.areaItem}
-                  onPress={() => handleAreaPress({ type: 'servicio', name: item })}
-                >
-                  <View style={styles.areaItemContent}>
-                    <View style={styles.areaTextContent}>
-                      <Text style={styles.areaName}>{item}</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
-          )}
-        </View>
+  <Text style={styles.sectionTitle}>Monitorear Cuartos de Servicio</Text>
+  <TouchableOpacity
+    style={styles.sectionHeader}
+    onPress={() => toggleSection('cuartos')}
+  >
+    <Text style={styles.sectionHeaderText}>Selección</Text>
+    <Ionicons
+      name={expandedSections.cuartos ? 'chevron-up' : 'chevron-down'}
+      size={24}
+      color="#F2B705"
+    />
+  </TouchableOpacity>
+  {expandedSections.cuartos && (
+  <View style={styles.sectionContent}>
+    {cuartos.length === 0 ? (
+      <Text style={styles.noAulasText}>No hay cuartos de servicio asociados a este edificio.</Text>
+    ) : (
+      cuartos.map((cuarto, index) => (
+        <TouchableOpacity 
+          key={index}
+          style={styles.areaItem}
+          onPress={() => handleAreaPress({ type: 'Cuarto', id: cuarto.id })}
+        >
+          <View style={styles.areaItemContent}>
+            <Text style={styles.areaItemText}>Cuarto: {cuarto.buildingNumber}</Text>
+            <Ionicons name="chevron-forward" size={24} color="#0066a1" />
+          </View>
+        </TouchableOpacity>
+      ))
+    )}
+  </View>
+)}
+</View>
       </ScrollView>
+
 
       {/* Generate Report Button */}
       <TouchableOpacity
         style={styles.generateReportButton}
-        onPress={() => navigation.navigate('Informe')}
+        onPress={handleGenerateReport}
+        //onPress={() => navigation.navigate('Informe')}
       >
         <Text style={styles.generateReportText}>Generar Informe</Text>
       </TouchableOpacity>
 
       {/* Bottom Menu */}
-      <View style={styles.bottomMenu}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.menuItem}>Inicio</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Informes')}>
-          <Text style={styles.menuItem}>Informes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Notificaciones')}>
-          <Text style={styles.menuItem}>Notificaciones</Text>
-        </TouchableOpacity>
-      </View>
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+      {/* Botón para navegar a la pantalla "Home" */}
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HomeScreen')}>
+        <FontAwesome name="home" size={24} color="#0066a1" />
+        <Text style={styles.navText}>Inicio</Text>
+      </TouchableOpacity>
+
+      {/* Botón para navegar a la pantalla "Informes" */}
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('InformesTotales')}>
+        <FontAwesome name="file-text-o" size={24} color="#666" />
+        <Text style={styles.navText}>Informes</Text>
+      </TouchableOpacity>
+
+      {/* Botón para navegar a la pantalla "Notificaciones" */}
+      <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Notificaciones')}>
+        <FontAwesome name="bell-o" size={24} color="#666" />
+        <Text style={styles.navText}>Notificaciones</Text>
+      </TouchableOpacity>
+    </View>
 
       {/* cuadro emergente para agregar area */}
       <Modal
@@ -444,7 +532,7 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 16,
-    color: '#0066cc',
+    color: 'black',
   },
   sectionContent: {
     backgroundColor: '#fff',
@@ -463,8 +551,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   areaItemContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'row',      // Alinea el texto y la flecha en una fila.
+    justifyContent: 'space-between', // Separa el texto a la izquierda y la flecha a la derecha.
+    alignItems: 'center', 
   },
   areaTextContent: {
     marginLeft: 12,
@@ -590,5 +679,21 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  bottomNav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around', // Distribuye el espacio de manera uniforme
+    alignItems: 'center', // Alinea los elementos verticalmente al centro
+    paddingVertical: 8,
+    borderTopWidth: 1,
+    borderTopColor: '#eee', // Borde superior de color claro
+  },
+  navItem: {
+    alignItems: 'center', // Centra los elementos dentro de cada item
+  },
+  navText: {
+    fontSize: 12,  // Tamaño de la fuente más pequeño
+    color: '#666',  // Color gris para el texto
+    marginTop: 4,  // Espacio superior entre el ícono y el texto
   },
 });

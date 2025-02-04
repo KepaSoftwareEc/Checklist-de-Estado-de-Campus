@@ -1,192 +1,218 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, TouchableOpacity, Modal, ActivityIndicator, Animated } from 'react-native';
-import { Camera } from 'expo-camera';
-import * as ImagePicker from 'expo-image-picker';
-import { Ionicons } from '@expo/vector-icons';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { useReportContext } from './ReportContext';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
-export default function InspectionForm() {
-  const route = useRoute();
+export default function ReportView() {
+  const { reportData, username } = useReportContext();
+  const [reportDetails, setReportDetails] = useState(null); // Cambiado a null
   const navigation = useNavigation();
-  // const { area, checkedItems } = route.params; // Comentado para eliminar la referencia a area
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [hasPermission, setHasPermission] = useState(null);
-  const [fadeAnim] = useState(new Animated.Value(0));
-  const [description, setDescription] = useState('');
-  const [techDescription, setTechDescription] = useState('');
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
-
-  const handleSave = async () => {
-    setLoading(true);
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-    
-    // Crear objeto con la información del mantenimiento
-    const maintenanceInfo = {
-      date: new Date().toISOString().split('T')[0],
-      building: 'Edificio 1', // Reemplaza con el valor adecuado
-      room: 'Aula 101', // Reemplaza con el valor adecuado
-      type: 'Mantenimiento',
-      description: description,
-      techDescription: techDescription,
-      isNewMaintenance: true // Flag para identificar nuevo mantenimiento
+    if (!reportData) return;
+  
+    const processReportData = () => {
+      console.log("Report Data:", reportData);
+  
+      const details = {
+        edificios: Object.entries(reportData.edificios || {}).map(([id, building]) => ({
+          id: id,
+          nombre: building.nombre || 'Edificio sin nombre',
+          electricItems: building.electricItems || [],
+          waterItems: building.waterItems || [],
+          furnitureItems: building.furnitureItems || [],
+          equipmentItems: building.equipmentItems || [],
+          infrastructureItems: building.infrastructureItems || [],
+          securityItems: building.securityItems || [],
+        })),
+        
+        aulas: Object.entries(reportData.aulas || {}).map(([id, aula]) => ({
+          id: id,
+          nombre: aula.nombre || 'Aula sin nombre',
+          electricItems: aula.electricItems || [],
+          waterItems: aula.waterItems || [],
+          furnitureItems: aula.furnitureItems || [],
+          equipmentItems: aula.equipmentItems || [],
+          infrastructureItems: aula.infrastructureItems || [],
+          securityItems: aula.securityItems || [],
+        })),
+        
+        cuartosServicio: Object.entries(reportData.cuartosServicio || {}).map(([id, room]) => ({
+          id: id,
+          nombre: room.nombre || 'Cuarto sin nombre',
+          electricItems: room.electricItems || [],
+          waterItems: room.waterItems || [],
+          furnitureItems: room.furnitureItems || [],
+          equipmentItems: room.equipmentItems || [],
+          infrastructureItems: room.infrastructureItems || [],
+          securityItems: room.securityItems || [],
+        })),
+        
+        date: reportData.date || new Date().toISOString().split('T')[0],
+        estado: reportData.estado || 'pendiente',
+        encargado: username || 'No especificado',
+      };
+  
+      console.log("Processed details:", details);
+      setReportDetails(details);
     };
+  
+    processReportData();
+  }, [reportData]);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSuccess(true);
-    
-    setTimeout(() => {
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start(() => {
-        setLoading(false);
-        setSuccess(false);
-        navigation.navigate('HomeScreen', { maintenanceInfo });
-      });
-    }, 2000);
-  };
-
-  const openCamera = async () => {
-    if (!hasPermission) {
-      alert('Se necesitan permisos de cámara para continuar');
+  const handleSaveChanges = async () => {
+    if (!reportDetails) {
+      alert('No hay datos para guardar.');
       return;
     }
-    const result = await ImagePicker.launchCameraAsync();
-    if (!result.canceled) {
-      console.log(result.assets[0].uri);
+  
+    console.log('Datos enviados a la API:', JSON.stringify(reportDetails, null, 2));
+  
+    try {
+      const response = await axios.post('https://checklistutpl.duckdns.org/api/info/crear', reportDetails, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      // Modificar esta parte para aceptar 201 como respuesta exitosa
+      if (response.status !== 200 && response.status !== 201) {
+        throw new Error('Error en la API: ${response.status}');
+      }
+  
+      console.log('Respuesta de la API:', response.data);
+      alert('Informe guardado exitosamente');
+      navigation.navigate('HomeScreen');
+    } catch (error) {
+      console.error('Error al guardar el informe:', error);
+      let errorMessage = 'Hubo un error al guardar el informe.';
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      } else if (error.request) {
+        errorMessage = 'No se recibió respuesta del servidor. Verifica tu conexión a internet.';
+      } else {
+        errorMessage = 'Error en la configuración de la solicitud.';
+      }
+      alert(errorMessage);
     }
   };
 
-  const openGallery = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsMultipleSelection: true,
-    });
-    if (!result.canceled) {
-      console.log(result.assets.map(asset => asset.uri));
-    }
-  };
+  if (!reportDetails) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.emptyState}>No hay informes disponibles</Text>
+      </View>
+    );
+  }
+
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Nuevo informe</Text>
-      <Text style={styles.subtitle}>Revisión semanal</Text>
-
-      <View style={styles.titleBox}>
-        <Text style={styles.sectionTitle}>Información general</Text>
-      </View>
-
-      {/* Aquí lógica de traer información */}
-      <View style={styles.row}>
-        <View style={styles.halfWidth}>
-          <Text style={styles.label}>Edificio:</Text>
-          <TextInput 
-            style={styles.input} 
-            value="Edificio 1" // Reemplaza con el valor adecuado
-            editable={false}
-          />
-        </View>
-        <View style={styles.halfWidth}>
-          <Text style={styles.label}>Aula:</Text>
-          <TextInput 
-            style={styles.input} 
-            value="Aula 101" // Reemplaza con el valor adecuado
-            editable={false}
-          />
-        </View>
-      </View>
-
-      <Text style={styles.label}>Encargado:</Text>
-      <TextInput 
-        style={styles.input} 
-        value="Encargado" // Reemplaza con el valor adecuado
-        editable={false}
-      />
-      
-      <Text style={styles.label}>Fecha:</Text>
-      <TextInput 
-        style={styles.input} 
-        value={new Date().toISOString().split('T')[0]} 
-        editable={false}
-      />
-      
-      <View style={styles.titleBox}>
-        <Text style={styles.sectionTitle}>Mobiliario e inmobiliario</Text>
-      </View>
-      <TextInput
-        style={styles.textArea}
-        multiline
-        numberOfLines={4}
-        placeholder="Describa el estado del mobiliario e inmobiliario..."
-        value={description}
-        onChangeText={setDescription}
-      />
-      <View style={styles.iconContainer}>
-        <TouchableOpacity style={styles.iconButton} onPress={openCamera}>
-          <Ionicons name="camera-outline" size={24} color="#007AFF" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton} onPress={openGallery}>
-          <Ionicons name="images-outline" size={24} color="#007AFF" />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.titleBox}>
-        <Text style={styles.sectionTitle}>Equipamiento tecnológico</Text>
-      </View>
-      <TextInput
-        style={styles.textArea}
-        multiline
-        numberOfLines={4}
-        placeholder="Describa el estado del equipamiento tecnológico..."
-        value={techDescription}
-        onChangeText={setTechDescription}
-      />
-      <View style={styles.iconContainer}>
-        <TouchableOpacity style={styles.iconButton} onPress={openCamera}>
-          <Ionicons name="camera-outline" size={24} color="#007AFF" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton} onPress={openGallery}>
-          <Ionicons name="images-outline" size={24} color="#007AFF" />
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-        <Text style={styles.saveButtonText}>Guardar Cambios</Text>
-      </TouchableOpacity>
-
-      {loading && (
-        <Animated.View 
-          style={[
-            styles.modalBackground,
-            {
-              opacity: fadeAnim
-            }
-          ]}
-        >
-          <View style={styles.modalContent}>
-            {success ? (
-              <View style={styles.successIcon}>
-                <Ionicons name="checkmark-circle" size={64} color="#4CAF50" />
-              </View>
-            ) : (
-              <ActivityIndicator size="large" color="#ffffff" />
-            )}
+      <View>
+        <Text style={styles.title}>Informe</Text>
+        <Text style={styles.subtitle}>Fecha: {reportDetails.date}</Text>
+  
+        {/* Sección de Información General */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Información General</Text>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Encargado: </Text>
+            <Text style={styles.value}>{reportDetails.encargado}</Text>
           </View>
-        </Animated.View>
-      )}
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Estado:</Text>
+            <Text style={styles.value}>{reportDetails.estado}</Text>
+          </View>
+        </View>
+  
+        {/* Sección de Edificios */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Edificios</Text>
+          {reportDetails.edificios.map((building, buildingIndex) => (
+            <View key={buildingIndex} style={styles.locationContainer}>
+              <Text style={styles.locationTitle}>{building.nombre}</Text>
+              {Object.entries(building).map(([key, value]) => {
+                if (Array.isArray(value) && value.length > 0) {
+                  return (
+                    <View key={key}>
+                      <Text style={styles.itemCategory}>{key}</Text>
+                      {value.map((item, itemIndex) => (
+                        <View key={itemIndex} style={styles.itemContainer}>
+                          <Text style={styles.itemDescription}>{item.description}</Text>
+                          <Text style={styles.itemDescription}>Cantidad: {item.quantity}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  );
+                }
+                return null;
+              })}
+            </View>
+          ))}
+        </View>
+  
+        {/* Sección de Aulas */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Aulas</Text>
+          {reportDetails.aulas.map((aula, aulaIndex) => (
+            <View key={aulaIndex} style={styles.locationContainer}>
+              <Text style={styles.locationTitle}>{aula.nombre}</Text>
+              {Object.entries(aula).map(([key, value]) => {
+                if (Array.isArray(value) && value.length > 0) {
+                  return (
+                    <View key={key}>
+                      <Text style={styles.itemCategory}>{key}</Text>
+                      {value.map((item, itemIndex) => (
+                        <View key={itemIndex} style={styles.itemContainer}>
+                          <Text style={styles.itemDescription}>{item.description}</Text>
+                          <Text style={styles.itemDescription}>Cantidad: {item.quantity}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  );
+                }
+                return null;
+              })}
+            </View>
+          ))}
+        </View>
+  
+        {/* Sección de Cuartos de Servicio */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Cuartos de Servicio</Text>
+          {reportDetails.cuartosServicio.map((room, roomIndex) => (
+            <View key={roomIndex} style={styles.locationContainer}>
+              <Text style={styles.locationTitle}>{room.nombre}</Text>
+              {Object.entries(room).map(([key, value]) => {
+                if (Array.isArray(value) && value.length > 0) {
+                  return (
+                    <View key={key}>
+                      <Text style={styles.itemCategory}>{key}</Text>
+                      {value.map((item, itemIndex) => (
+                        <View key={itemIndex} style={styles.itemContainer}>
+                          <Text style={styles.itemDescription}>{item.description}</Text>
+                          <Text style={styles.itemDescription}>Cantidad: {item.quantity}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  );
+                }
+                return null;
+              })}
+            </View>
+          ))}
+        </View>
+      </View>
+  
+      {/* Botón para guardar cambios */}
+      <TouchableOpacity style={styles.saveButton} onPress={handleSaveChanges} disabled={isLoading}>
+        <Text style={styles.saveButtonText}>
+          {isLoading ? 'Guardando...' : 'Guardar cambios'}
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -195,115 +221,91 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+    padding: 16,
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 4,
+    marginBottom: 8,
     color: '#333',
-    marginTop: 16,
   },
   subtitle: {
     fontSize: 18,
-    fontWeight: '600',
     textAlign: 'center',
     marginBottom: 20,
-    color: '#555',
+    color: '#666',
   },
-  titleBox: {
-    backgroundColor: '#bac8d9',
-    padding: 8,
+  sectionContainer: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 16,
     marginBottom: 16,
-    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-    marginLeft: 16,
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    color: '#007AFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+    paddingBottom: 8,
   },
-  row: {
+  infoRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-    paddingHorizontal: 16,
-  },
-  halfWidth: {
-    width: '48%',
+    marginBottom: 8,
   },
   label: {
-    fontSize: 14,
-    marginBottom: 4,
-    color: '#555',
-    marginLeft: 16,
+    fontWeight: 'bold',
+    marginRight: 8,
+    color: '#333',
+    width: 100,
   },
-  input: {
+  value: {
+    flex: 1,
+    color: '#666',
+  },
+  itemContainer: {
     backgroundColor: '#f9f9f9',
     borderRadius: 4,
-    padding: 8,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginHorizontal: 16,
-  },
-  textArea: {
-    backgroundColor: '#f9f9f9',
-    borderRadius: 4,
-    padding: 8,
-    height: 100,
-    textAlignVertical: 'top',
-    borderWidth: 1,
-    borderColor: '#ddd',
+    padding: 12,
     marginBottom: 8,
-    marginHorizontal: 16,
   },
-  iconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    gap: 8,
-    marginBottom: 16,
-    marginLeft: 16,
+  itemCategory: {
+    fontWeight: 'bold',
+    color: '#007AFF',
+    marginBottom: 4,
   },
-  iconButton: {
-    padding: 8,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: '#007AFF',
+  itemDescription: {
+    color: '#333',
+  },
+  locationContainer: {
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 12,
+  },
+  locationTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 8,
   },
   saveButton: {
-    backgroundColor: '#024873',
-    borderRadius: 10,
-    padding: 16,
+    backgroundColor: '#007AFF',
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginTop: 16,
     alignItems: 'center',
-    marginTop: 8,
-    marginHorizontal: 80,
-    marginBottom: 16,
   },
   saveButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  modalBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.38)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContent: {
-    backgroundColor: 'transparent',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  successIcon: {
-    backgroundColor: '#ffffff',
-    borderRadius: 32,
-    padding: 16,
-  },
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });

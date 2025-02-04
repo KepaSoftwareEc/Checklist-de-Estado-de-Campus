@@ -10,12 +10,17 @@ import Informe from './pages/Informe';
 import CrearAula from './pages/CrearAula';
 import ListaEdificio from './pages/ListaEdificio';
 import CrearCuartoServicio from './pages/CrearCuartoServicio'
-
+import ChecklistCuartoServicio from './pages/ChecklistCuartoServicio'
+import ChecklistScreen from './pages/ChecklistScreen';
+import Cuarto from './pages/CuartoServicio';
+import { ReportProvider } from './pages/ReportContext';
+import InformesTotales from './pages/InformesTotales';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    <ReportProvider>
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="LoginScreen"
@@ -29,7 +34,7 @@ const App = () => {
           },
         }}
       >
-        
+
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
@@ -40,16 +45,19 @@ const App = () => {
           component={HomeScreen}
           options={{ title: '' }}
         />
-        
         <Stack.Screen
           name="DentroEdif"
           component={DentroEdif}
           options={{ title: '' }}
         />
-
         <Stack.Screen
           name="Aula"
           component={Aula}
+          options={{ title: '' }}
+        />
+        <Stack.Screen
+          name="Cuarto"
+          component={Cuarto}
           options={{ title: '' }}
         />
         <Stack.Screen
@@ -77,8 +85,27 @@ const App = () => {
           component={CrearCuartoServicio}
           options={{title:''}}
         />
+        <Stack.Screen
+          name={"ChecklistCuartoServicio"}
+          component={ChecklistCuartoServicio}
+          options={{title:''}}
+        />
+
+        <Stack.Screen
+          name={"ChecklistScreen"}
+          component={ChecklistScreen}
+          options={{title:''}}
+        />
+
+          <Stack.Screen
+          name={"InformesTotales"}
+          component={InformesTotales}
+          options={{title:''}}
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
+    </ReportProvider>
   );
 };
 

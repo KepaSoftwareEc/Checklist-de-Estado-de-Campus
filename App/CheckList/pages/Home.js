@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, ScrollView, Animated, PanResponder } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image, ScrollView, Animated, PanResponder, Button } from 'react-native';
+import { Ionicons,FontAwesome } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState([]);
@@ -12,8 +13,11 @@ const Home = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [subMenuEdificiosVisible, setSubMenuEdificiosVisible] = useState(false);
   const [subMenuAulasVisible, setSubMenuAulasVisible] = useState(false);
-  const menuAnimation = useRef(new Animated.Value(-250)).current;
+  const menuAnimation = useRef(new Animated.Value(-200)).current;
   const navigation = useNavigation();
+
+  const route = useRoute();
+  const { user } = route.params || {};//obtiene los datos del usuario
 
   React.useEffect(() => {
     updateWeekDays(selectedDate);
@@ -31,7 +35,7 @@ const Home = () => {
           {
             titulo: 'Mantenimiento a computadoras',
             fecha: '25/10/2024',
-            edificio: 'Edificio 05', 
+            edificio: 'Edificio 05',
             sala: 'Sala E',
             horaInicio: '7:00 am',
             horaFin: '10:00 am'
@@ -50,7 +54,7 @@ const Home = () => {
     const days = [];
     const curr = new Date(date);
     curr.setDate(curr.getDate() - curr.getDay() + 1);
-    for(let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       days.push(new Date(curr));
       curr.setDate(curr.getDate() + 1);
     }
@@ -64,8 +68,8 @@ const Home = () => {
   };
 
   const formatMonth = (date) => {
-    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-                   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     return `${months[date.getMonth()]}, ${date.getFullYear()}`;
   };
 
@@ -78,7 +82,7 @@ const Home = () => {
   const toggleMenu = () => {
     if (menuVisible) {
       Animated.timing(menuAnimation, {
-        toValue: -250,
+        toValue: -300, // Ajusta el valor según el ancho del menú
         duration: 300,
         useNativeDriver: true,
       }).start(() => setMenuVisible(false));
@@ -90,6 +94,13 @@ const Home = () => {
         useNativeDriver: true,
       }).start();
     }
+  };
+
+  const handleLogout = async () => {
+    // Limpiar cualquier dato de sesión almacenado
+    await AsyncStorage.clear();
+    // Redirigir al usuario a la pantalla de inicio de sesión
+    navigation.navigate('LoginScreen');
   };
 
   const toggleSubMenuEdificios = () => {
@@ -107,9 +118,9 @@ const Home = () => {
       },
       onPanResponderMove: (evt, gestureState) => {
         if (gestureState.dx > 0) {
-          menuAnimation.setValue(Math.min(gestureState.dx - 250, 0));
+          menuAnimation.setValue(Math.min(gestureState.dx - 300, 0));
         } else {
-          menuAnimation.setValue(Math.max(gestureState.dx, -250));
+          menuAnimation.setValue(Math.max(gestureState.dx, -300));
         }
       },
       onPanResponderRelease: (evt, gestureState) => {
@@ -121,13 +132,13 @@ const Home = () => {
           }).start(() => setMenuVisible(true));
         } else if (gestureState.dx < -100) {
           Animated.timing(menuAnimation, {
-            toValue: -250,
+            toValue: -300,
             duration: 300,
             useNativeDriver: true,
           }).start(() => setMenuVisible(false));
         } else {
           Animated.timing(menuAnimation, {
-            toValue: menuVisible ? 0 : -250,
+            toValue: menuVisible ? 0 : -300,
             duration: 300,
             useNativeDriver: true,
           }).start();
@@ -140,59 +151,69 @@ const Home = () => {
     <SafeAreaView style={styles.container} {...panResponder.panHandlers}>
       {/* Menú Desplegable */}
       <Animated.View style={[styles.menuContainer, { transform: [{ translateX: menuAnimation }] }]}>
-  {/* Sección de perfil */}
-  <View style={styles.profileSection}>
-    <Image
-      source={require('../assets/perfilEjemplo.png')} 
-      style={styles.profileImage}
-    />
-    <View style={styles.profileTextContainer}>
-      <Text style={styles.profileName}>Byron Josué Castillo Paladines</Text>
-      <Text style={styles.profileRole}>Administrador</Text>
-    </View>
-  </View>
+        <ScrollView contentContainerStyle={styles.menuScrollContainer}>
+          {/* Profile Section */}
+          <View style={styles.profileSection}>
+            <Image source={require("../assets/perfilEjemplo.png")} style={styles.profileImage} />
+            <View style={styles.profileTextContainer}>
+              <Text style={styles.profileName}>{user?.name || "Usuario"}</Text>
+              <Text style={styles.profileRole}>Administrador</Text>
+            </View>
+          </View>
 
-  <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
-    <Ionicons name="home" size={24} color="#024873" />
-    <Text style={styles.menuText}>Inicio</Text>
-  </TouchableOpacity>
-  <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
-    <Ionicons name="document-text-outline" size={24} color="#024873" />
-    <Text style={styles.menuText}>Informes</Text>
-  </TouchableOpacity>
-  <TouchableOpacity style={styles.menuItem} onPress={toggleSubMenuEdificios}>
-    <Ionicons name="business-outline" size={24} color="#024873" />
-    <Text style={styles.menuText}>Edificios</Text>
-  </TouchableOpacity>
-  {subMenuEdificiosVisible && (
-    <View style={styles.subMenuContainer}>
-      <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate('CrearEdificio')}>
-  <Text style={styles.subMenuText}>Registrar Edificio</Text>
-</TouchableOpacity>
-<TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate('ListaEdificio')}>
-  <Text style={styles.subMenuText}>Edificios</Text>
-</TouchableOpacity>
-    </View>
-  )}
-  <TouchableOpacity style={styles.menuItem} onPress={toggleSubMenuAulas}>
-    <Ionicons name="school-outline" size={24} color="#024873" />
-    <Text style={styles.menuText}>Aulas y Cuartos de Servicio</Text>
-  </TouchableOpacity>
-  {subMenuAulasVisible && (
-    <View style={styles.subMenuContainer}>
-      <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate('CrearAula')}>
-        <Text style={styles.subMenuText}>Registrar Aulas</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate('CrearCuartoServicio')}>
-        <Text style={styles.subMenuText}>Registrar Cuartos de Servicio</Text>
-      </TouchableOpacity>
-    </View>
-  )}
-  <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
-    <Ionicons name="person-outline" size={24} color="#024873" />
-    <Text style={styles.menuText}>Perfil</Text>
-  </TouchableOpacity>
-</Animated.View>
+          {/* Menu Items */}
+          <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
+            <Ionicons name="home-outline" size={24} color="#024873" />
+            <Text style={styles.menuText}>Inicio</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
+            <Ionicons name="document-text-outline" size={24} color="#024873" />
+            <Text style={styles.menuText}>Informes</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem} onPress={toggleSubMenuEdificios}>
+            <Ionicons name="business-outline" size={24} color="#024873" />
+            <Text style={styles.menuText}>Edificios</Text>
+            <Ionicons name={subMenuEdificiosVisible ? "chevron-up" : "chevron-down"} size={24} style={styles.arrowIcon} />
+          </TouchableOpacity>
+          {subMenuEdificiosVisible && (
+            <View style={styles.subMenuContainer}>
+              <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate("CrearEdificio")}>
+                <Text style={styles.subMenuText}> · Registrar edificio</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate("ListaEdificio")}>
+                <Text style={styles.subMenuText}> · Edificios</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          <TouchableOpacity style={styles.menuItem} onPress={toggleSubMenuAulas}>
+            <Ionicons name="school-outline" size={24} color="#024873" />
+            <Text style={styles.menuText}>Aulas y cuartos de servicio</Text>
+            <Ionicons name={subMenuAulasVisible ? "chevron-up" : "chevron-down"} size={24} style={styles.arrowIcon} />
+          </TouchableOpacity>
+          {subMenuAulasVisible && (
+            <View style={styles.subMenuContainer}>
+              <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate("CrearAula")}>
+                <Text style={styles.subMenuText}> · Registrar aulas</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.subMenuItem} onPress={() => navigation.navigate("CrearCuartoServicio")}>
+                <Text style={styles.subMenuText}> · Registrar cuartos de servicio</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          <TouchableOpacity style={styles.menuItem} onPress={toggleMenu}>
+            <Ionicons name="person-outline" size={24} color="#024873" />
+            <Text style={styles.menuText}>Perfil</Text>
+          </TouchableOpacity>
+          {/* Botón de Salir */}
+          <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
+            <Ionicons name="log-out-outline" size={24} color="red" />
+            <Text style={[styles.menuText, { color: "red" }]}>Cerrar sesión</Text>
+          </TouchableOpacity>
+
+          {/* Version number */}
+          <Text style={styles.versionText}>V1.0.1.0</Text>
+        </ScrollView>
+      </Animated.View>
 
       {/* Encabezado */}
       <View style={styles.header}>
@@ -207,7 +228,7 @@ const Home = () => {
               resizeMode="contain"
             />
           </View>
-          <Text style={styles.welcomeText}>Bienvenido/a Carolina</Text>
+          <Text style={styles.welcomeText}>Bienvenido/a {user?.name || 'Usuario'}</Text>
         </View>
       </View>
 
@@ -228,17 +249,17 @@ const Home = () => {
             {dias.map((day, index) => (
               <View key={day} style={styles.dayColumn}>
                 <Text style={styles.dayText}>{day}</Text>
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={[
-                    styles.dateCircle, 
-                    currentWeek[index]?.toDateString() === selectedDate.toDateString() && 
+                    styles.dateCircle,
+                    currentWeek[index]?.toDateString() === selectedDate.toDateString() &&
                     styles.activeDateCircle
                   ]}
                   onPress={() => setSelectedDate(currentWeek[index])}
                 >
                   <Text style={[
-                    styles.dateText, 
-                    currentWeek[index]?.toDateString() === selectedDate.toDateString() && 
+                    styles.dateText,
+                    currentWeek[index]?.toDateString() === selectedDate.toDateString() &&
                     styles.activeDateText
                   ]}>
                     {currentWeek[index]?.getDate()}
@@ -274,9 +295,11 @@ const Home = () => {
           ) : (
             <View style={styles.eventCard}>
               <Text style={styles.noEventsText}>No hay eventos próximos</Text>
+              
             </View>
           )}
         </View>
+        
 
         {/* Solicitudes Recientes */}
         <View style={styles.section}>
@@ -293,29 +316,26 @@ const Home = () => {
       </ScrollView>
 
       {/* Navegación */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="home" size={24} color="#024873" />
-          <Text style={styles.navText}>Inicio</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="document-text-outline" size={24} color="#666" />
-          <Text style={styles.navText}>Informes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.navItem}
-          onPress={toggleNotifications}
-        >
-          <Ionicons 
-            name={notificationsEnabled ? "notifications" : "notifications-outline"} 
-            size={24} 
-            color={notificationsEnabled ? "#024873" : "#666"} 
-          />
-          <Text style={[styles.navText, notificationsEnabled && {color: '#024873'}]}>
-            Notificaciones
-          </Text>
-        </TouchableOpacity>
-      </View>
+      {/* Bottom Navigation */}
+            <View style={styles.bottomNav}>
+            {/* Botón para navegar a la pantalla "Home" */}
+            <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HomeScreen')}>
+              <FontAwesome name="home" size={24} color="#0066a1" />
+              <Text style={styles.navText}>Inicio</Text>
+            </TouchableOpacity>
+      
+            {/* Botón para navegar a la pantalla "Informes" */}
+            <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('InformesTotales')}>
+              <FontAwesome name="file-text-o" size={24} color="#666" />
+              <Text style={styles.navText}>Informes</Text>
+            </TouchableOpacity>
+      
+            {/* Botón para navegar a la pantalla "Notificaciones" */}
+            <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Notificaciones')}>
+              <FontAwesome name="bell-o" size={24} color="#666" />
+              <Text style={styles.navText}>Notificaciones</Text>
+            </TouchableOpacity>
+          </View>
     </SafeAreaView>
   );
 };
@@ -329,43 +349,48 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 250,
+    width: 300, // Aumenta el ancho del menú
     height: '100%',
     backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
     zIndex: 1000,
-    padding: 16,
+    paddingVertical: 20, // Aumenta el padding vertical
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
     borderRightWidth: 1,
     borderRightColor: '#eee',
   },
   menuItem: {
-    display: 'flex',
-    width: '100%',
-    height: 56,
-    padding: 16,
-    alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
   menuText: {
-    fontSize: 16,
-    color: '#024873',
-    marginLeft: 16,
+    fontSize: 17,
+    color: "#024873",
+    marginLeft: 20,
   },
   subMenuContainer: {
-    paddingLeft: 16,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: "#f0f0f0",
+    paddingLeft: 20, // Aumenta el padding izquierdo
   },
   subMenuItem: {
-    paddingVertical: 8,
-    paddingLeft: 32,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    paddingVertical: 15, // Aumenta el padding vertical
+    paddingHorizontal: 25, // Aumenta el padding horizontal
   },
   subMenuText: {
-    fontSize: 14,
-    color: '#024873',
+    fontSize: 16,
+    color: "#024873",
+  },
+  activeDateCircle: {
+    backgroundColor: '#024873',
   },
   header: {
     flexDirection: 'row',
@@ -374,7 +399,11 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
-    backgroundColor: '#fff', // Asegúrate de que el encabezado no tenga color de fondo azul
+    backgroundColor: '#fff',
+  },
+  arrowIcon: {
+    marginLeft: "auto",
+    color: "#F2B705",
   },
   headerRight: {
     flex: 1,
@@ -402,6 +431,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    marginLeft:11,
   },
   calendarContainer: {
     backgroundColor: '#F5F6FA',
@@ -464,7 +494,7 @@ const styles = StyleSheet.create({
   sectionTitleAmarillo: {
     fontSize: 16,
     color: '#F2B705',
-    fontWeight: '500',
+    fontWeight: '50',
     marginBottom: 16,
     alignItems: 'center',
   },
@@ -519,44 +549,63 @@ const styles = StyleSheet.create({
   },
   bottomNav: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
+    backgroundColor: '#fff',
     paddingVertical: 8,
     borderTopWidth: 1,
-    borderTopColor: '#eee',
+    borderTopColor: '#ddd',
   },
   navItem: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   navText: {
     fontSize: 12,
-    color: '#666',
     marginTop: 4,
+    color: '#666',
   },
+  versionText: {
+    fontSize: 12,
+    color: "#666",
+    textAlign: "center",
+    marginTop: 20,
+  },
+  
   profileSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
-    paddingHorizontal: 13, 
+    marginBottom: 20,
+    paddingHorizontal: 10,
   },
   profileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 12,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 15,
   },
   profileTextContainer: {
-    flexDirection: 'column',
-    flexShrink: 1, 
+    flex: 1,
   },
   profileName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#024873',
+    fontSize: 18,
+    fontWeight: "bold",
   },
   profileRole: {
     fontSize: 14,
-    color: '#666',
+    color: "#666",
+    marginTop: 2,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 999,
+  },
+  menuScrollContainer: {
+    flexGrow: 1,
   },
 });
 
