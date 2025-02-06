@@ -11,7 +11,8 @@ Un mapa de capacidades generalmente se divide en módulos o áreas de alto nivel
 ## Mapa de Capacidades
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9b6503d5-ff77-47b1-82b7-89b18b7d7921" alt="Mapa de Capacidades"/>
+  <img src="https://github.com/user-attachments/assets/b262d7c7-523e-418c-9dfb-e658de7a477c" alt="Mapa de Capacidades"/>
+
 </p>
 
 
