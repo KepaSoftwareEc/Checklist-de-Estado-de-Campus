@@ -1,55 +1,83 @@
-# Arquitectura en la Nube para Microservicios con Google Cloud
+# Arquitectura en la Nube para la Aplicación de Checklist en un Campus
 
 ## Introducción
 
-En la era de la transformación digital, las empresas buscan innovación rápida y eficiente mediante arquitecturas flexibles y escalables. En este documento se describe la arquitectura en la nube utilizada en nuestro proyecto, basada en una arquitectura de microservicios con Google Kubernetes Engine (GKE), Artifact Registry y MongoDB Atlas.
+En el contexto de la gestión de infraestructura en un campus, es esencial contar con un sistema eficiente para el registro y control de edificios, aulas, cuartos de servicio y sus insumos. Nuestra aplicación de checklist ha sido diseñada para facilitar este proceso, permitiendo la gestión centralizada y automatizada de estos activos.
 
-Esta arquitectura permite una alta disponibilidad, escalabilidad automática y una integración eficiente de servicios, asegurando un despliegue ágil y confiable de nuestras aplicaciones.
+Para lograrlo, hemos implementado una arquitectura basada en **microservicios**, aprovechando las ventajas de escalabilidad, resiliencia y flexibilidad que ofrece **Google Kubernetes Engine (GKE)**. Además, la autenticación y gestión de usuarios se maneja a través de **MongoDB Atlas**, asegurando un almacenamiento seguro y eficiente.
+
+---
 
 ## Tecnologías Utilizadas
 
-Nuestra arquitectura en la nube está compuesta por las siguientes tecnologías clave:
+Nuestra infraestructura en la nube se basa en los siguientes componentes clave:
 
-- **Google Kubernetes Engine (GKE)**: Plataforma de orquestación de contenedores basada en Kubernetes para gestionar el despliegue y la escalabilidad de microservicios.
-- **Artifact Registry**: Servicio de Google Cloud para almacenar y gestionar imágenes de contenedores Docker.
-- **MongoDB Atlas**: Base de datos NoSQL en la nube con alta disponibilidad y escalabilidad automática.
+- **Google Kubernetes Engine (GKE)**: Orquestación de microservicios para gestionar edificios, aulas, cuartos de servicio e insumos, además de la generación de informes.
+- **Artifact Registry**: Almacenamiento de imágenes Docker para asegurar versiones controladas y despliegues eficientes.
+- **MongoDB Atlas**: Base de datos NoSQL utilizada para la autenticación y almacenamiento de usuarios.
+- **Google Cloud Load Balancer**: Distribución eficiente del tráfico entre los microservicios.
+- **Google Cloud Logging y Monitoring**: Supervisión del rendimiento y detección de errores en tiempo real.
+- **CI/CD con GitHub Actions y Google Cloud Build**: Automatización del despliegue continuo para mejorar la eficiencia operativa.
+
+---
 
 ## Arquitectura General
 
-Nuestra arquitectura sigue un enfoque basado en microservicios desplegados en **Google Kubernetes Engine (GKE)**. Cada microservicio es empaquetado como un contenedor Docker y almacenado en **Artifact Registry**, asegurando control de versiones y facilidad de despliegue.
+La aplicación se basa en una arquitectura de microservicios desplegada en **Google Kubernetes Engine (GKE)**, lo que permite una administración modular y escalable de los siguientes elementos clave:
 
-Los microservicios pueden escalar de manera automática según la demanda, y se comunican entre sí mediante **servicios de Kubernetes** y una capa de balanceo de carga. La persistencia de datos se gestiona mediante **MongoDB Atlas**, que ofrece replicación y tolerancia a fallos.
+1. **Registro y gestión de infraestructura del campus**  
+   - Edificios, aulas y cuartos de servicio.
+   - Insumos y recursos asociados a cada espacio.
+   - Registro de mantenimiento y disponibilidad.
+
+2. **Generación de informes**  
+   - Análisis de disponibilidad de espacios.
+   - Reportes de consumo y necesidades de insumos.
+   - Evaluación del estado de la infraestructura.
+
+3. **Gestión de usuarios y autenticación**  
+   - Registro y control de accesos.
+   - Autenticación segura mediante MongoDB Atlas.
+   - Roles y permisos para administración y usuarios operativos.
+
+---
 
 ## Componentes Clave
 
-### 1. **Infraestructura**
-La infraestructura de nuestra arquitectura está basada en Google Cloud, utilizando **GKE** para la gestión y escalado de contenedores, asegurando alta disponibilidad y eficiencia.
+### 1. **Infraestructura con Kubernetes (GKE)**
+   - Microservicios independientes para cada función (gestión de edificios, aulas, cuartos de servicio, insumos e informes).
+   - Balanceo de carga con **Google Cloud Load Balancer** para distribuir el tráfico de manera óptima.
+   - Escalabilidad automática para responder a la demanda de usuarios.
 
-### 2. **Gestión de Contenedores**
-- **Artifact Registry** se encarga del almacenamiento de imágenes de contenedores Docker.
-- **Google Kubernetes Engine (GKE)** permite desplegar y escalar automáticamente los microservicios.
+### 2. **Almacenamiento y Autenticación con MongoDB Atlas**
+   - Base de datos NoSQL optimizada para almacenar credenciales de usuarios.
+   - Seguridad mediante autenticación basada en roles.
+   - Alta disponibilidad y replicación automática.
 
-### 3. **Persistencia de Datos**
-- **MongoDB Atlas** es la base de datos principal, ofreciendo soporte para clustering y escalabilidad horizontal.
+### 3. **Despliegue y Gestión de Contenedores**
+   - **Artifact Registry** almacena y gestiona las imágenes Docker de los microservicios.
+   - **CI/CD con GitHub Actions y Google Cloud Build** para despliegues rápidos y controlados.
+   - **Google Cloud Logging y Monitoring** para la detección de errores y supervisión del rendimiento.
 
-### 4. **Escalabilidad y Balanceo de Carga**
-- **Autoscaling de Kubernetes** para ajustar el número de réplicas de los microservicios según la demanda.
-- **Load Balancer de Google Cloud** para distribuir tráfico de manera eficiente entre los microservicios.
+### 4. **Generación de Informes**
+   - Microservicio dedicado a la recolección y análisis de datos de la infraestructura.
+   - Integración con herramientas de visualización de datos para reportes dinámicos.
+   - API para exportación de informes en formatos estándar (PDF, Excel).
 
-### 5. **Despliegue y Monitoreo**
-- **CI/CD con GitHub Actions y Google Cloud Build** para despliegues automáticos.
-- **Google Cloud Operations Suite (Stackdriver)** para monitoreo y logging.
+---
 
 ## Flujo de Implementación
 
-1. Se desarrolla y prueba un microservicio localmente.
-2. Se construye una imagen Docker y se sube a **Artifact Registry**.
-3. Se despliega el microservicio en **GKE** con pods escalables.
-4. Kubernetes gestiona la comunicación y balanceo de carga.
-5. Los datos se almacenan y consultan desde **MongoDB Atlas**.
-6. **Google Cloud Monitoring** supervisa métricas de rendimiento y estabilidad.
+1. Un usuario accede a la aplicación y se autentica a través de **MongoDB Atlas**.
+2. Los microservicios de **GKE** gestionan los registros de infraestructura (edificios, aulas, insumos).
+3. Se almacenan cambios y registros de mantenimiento en una base de datos.
+4. Se generan informes automáticos según los datos recopilados.
+5. Todo el tráfico es distribuido eficientemente mediante el balanceador de carga.
+6. **Google Cloud Monitoring** supervisa el estado de los microservicios en tiempo real.
+
+---
 
 ## Conclusión
 
-Esta arquitectura basada en microservicios proporciona una solución altamente escalable y flexible para gestionar aplicaciones en la nube. Al utilizar **Google Kubernetes Engine, Artifact Registry y MongoDB Atlas**, garantizamos eficiencia operativa, despliegues rápidos y un sistema robusto para el crecimiento del proyecto.
+Nuestra arquitectura basada en **microservicios con Google Kubernetes Engine y MongoDB Atlas** permite una gestión eficiente de la infraestructura del campus. Gracias a la **automatización de despliegues, escalabilidad dinámica y monitoreo en tiempo real**, la aplicación proporciona una solución robusta y flexible para la administración de checklist en entornos educativos y corporativos.
 
