@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "permissions": ["CAMERA"],
+    "name": "checklist",
+    "slug": "checklist",
+    "version": "1.0.3",
+    "orientation": "portrait",
+    "icon": "./assets/icon.jpg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/icon.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      
+      "keystore": {
+        "keystoreFile": "./UTPLcampus.jks",
+        "keystorePassword": "UTPLCampus",
+        "keyAlias": "utpl checklist campus",
+        "keyPassword": "UTPLCampus"
+      },
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.jpg",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.kepasoftware.utplcampus",
+      "versionCode": 3
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "76b4e419-3fff-4666-8717-a0e442733832"
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34
+          }
+        }
+      ],
+      "expo-barcode-scanner"
+    ]
+    
+  }
+}
