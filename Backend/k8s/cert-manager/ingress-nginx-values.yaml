@@ -1,0 +1,15 @@
+controller:
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+  service:
+    annotations:
+      cloud.google.com/load-balancer-type: "External"
+  admissionWebhooks:
+    enabled: false
+defaultBackend:
+  enabled: false

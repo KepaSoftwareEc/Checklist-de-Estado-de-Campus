@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: informe
+  name: informe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: informe
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: informe
+    spec:
+      containers:
+      - image: northamerica-south1-docker.pkg.dev/robotic-sector-447122-n9/checklist/informe-microservice:v1.0.0
+        name: informe-microservice
+        env:
+        - name: PORT
+          value: "3007"
+        - name: NATS_SERVERS
+          value: "nats://nats"
+        resources:
+          requests:
+            memory: "128Mi"  # Memoria garantizada reducida
+            cpu: "100m"      # CPU garantizada reducida
+          limits:
+            memory: "256Mi"  # Máxima memoria permitida
+            cpu: "200m"      # CPU máxima permitida 
+status: {}

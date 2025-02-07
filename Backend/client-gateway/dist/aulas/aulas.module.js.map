@@ -1,0 +1,1 @@
+{"version":3,"file":"aulas.module.js","sourceRoot":"","sources":["../../src/aulas/aulas.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,yDAAqD;AACrD,qDAAkD;AAQ3C,IAAM,WAAW,GAAjB,MAAM,WAAW;CAAG,CAAA;AAAd,kCAAW;sBAAX,WAAW;IANvB,IAAA,eAAM,EAAC;QACN,WAAW,EAAE,CAAC,kCAAe,CAAC;QAC9B,SAAS,EAAE,EAAE;QACX,OAAO,EAAE;YACP,wBAAU;SAAC;KAChB,CAAC;GACW,WAAW,CAAG"}

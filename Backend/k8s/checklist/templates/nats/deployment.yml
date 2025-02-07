@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nats
+  name: nats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nats
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nats
+    spec:
+      containers:
+      - image: nats
+        name: nats
+        resources:
+          requests:
+            memory: "128Mi"  # Memoria garantizada reducida
+            cpu: "100m"      # CPU garantizada reducida
+          limits:
+            memory: "256Mi"  # Máxima memoria permitida
+            cpu: "200m"  
+        
+status: {}
